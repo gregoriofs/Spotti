@@ -1,0 +1,800 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 55;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		2792E2C33A8D9925D9660D4E /* Pods_Spotti.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B7939CD6830B23CDAAABC94 /* Pods_Spotti.framework */; };
+		69EED8FAA45E98C99DC5A891 /* Pods_SpottiTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70A3B26B041FBC0F717D3C9E /* Pods_SpottiTests.framework */; };
+		8C6F8009CA86B6CF7E2B57D4 /* Pods_Spotti_SpottiUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BFD6A8EEE75BE9E70AB3D95 /* Pods_Spotti_SpottiUITests.framework */; };
+		C01E97A928764DD00037DAE3 /* BasicInformationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C01E97A828764DD00037DAE3 /* BasicInformationViewController.m */; };
+		C01E97AC28764F4E0037DAE3 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C01E97AB28764F4E0037DAE3 /* HomeViewController.m */; };
+		C0672344287612AD00F91288 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C0672343287612AD00F91288 /* AppDelegate.m */; };
+		C0672347287612AD00F91288 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C0672346287612AD00F91288 /* SceneDelegate.m */; };
+		C067234D287612AD00F91288 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C067234B287612AD00F91288 /* Main.storyboard */; };
+		C067234F287612AE00F91288 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C067234E287612AE00F91288 /* Assets.xcassets */; };
+		C0672352287612AE00F91288 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C0672350287612AE00F91288 /* LaunchScreen.storyboard */; };
+		C0672355287612AE00F91288 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C0672354287612AE00F91288 /* main.m */; };
+		C067235F287612AE00F91288 /* SpottiTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C067235E287612AE00F91288 /* SpottiTests.m */; };
+		C0672369287612AE00F91288 /* SpottiUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = C0672368287612AE00F91288 /* SpottiUITests.m */; };
+		C067236B287612AE00F91288 /* SpottiUITestsLaunchTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C067236A287612AE00F91288 /* SpottiUITestsLaunchTests.m */; };
+		C067237D28763F8500F91288 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C067237C28763F8500F91288 /* LoginViewController.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		C067235B287612AE00F91288 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C0672337287612AD00F91288 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C067233E287612AD00F91288;
+			remoteInfo = Spotti;
+		};
+		C0672365287612AE00F91288 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C0672337287612AD00F91288 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C067233E287612AD00F91288;
+			remoteInfo = Spotti;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		30C8FF5FA13F16409DB239EF /* Pods-Spotti-SpottiUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Spotti-SpottiUITests.debug.xcconfig"; path = "Target Support Files/Pods-Spotti-SpottiUITests/Pods-Spotti-SpottiUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		4588F447519DCAFCEC6B4E6B /* Pods-Spotti.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Spotti.debug.xcconfig"; path = "Target Support Files/Pods-Spotti/Pods-Spotti.debug.xcconfig"; sourceTree = "<group>"; };
+		4B7939CD6830B23CDAAABC94 /* Pods_Spotti.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Spotti.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4BFD6A8EEE75BE9E70AB3D95 /* Pods_Spotti_SpottiUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Spotti_SpottiUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		70A3B26B041FBC0F717D3C9E /* Pods_SpottiTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SpottiTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		80CDA8623520497E9D8014CC /* Pods-SpottiTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpottiTests.debug.xcconfig"; path = "Target Support Files/Pods-SpottiTests/Pods-SpottiTests.debug.xcconfig"; sourceTree = "<group>"; };
+		98FA0CCEB9A91C9B137CA85B /* Pods-SpottiTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpottiTests.release.xcconfig"; path = "Target Support Files/Pods-SpottiTests/Pods-SpottiTests.release.xcconfig"; sourceTree = "<group>"; };
+		C01E97A728764DD00037DAE3 /* BasicInformationViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BasicInformationViewController.h; sourceTree = "<group>"; };
+		C01E97A828764DD00037DAE3 /* BasicInformationViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BasicInformationViewController.m; sourceTree = "<group>"; };
+		C01E97AA28764F4E0037DAE3 /* HomeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
+		C01E97AB28764F4E0037DAE3 /* HomeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
+		C067233F287612AD00F91288 /* Spotti.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Spotti.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C0672342287612AD00F91288 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		C0672343287612AD00F91288 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		C0672345287612AD00F91288 /* SceneDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SceneDelegate.h; sourceTree = "<group>"; };
+		C0672346287612AD00F91288 /* SceneDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SceneDelegate.m; sourceTree = "<group>"; };
+		C067234C287612AD00F91288 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		C067234E287612AE00F91288 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		C0672351287612AE00F91288 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		C0672353287612AE00F91288 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C0672354287612AE00F91288 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		C067235A287612AE00F91288 /* SpottiTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SpottiTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C067235E287612AE00F91288 /* SpottiTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SpottiTests.m; sourceTree = "<group>"; };
+		C0672364287612AE00F91288 /* SpottiUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SpottiUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C0672368287612AE00F91288 /* SpottiUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SpottiUITests.m; sourceTree = "<group>"; };
+		C067236A287612AE00F91288 /* SpottiUITestsLaunchTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SpottiUITestsLaunchTests.m; sourceTree = "<group>"; };
+		C067237B28763F8500F91288 /* LoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		C067237C28763F8500F91288 /* LoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		DAC0DED881B0BEFE77AC8139 /* Pods-Spotti-SpottiUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Spotti-SpottiUITests.release.xcconfig"; path = "Target Support Files/Pods-Spotti-SpottiUITests/Pods-Spotti-SpottiUITests.release.xcconfig"; sourceTree = "<group>"; };
+		DF64F3C434B30DDEA6627A40 /* Pods-Spotti.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Spotti.release.xcconfig"; path = "Target Support Files/Pods-Spotti/Pods-Spotti.release.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		C067233C287612AD00F91288 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2792E2C33A8D9925D9660D4E /* Pods_Spotti.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C0672357287612AE00F91288 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				69EED8FAA45E98C99DC5A891 /* Pods_SpottiTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C0672361287612AE00F91288 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8C6F8009CA86B6CF7E2B57D4 /* Pods_Spotti_SpottiUITests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		2CFF57613C245E57A60B532F /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				4588F447519DCAFCEC6B4E6B /* Pods-Spotti.debug.xcconfig */,
+				DF64F3C434B30DDEA6627A40 /* Pods-Spotti.release.xcconfig */,
+				30C8FF5FA13F16409DB239EF /* Pods-Spotti-SpottiUITests.debug.xcconfig */,
+				DAC0DED881B0BEFE77AC8139 /* Pods-Spotti-SpottiUITests.release.xcconfig */,
+				80CDA8623520497E9D8014CC /* Pods-SpottiTests.debug.xcconfig */,
+				98FA0CCEB9A91C9B137CA85B /* Pods-SpottiTests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		C0672336287612AD00F91288 = {
+			isa = PBXGroup;
+			children = (
+				C0672341287612AD00F91288 /* Spotti */,
+				C067235D287612AE00F91288 /* SpottiTests */,
+				C0672367287612AE00F91288 /* SpottiUITests */,
+				C0672340287612AD00F91288 /* Products */,
+				2CFF57613C245E57A60B532F /* Pods */,
+				F2665297FF8E8EF4F941CBC4 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		C0672340287612AD00F91288 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C067233F287612AD00F91288 /* Spotti.app */,
+				C067235A287612AE00F91288 /* SpottiTests.xctest */,
+				C0672364287612AE00F91288 /* SpottiUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C0672341287612AD00F91288 /* Spotti */ = {
+			isa = PBXGroup;
+			children = (
+				C067237A28763F7000F91288 /* Models */,
+				C067237928763F6800F91288 /* API */,
+				C067237828763F6100F91288 /* Views */,
+				C067237728763F3600F91288 /* View Controllers */,
+				C0672342287612AD00F91288 /* AppDelegate.h */,
+				C0672343287612AD00F91288 /* AppDelegate.m */,
+				C0672345287612AD00F91288 /* SceneDelegate.h */,
+				C0672346287612AD00F91288 /* SceneDelegate.m */,
+				C067234B287612AD00F91288 /* Main.storyboard */,
+				C067234E287612AE00F91288 /* Assets.xcassets */,
+				C0672350287612AE00F91288 /* LaunchScreen.storyboard */,
+				C0672353287612AE00F91288 /* Info.plist */,
+				C0672354287612AE00F91288 /* main.m */,
+			);
+			path = Spotti;
+			sourceTree = "<group>";
+		};
+		C067235D287612AE00F91288 /* SpottiTests */ = {
+			isa = PBXGroup;
+			children = (
+				C067235E287612AE00F91288 /* SpottiTests.m */,
+			);
+			path = SpottiTests;
+			sourceTree = "<group>";
+		};
+		C0672367287612AE00F91288 /* SpottiUITests */ = {
+			isa = PBXGroup;
+			children = (
+				C0672368287612AE00F91288 /* SpottiUITests.m */,
+				C067236A287612AE00F91288 /* SpottiUITestsLaunchTests.m */,
+			);
+			path = SpottiUITests;
+			sourceTree = "<group>";
+		};
+		C067237728763F3600F91288 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				C067237B28763F8500F91288 /* LoginViewController.h */,
+				C067237C28763F8500F91288 /* LoginViewController.m */,
+				C01E97A728764DD00037DAE3 /* BasicInformationViewController.h */,
+				C01E97A828764DD00037DAE3 /* BasicInformationViewController.m */,
+				C01E97AA28764F4E0037DAE3 /* HomeViewController.h */,
+				C01E97AB28764F4E0037DAE3 /* HomeViewController.m */,
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		C067237828763F6100F91288 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		C067237928763F6800F91288 /* API */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		C067237A28763F7000F91288 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		F2665297FF8E8EF4F941CBC4 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4B7939CD6830B23CDAAABC94 /* Pods_Spotti.framework */,
+				4BFD6A8EEE75BE9E70AB3D95 /* Pods_Spotti_SpottiUITests.framework */,
+				70A3B26B041FBC0F717D3C9E /* Pods_SpottiTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		C067233E287612AD00F91288 /* Spotti */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C067236E287612AE00F91288 /* Build configuration list for PBXNativeTarget "Spotti" */;
+			buildPhases = (
+				5824049695856974EA69AFCC /* [CP] Check Pods Manifest.lock */,
+				C067233B287612AD00F91288 /* Sources */,
+				C067233C287612AD00F91288 /* Frameworks */,
+				C067233D287612AD00F91288 /* Resources */,
+				53D2D56435A942D1564F8B43 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Spotti;
+			productName = Spotti;
+			productReference = C067233F287612AD00F91288 /* Spotti.app */;
+			productType = "com.apple.product-type.application";
+		};
+		C0672359287612AE00F91288 /* SpottiTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C0672371287612AE00F91288 /* Build configuration list for PBXNativeTarget "SpottiTests" */;
+			buildPhases = (
+				B2829ADD8ACE44D04D985D80 /* [CP] Check Pods Manifest.lock */,
+				C0672356287612AE00F91288 /* Sources */,
+				C0672357287612AE00F91288 /* Frameworks */,
+				C0672358287612AE00F91288 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C067235C287612AE00F91288 /* PBXTargetDependency */,
+			);
+			name = SpottiTests;
+			productName = SpottiTests;
+			productReference = C067235A287612AE00F91288 /* SpottiTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		C0672363287612AE00F91288 /* SpottiUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C0672374287612AE00F91288 /* Build configuration list for PBXNativeTarget "SpottiUITests" */;
+			buildPhases = (
+				372CB522B5F1513346276654 /* [CP] Check Pods Manifest.lock */,
+				C0672360287612AE00F91288 /* Sources */,
+				C0672361287612AE00F91288 /* Frameworks */,
+				C0672362287612AE00F91288 /* Resources */,
+				A857F18976D1BB1D20303945 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C0672366287612AE00F91288 /* PBXTargetDependency */,
+			);
+			name = SpottiUITests;
+			productName = SpottiUITests;
+			productReference = C0672364287612AE00F91288 /* SpottiUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		C0672337287612AD00F91288 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastUpgradeCheck = 1340;
+				TargetAttributes = {
+					C067233E287612AD00F91288 = {
+						CreatedOnToolsVersion = 13.4;
+					};
+					C0672359287612AE00F91288 = {
+						CreatedOnToolsVersion = 13.4;
+						TestTargetID = C067233E287612AD00F91288;
+					};
+					C0672363287612AE00F91288 = {
+						CreatedOnToolsVersion = 13.4;
+						TestTargetID = C067233E287612AD00F91288;
+					};
+				};
+			};
+			buildConfigurationList = C067233A287612AD00F91288 /* Build configuration list for PBXProject "Spotti" */;
+			compatibilityVersion = "Xcode 13.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = C0672336287612AD00F91288;
+			productRefGroup = C0672340287612AD00F91288 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				C067233E287612AD00F91288 /* Spotti */,
+				C0672359287612AE00F91288 /* SpottiTests */,
+				C0672363287612AE00F91288 /* SpottiUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		C067233D287612AD00F91288 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C0672352287612AE00F91288 /* LaunchScreen.storyboard in Resources */,
+				C067234F287612AE00F91288 /* Assets.xcassets in Resources */,
+				C067234D287612AD00F91288 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C0672358287612AE00F91288 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C0672362287612AE00F91288 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		372CB522B5F1513346276654 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Spotti-SpottiUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		53D2D56435A942D1564F8B43 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Spotti/Pods-Spotti-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Spotti/Pods-Spotti-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Spotti/Pods-Spotti-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5824049695856974EA69AFCC /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Spotti-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A857F18976D1BB1D20303945 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Spotti-SpottiUITests/Pods-Spotti-SpottiUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Spotti-SpottiUITests/Pods-Spotti-SpottiUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Spotti-SpottiUITests/Pods-Spotti-SpottiUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B2829ADD8ACE44D04D985D80 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SpottiTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		C067233B287612AD00F91288 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C01E97A928764DD00037DAE3 /* BasicInformationViewController.m in Sources */,
+				C067237D28763F8500F91288 /* LoginViewController.m in Sources */,
+				C0672344287612AD00F91288 /* AppDelegate.m in Sources */,
+				C0672355287612AE00F91288 /* main.m in Sources */,
+				C0672347287612AD00F91288 /* SceneDelegate.m in Sources */,
+				C01E97AC28764F4E0037DAE3 /* HomeViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C0672356287612AE00F91288 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C067235F287612AE00F91288 /* SpottiTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C0672360287612AE00F91288 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C0672369287612AE00F91288 /* SpottiUITests.m in Sources */,
+				C067236B287612AE00F91288 /* SpottiUITestsLaunchTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		C067235C287612AE00F91288 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C067233E287612AD00F91288 /* Spotti */;
+			targetProxy = C067235B287612AE00F91288 /* PBXContainerItemProxy */;
+		};
+		C0672366287612AE00F91288 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C067233E287612AD00F91288 /* Spotti */;
+			targetProxy = C0672365287612AE00F91288 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		C067234B287612AD00F91288 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C067234C287612AD00F91288 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		C0672350287612AE00F91288 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C0672351287612AE00F91288 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		C067236C287612AE00F91288 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		C067236D287612AE00F91288 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		C067236F287612AE00F91288 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4588F447519DCAFCEC6B4E6B /* Pods-Spotti.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = L5XH9X87X6;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Spotti/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.codepath.Spotti;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		C0672370287612AE00F91288 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = DF64F3C434B30DDEA6627A40 /* Pods-Spotti.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = L5XH9X87X6;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Spotti/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.codepath.Spotti;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		C0672372287612AE00F91288 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 80CDA8623520497E9D8014CC /* Pods-SpottiTests.debug.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = L5XH9X87X6;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.codepath.SpottiTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Spotti.app/Spotti";
+			};
+			name = Debug;
+		};
+		C0672373287612AE00F91288 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 98FA0CCEB9A91C9B137CA85B /* Pods-SpottiTests.release.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = L5XH9X87X6;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.codepath.SpottiTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Spotti.app/Spotti";
+			};
+			name = Release;
+		};
+		C0672375287612AE00F91288 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 30C8FF5FA13F16409DB239EF /* Pods-Spotti-SpottiUITests.debug.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = L5XH9X87X6;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.codepath.SpottiUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Spotti;
+			};
+			name = Debug;
+		};
+		C0672376287612AE00F91288 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = DAC0DED881B0BEFE77AC8139 /* Pods-Spotti-SpottiUITests.release.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = L5XH9X87X6;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.codepath.SpottiUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Spotti;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		C067233A287612AD00F91288 /* Build configuration list for PBXProject "Spotti" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C067236C287612AE00F91288 /* Debug */,
+				C067236D287612AE00F91288 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C067236E287612AE00F91288 /* Build configuration list for PBXNativeTarget "Spotti" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C067236F287612AE00F91288 /* Debug */,
+				C0672370287612AE00F91288 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C0672371287612AE00F91288 /* Build configuration list for PBXNativeTarget "SpottiTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C0672372287612AE00F91288 /* Debug */,
+				C0672373287612AE00F91288 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C0672374287612AE00F91288 /* Build configuration list for PBXNativeTarget "SpottiUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C0672375287612AE00F91288 /* Debug */,
+				C0672376287612AE00F91288 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = C0672337287612AD00F91288 /* Project object */;
+}
