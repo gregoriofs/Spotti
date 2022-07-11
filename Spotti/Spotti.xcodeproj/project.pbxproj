@@ -10,6 +10,14 @@
 		2792E2C33A8D9925D9660D4E /* Pods_Spotti.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B7939CD6830B23CDAAABC94 /* Pods_Spotti.framework */; };
 		69EED8FAA45E98C99DC5A891 /* Pods_SpottiTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70A3B26B041FBC0F717D3C9E /* Pods_SpottiTests.framework */; };
 		8C6F8009CA86B6CF7E2B57D4 /* Pods_Spotti_SpottiUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BFD6A8EEE75BE9E70AB3D95 /* Pods_Spotti_SpottiUITests.framework */; };
+		C0109C0728774925006FD29C /* APIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C0109C0628774925006FD29C /* APIManager.m */; };
+		C0109C0A2877554A006FD29C /* Workout.m in Sources */ = {isa = PBXBuildFile; fileRef = C0109C092877554A006FD29C /* Workout.m */; };
+		C0109C0D28775642006FD29C /* Exercise.m in Sources */ = {isa = PBXBuildFile; fileRef = C0109C0C28775642006FD29C /* Exercise.m */; };
+		C0109C1028775AFA006FD29C /* ObjectivesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C0109C0F28775AFA006FD29C /* ObjectivesViewController.m */; };
+		C0109C1328775D21006FD29C /* FocusAreaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C0109C1228775D21006FD29C /* FocusAreaViewController.m */; };
+		C0109C1628776ACC006FD29C /* FrequencyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C0109C1528776ACC006FD29C /* FrequencyViewController.m */; };
+		C0109C192878AAFA006FD29C /* WorkoutOverviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C0109C182878AAFA006FD29C /* WorkoutOverviewViewController.m */; };
+		C0109C1C2878B50A006FD29C /* ExerciseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C0109C1B2878B50A006FD29C /* ExerciseCell.m */; };
 		C01E97A928764DD00037DAE3 /* BasicInformationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C01E97A828764DD00037DAE3 /* BasicInformationViewController.m */; };
 		C01E97AC28764F4E0037DAE3 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C01E97AB28764F4E0037DAE3 /* HomeViewController.m */; };
 		C0672344287612AD00F91288 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C0672343287612AD00F91288 /* AppDelegate.m */; };
@@ -49,6 +57,22 @@
 		70A3B26B041FBC0F717D3C9E /* Pods_SpottiTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SpottiTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		80CDA8623520497E9D8014CC /* Pods-SpottiTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpottiTests.debug.xcconfig"; path = "Target Support Files/Pods-SpottiTests/Pods-SpottiTests.debug.xcconfig"; sourceTree = "<group>"; };
 		98FA0CCEB9A91C9B137CA85B /* Pods-SpottiTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpottiTests.release.xcconfig"; path = "Target Support Files/Pods-SpottiTests/Pods-SpottiTests.release.xcconfig"; sourceTree = "<group>"; };
+		C0109C0528774924006FD29C /* APIManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = APIManager.h; sourceTree = "<group>"; };
+		C0109C0628774925006FD29C /* APIManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = APIManager.m; sourceTree = "<group>"; };
+		C0109C082877554A006FD29C /* Workout.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Workout.h; sourceTree = "<group>"; };
+		C0109C092877554A006FD29C /* Workout.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Workout.m; sourceTree = "<group>"; };
+		C0109C0B28775642006FD29C /* Exercise.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Exercise.h; sourceTree = "<group>"; };
+		C0109C0C28775642006FD29C /* Exercise.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Exercise.m; sourceTree = "<group>"; };
+		C0109C0E28775AFA006FD29C /* ObjectivesViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ObjectivesViewController.h; sourceTree = "<group>"; };
+		C0109C0F28775AFA006FD29C /* ObjectivesViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ObjectivesViewController.m; sourceTree = "<group>"; };
+		C0109C1128775D21006FD29C /* FocusAreaViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FocusAreaViewController.h; sourceTree = "<group>"; };
+		C0109C1228775D21006FD29C /* FocusAreaViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FocusAreaViewController.m; sourceTree = "<group>"; };
+		C0109C1428776ACC006FD29C /* FrequencyViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FrequencyViewController.h; sourceTree = "<group>"; };
+		C0109C1528776ACC006FD29C /* FrequencyViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FrequencyViewController.m; sourceTree = "<group>"; };
+		C0109C172878AAFA006FD29C /* WorkoutOverviewViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WorkoutOverviewViewController.h; sourceTree = "<group>"; };
+		C0109C182878AAFA006FD29C /* WorkoutOverviewViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WorkoutOverviewViewController.m; sourceTree = "<group>"; };
+		C0109C1A2878B50A006FD29C /* ExerciseCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExerciseCell.h; sourceTree = "<group>"; };
+		C0109C1B2878B50A006FD29C /* ExerciseCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ExerciseCell.m; sourceTree = "<group>"; };
 		C01E97A728764DD00037DAE3 /* BasicInformationViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BasicInformationViewController.h; sourceTree = "<group>"; };
 		C01E97A828764DD00037DAE3 /* BasicInformationViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BasicInformationViewController.m; sourceTree = "<group>"; };
 		C01E97AA28764F4E0037DAE3 /* HomeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
@@ -183,6 +207,14 @@
 				C01E97A828764DD00037DAE3 /* BasicInformationViewController.m */,
 				C01E97AA28764F4E0037DAE3 /* HomeViewController.h */,
 				C01E97AB28764F4E0037DAE3 /* HomeViewController.m */,
+				C0109C0E28775AFA006FD29C /* ObjectivesViewController.h */,
+				C0109C0F28775AFA006FD29C /* ObjectivesViewController.m */,
+				C0109C1128775D21006FD29C /* FocusAreaViewController.h */,
+				C0109C1228775D21006FD29C /* FocusAreaViewController.m */,
+				C0109C1428776ACC006FD29C /* FrequencyViewController.h */,
+				C0109C1528776ACC006FD29C /* FrequencyViewController.m */,
+				C0109C172878AAFA006FD29C /* WorkoutOverviewViewController.h */,
+				C0109C182878AAFA006FD29C /* WorkoutOverviewViewController.m */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -190,6 +222,8 @@
 		C067237828763F6100F91288 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				C0109C1A2878B50A006FD29C /* ExerciseCell.h */,
+				C0109C1B2878B50A006FD29C /* ExerciseCell.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -197,6 +231,8 @@
 		C067237928763F6800F91288 /* API */ = {
 			isa = PBXGroup;
 			children = (
+				C0109C0528774924006FD29C /* APIManager.h */,
+				C0109C0628774925006FD29C /* APIManager.m */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -204,6 +240,10 @@
 		C067237A28763F7000F91288 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				C0109C082877554A006FD29C /* Workout.h */,
+				C0109C092877554A006FD29C /* Workout.m */,
+				C0109C0B28775642006FD29C /* Exercise.h */,
+				C0109C0C28775642006FD29C /* Exercise.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -457,11 +497,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				C01E97A928764DD00037DAE3 /* BasicInformationViewController.m in Sources */,
+				C0109C1C2878B50A006FD29C /* ExerciseCell.m in Sources */,
 				C067237D28763F8500F91288 /* LoginViewController.m in Sources */,
 				C0672344287612AD00F91288 /* AppDelegate.m in Sources */,
 				C0672355287612AE00F91288 /* main.m in Sources */,
+				C0109C0728774925006FD29C /* APIManager.m in Sources */,
+				C0109C1628776ACC006FD29C /* FrequencyViewController.m in Sources */,
+				C0109C1328775D21006FD29C /* FocusAreaViewController.m in Sources */,
 				C0672347287612AD00F91288 /* SceneDelegate.m in Sources */,
 				C01E97AC28764F4E0037DAE3 /* HomeViewController.m in Sources */,
+				C0109C0D28775642006FD29C /* Exercise.m in Sources */,
+				C0109C192878AAFA006FD29C /* WorkoutOverviewViewController.m in Sources */,
+				C0109C1028775AFA006FD29C /* ObjectivesViewController.m in Sources */,
+				C0109C0A2877554A006FD29C /* Workout.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

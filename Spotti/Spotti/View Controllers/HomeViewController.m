@@ -9,7 +9,7 @@
 #import <Parse/Parse.h>
 #import "LoginViewController.h"
 #import "SceneDelegate.h"
-
+#import "APIManager.h"
 
 @interface HomeViewController ()
 
@@ -20,7 +20,20 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+//    [[APIManager shared] getAllExercises:^(NSDictionary *data, NSError *error){
+//            if(error!=nil){
+//                NSLog(@"%@", error.localizedDescription);
+//            }
+//
+//            else{
+//                NSLog(@"%@", data);
+//            }
+//    }];
+    
 }
+
+
 - (IBAction)didTapLogout:(id)sender {
     SceneDelegate *myDelegate = (SceneDelegate *)self.view.window.windowScene.delegate;
     
@@ -35,6 +48,9 @@
     }];
 }
 
+- (IBAction)didTapCreateSession:(id)sender {
+    
+}
 
 
 /*
