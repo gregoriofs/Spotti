@@ -66,16 +66,16 @@ static NSString * const baseURLString = @"https://wger.de";
                         
                         NSArray *results = dataDictionary[@"results"];
                         
-                        NSLog(@"Results size %lu", (unsigned long)results.count);
-                        for(int i= 0; i < exercisesPerArea;i++){
-                            NSLog(@"exercises per area: %d",exercisesPerArea);
-                            
-                            int r = arc4random_uniform(results.count);
-                            
-                            [exerciseArray addObject:results[r]];
-                        }
+//                        NSLog(@"Results size %lu", (unsigned long)results.count);
+//                        for(int i= 0; i < exercisesPerArea;i++){
+//                            NSLog(@"exercises per area: %d",exercisesPerArea);
+//
+//                            int r = arc4random_uniform(results.count);
+//
+//                            [exerciseArray addObject:results[r]];
+//                        }
                         
-                        completion([exerciseArray copy]);
+                        completion(results);
                     }
                 }];
             

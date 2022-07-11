@@ -46,30 +46,59 @@
     self.frequency.text = [NSString stringWithFormat:@"%@ times a week", self.workout.frequency];
     
     [self fillExerciseList];
-    
+
+
+
     
 }
 
 - (void)fillExerciseList{
     
-    NSMutableArray __block *temp = [NSMutableArray new];
+//    NSMutableArray __block *temp = [NSMutableArray new];
     
     APIManager *manager = [APIManager new];
     
-    for(int i = 0; i < self.workout.focusAreas.count;i++){
-        [manager exerciseListFromWorkout:self.workout currentExercise:0 completionBlock:^(NSArray *exercises){
-            [temp addObjectsFromArray:exercises];
-            NSLog(@"temp size %lu",(unsigned long)temp.count);
-            self.exercises = [temp copy];
-            NSLog(@"exercises size inside loop %lu", (unsigned long)self.exercises.count);
-        }];
+//    for(int i = 0; i < self.workout.focusAreas.count;i++){
+//        [manager exerciseListFromWorkout:self.workout currentExercise:0 completionBlock:^(NSArray *exercises){
+////            [temp addObjectsFromArray:exercises];
+////            NSLog(@"temp size %lu",(unsigned long)temp.count);
+//            self.exercises = exercises;
+//            NSLog(@"exercises size inside loop %lu", (unsigned long)self.exercises.count);
+//        }];
         
+//            }
+    
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@",@"https://wger.de",@"/api/v2/exercise/?language=2"]];
+    //    NSLog(@"%@",url);
+        NSURLRequest *request = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:10.0];
+        NSURLSession *session =  [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration] delegate:nil delegateQueue:[NSOperationQueue mainQueue]];
+    
+        NSURLSessionDataTask *task = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+            if (error != nil) {
+                
+                            NSLog(@"%@", [error localizedDescription]);
+                
+                        }
+            else
+            {
+                
+                NSLog(@"Succesful results");
+            
+                NSDictionary *dataDictionary = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
+                
+                NSArray *results = dataDictionary[@"results"];
+                NSLog(@"%@", [results class]);
+                
+                
+                NSLog(@"res: %@", results);
+                
+                self.exercises = results;
+                
             }
+        }];
     
-    NSLog(@"exercises size %lu", (unsigned long)self.exercises.count);
-    
-    
-    
+    [task resume];
+        
 //    self.workout.exerciseArray = self.exercises;
     
     [self.tableView reloadData];

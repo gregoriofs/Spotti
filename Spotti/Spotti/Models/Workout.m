@@ -14,6 +14,7 @@
 @dynamic frequency;
 @dynamic createdAt;
 @dynamic completed;
+@dynamic exerciseArray;
 
 -(instancetype)init{
     self = [super init];
