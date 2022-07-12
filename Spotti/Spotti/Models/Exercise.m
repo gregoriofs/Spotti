@@ -14,6 +14,7 @@
 @dynamic numberReps;
 @dynamic exerciseDescription;
 @dynamic muscles;
+@dynamic user;
 
 - (id)initWithDictionary: (NSDictionary *)dict{
     self = [super init];
@@ -23,7 +24,7 @@
     self.numberSets = @(0);
     self.exerciseDescription = dict[@"description"];
     self.muscles = dict[@"muscles"];
-    
+    self.user = [PFUser currentUser];
     
     return self;
 }
@@ -41,6 +42,11 @@
 }
 
 
++ (void)saveExercise:(Exercise *)exercise completionBlock:(PFBooleanResultBlock)completion{
+    
+    
+    
+}
 + (nonnull NSString *)parseClassName {
     
     return @"Exercise";

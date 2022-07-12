@@ -19,12 +19,12 @@ static NSString * const baseURLString = @"https://wger.de";
     self = [super init];
     
     NSMutableDictionary *muscleNumbers = [[NSMutableDictionary alloc] init];
-    muscleNumbers[@"Legs"] = [NSArray arrayWithObjects:@(11),@(7),@(8),@(10),@(3),@(15),  nil];
-    muscleNumbers[@"Chest"] = [NSArray arrayWithObjects:@(4), nil];
-    muscleNumbers[@"Back"] = [NSArray arrayWithObjects:@(12), @(9),nil];
-    muscleNumbers[@"Biceps"] = [NSArray arrayWithObjects:@(1),@(13), nil];
-    muscleNumbers[@"Triceps"] = [NSArray arrayWithObjects:@(5), nil];
-    muscleNumbers[@"Shoulders"] = [NSArray arrayWithObjects:@(2), nil];
+    muscleNumbers[@"Legs"] = [NSArray arrayWithObjects:[NSNumber numberWithInt:(11)],[NSNumber numberWithInt:(7)],[NSNumber numberWithInt:(8)],[NSNumber numberWithInt:(10)],[NSNumber numberWithInt:(3)],[NSNumber numberWithInt:(15)],  nil];
+    muscleNumbers[@"Chest"] = [NSArray arrayWithObjects:[NSNumber numberWithInt:(4)], nil];
+    muscleNumbers[@"Back"] = [NSArray arrayWithObjects:[NSNumber numberWithInt:(12)], [NSNumber numberWithInt:(9)],nil];
+    muscleNumbers[@"Biceps"] = [NSArray arrayWithObjects:[NSNumber numberWithInt:(1)],[NSNumber numberWithInt:(13)], nil];
+    muscleNumbers[@"Triceps"] = [NSArray arrayWithObjects:[NSNumber numberWithInt:(5)], nil];
+    muscleNumbers[@"Shoulders"] = [NSArray arrayWithObjects:[NSNumber numberWithInt:(2)], nil];
     
     self.muscleNumbers = [muscleNumbers copy];
     
@@ -37,49 +37,61 @@ static NSString * const baseURLString = @"https://wger.de";
     
     //TODO: Unhard code focus areas
     
-    NSArray *focusAreas = workout.focusAreas;
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@",@"https://wger.de",@"/api/v2/exercise/?limit=200&language=2"]];
+    //    NSLog(@"%@",url);
+        NSURLRequest *request = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:10.0];
+        NSURLSession *session =  [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration] delegate:nil delegateQueue:[NSOperationQueue mainQueue]];
     
-    int numberOfExercises = [workout.frequency intValue] >= 3 ? 7 : 5;
-    int exercisesPerArea = (numberOfExercises/focusAreas.count) + 1;
-    
-    NSString *area = focusAreas[current];
-    
-//        for(NSString *area in focusAreas){
+        NSURLSessionDataTask *task = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+            if (error != nil) {
+                
+                            NSLog(@"%@", [error localizedDescription]);
+                
+                        }
+            else
+            {
+                NSLog(@"Succesful results");
             
-            NSMutableArray *exerciseArray = [[NSMutableArray alloc] init];
-            
-            NSString *currentExerciseNumbers = [[self.muscleNumbers[area] valueForKey:@"description"] componentsJoinedByString:@","];
-        
-            NSLog(@"%@", currentExerciseNumbers);
-        
-            NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@%@/",baseURLString,@"/api/v2/exercise/?language=2&muscles=",currentExerciseNumbers]];
-//            NSLog(@"%@",url);
-            NSURLRequest *request = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:10.0];
-            
-            NSURLSessionDataTask *task = [self.session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-                NSLog(@"executing task");
-                    if (error != nil) {
-                        NSLog(@"%@", [error localizedDescription]);
+                NSDictionary *dataDictionary = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
+                
+                NSArray *results = dataDictionary[@"results"];
+                NSLog(@"werwr %@",results);
+                
+                int totalExercises = [workout.frequency intValue] >= 3 ? 6 : 8;
+                
+                int numExercisesPerArea = totalExercises/(workout.focusAreas.count);
+                
+                NSLog(@"frequency %d, numexercisesperarea %lu", [workout.frequency intValue], (unsigned long)workout.focusAreas.count);
+//                NSLog(@"gsjlag %@, jsfsdf %@", [self.muscleNumbers[@"Triceps"][0] class], [results[4][@"muscles"][0] class]);
+                
+                NSMutableArray *exercises = [NSMutableArray new];
+                
+                for(int i = 0; i < workout.focusAreas.count; i++){
+                    NSArray *currentExerciseNumbers = self.muscleNumbers[workout.focusAreas[i]];
+                    NSArray *filteredArray = [results filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(id evaluatedObject, NSDictionary* binding){
+                        for(NSNumber* num in evaluatedObject[@"muscles"]){
+                            if([currentExerciseNumbers containsObject:num]){
+                                return YES;
+                            }
+                        }
+                        return NO;
+                    }]];
+                    
+                    NSLog(@"currentnumbers %@ ,filtered Array %@, results count: %lu",currentExerciseNumbers, filteredArray, (unsigned long)results.count);
+                    
+                    for(int j = 0; j < numExercisesPerArea;j++){
+                        int randomExercise = arc4random_uniform(filteredArray.count);
+                        [exercises addObject:filteredArray[randomExercise]];
                     }
-                    else {
-                        NSDictionary *dataDictionary = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
-                        
-                        NSArray *results = dataDictionary[@"results"];
-                        
-//                        NSLog(@"Results size %lu", (unsigned long)results.count);
-//                        for(int i= 0; i < exercisesPerArea;i++){
-//                            NSLog(@"exercises per area: %d",exercisesPerArea);
-//
-//                            int r = arc4random_uniform(results.count);
-//
-//                            [exerciseArray addObject:results[r]];
-//                        }
-                        
-                        completion(results);
-                    }
-                }];
-            
-        [task resume];
+                    
+                }
+                
+                completion([exercises copy]);
+                
+            }
+        }];
+    
+    [task resume];
 //        }
     
     //TODO: figure out why the exercises aren't being saved in the array

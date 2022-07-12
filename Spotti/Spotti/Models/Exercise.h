@@ -17,9 +17,12 @@ NS_ASSUME_NONNULL_BEGIN
 @property (strong, nonatomic) NSNumber *numberReps;
 @property (strong, nonatomic) NSString *exerciseDescription;
 @property (strong, nonatomic) NSArray *muscles;
+@property (strong, nonatomic) PFUser *user;
+
 
 + (NSArray* )exercisesFromDictionaries: (NSArray* ) dictionary;
 - (id)initWithDictionary: (NSDictionary *)dict;
++ (void)saveExercise:(Exercise *)exercise completionBlock: (PFBooleanResultBlock  _Nullable)completion;
 
 
 @end

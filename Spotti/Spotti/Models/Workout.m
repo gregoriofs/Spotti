@@ -6,6 +6,7 @@
 //
 
 #import "Workout.h"
+#import <Parse/Parse.h>
 
 @implementation Workout 
 
@@ -15,6 +16,7 @@
 @dynamic createdAt;
 @dynamic completed;
 @dynamic exerciseArray;
+@dynamic user;
 
 -(instancetype)init{
     self = [super init];
@@ -29,8 +31,9 @@
 }
 
 
-- (void)postWorkout: (Workout*)workout completionBlock: (PFBooleanResultBlock  _Nullable)completion{
++ (void)postWorkout: (Workout*)workout completionBlock: (PFBooleanResultBlock  _Nullable)completion{
     
+    NSLog(@"workout info %@,%@,%@", workout.objective, workout.frequency, workout.exerciseArray);
     [workout saveInBackgroundWithBlock:completion];
 }
 

@@ -15,7 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (strong, nonatomic) Workout *workout;
 @property (strong, nonatomic) NSArray __block *exercises;
-@property (strong, nonatomic) NSDictionary *muscleNumbers;
+//@property (strong, nonatomic) NSDictionary *muscleNumbers;
 
 @end
 

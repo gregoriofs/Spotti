@@ -19,8 +19,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    self.currentWorkout = [[Workout alloc]init];
-    
+    self.currentWorkout = [Workout new];
+    self.currentWorkout.user = [PFUser currentUser];
     
 }
 - (IBAction)didTapStrength:(id)sender {

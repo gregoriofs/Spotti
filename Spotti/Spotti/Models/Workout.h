@@ -19,8 +19,10 @@ NS_ASSUME_NONNULL_BEGIN
 @property (strong, nonatomic) NSDate *createdAt;
 @property (strong, nonatomic) NSNumber *completed;
 @property (strong, nonatomic) NSArray *exerciseArray;
+@property (strong, nonatomic) PFUser *user;
 
-- (void)postWorkout: (Workout*)workout completionBlock: (PFBooleanResultBlock  _Nullable)completion;
+
++ (void)postWorkout: (Workout*)workout completionBlock: (PFBooleanResultBlock  _Nullable)completion;
 
 @end
 
