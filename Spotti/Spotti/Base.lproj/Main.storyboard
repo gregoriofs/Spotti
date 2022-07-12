@@ -649,6 +649,7 @@
                                             <outlet property="exerciseName" destination="f4v-Xp-93O" id="eEi-Km-thJ"/>
                                             <outlet property="repsInput" destination="uj1-19-DlX" id="vm3-3u-WcV"/>
                                             <outlet property="setsInput" destination="lKN-8U-Z4w" id="hxI-sh-yZs"/>
+                                            <segue destination="013-F2-45E" kind="presentation" identifier="detailSegue" id="u8H-MY-xMf"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -695,6 +696,46 @@
                 <exit id="sh7-MP-C8f" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="11924.637681159422" y="231.69642857142856"/>
+        </scene>
+        <!--Exercise Details View Controller-->
+        <scene sceneID="Qre-gK-10K">
+            <objects>
+                <viewController id="013-F2-45E" customClass="ExerciseDetailsViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="JDF-79-hbz">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="X0U-VL-Wnf">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="253"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Exercise Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R18-Kg-wYR">
+                                <rect key="frame" x="20" y="270" width="212" height="58"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Exercise Description" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o1n-vd-ptw">
+                                <rect key="frame" x="20" y="353" width="374" height="152"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="7IM-Dk-iIm"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <connections>
+                        <outlet property="exerciseDescription" destination="o1n-vd-ptw" id="EEm-HM-34E"/>
+                        <outlet property="exerciseImage" destination="X0U-VL-Wnf" id="iqT-DO-rZf"/>
+                        <outlet property="exerciseName" destination="R18-Kg-wYR" id="Qvc-5s-hV7"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dMF-M6-cHy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="13037.68115942029" y="232.36607142857142"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="6E6-bQ-bAe">

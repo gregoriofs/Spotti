@@ -13,6 +13,7 @@
 #import "ExerciseCell.h"
 #import "SceneDelegate.h"
 #import "HomeViewController.h"
+#import "ExerciseDetailsViewController.h"
 
 @interface WorkoutOverviewViewController () <UITableViewDelegate,UITableViewDataSource, UITabBarDelegate>
 
@@ -52,15 +53,27 @@
     }];
     
 }
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    
+    if([[segue identifier] isEqualToString:@"detailSegue"]){
+        NSIndexPath *currPath = [self.tableView indexPathForCell:sender];
+        NSDictionary *currExercise = self.workout.exerciseArray[currPath.row];
+        
+        ExerciseDetailsViewController *next = [segue destinationViewController];
+        
+        next.exercise = [[Exercise alloc] initWithDictionary:currExercise];
+        
+        APIManager *new = [APIManager new];
+        
+        [new getImage: currExercise[@"id"] completionBlock:^(NSURL *url){
+            
+            next.imageURL  = url;
+            
+        }];
+    }
 }
-*/
 
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
     
@@ -105,30 +118,32 @@
 - (IBAction)didTapFinishWorkout:(id)sender {
     
     //TODO: add popup in the case where reps or sets aren't all filled for an exercise telling them to complete workout before saving
+    //TODO: figure out how to save things continuously for progress and also saving exercises to users so their stats can be accessed later in profile
     
-    if([self checkEmptyInputs]){
-//        NSLog(@"empty rep input/set input for a cell");
+    
+    if(![self checkEmptyInputs]){
+        NSLog(@"no empty inputs");
+        
+        [Workout postWorkout:self.workout completionBlock:^(BOOL succeeded, NSError* error){
+            if(succeeded){
+                NSLog(@"succesfully saved the workout");
+                
+                SceneDelegate *myDelegate = (SceneDelegate *)self.view.window.windowScene.delegate;
+                
+                UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+                
+                HomeViewController *home = [storyboard instantiateViewControllerWithIdentifier:@"homeVC"];
+                
+                myDelegate.window.rootViewController = home;
+            }
+            
+            else{
+                NSLog(@"%@", error.localizedDescription);
+            }
+        }];
     }
     
-    NSLog(@"no empty inputs");
     
-    [Workout postWorkout:self.workout completionBlock:^(BOOL succeeded, NSError* error){
-        if(succeeded){
-            NSLog(@"succesfully saved the workout");
-            
-            SceneDelegate *myDelegate = (SceneDelegate *)self.view.window.windowScene.delegate;
-            
-            UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-            
-            HomeViewController *home = [storyboard instantiateViewControllerWithIdentifier:@"homeVC"];
-            
-            myDelegate.window.rootViewController = home;
-        }
-        
-        else{
-            NSLog(@"%@", error.localizedDescription);
-        }
-    }];
     
 }
 

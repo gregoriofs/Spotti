@@ -20,6 +20,7 @@
 		C0109C1C2878B50A006FD29C /* ExerciseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C0109C1B2878B50A006FD29C /* ExerciseCell.m */; };
 		C01E97A928764DD00037DAE3 /* BasicInformationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C01E97A828764DD00037DAE3 /* BasicInformationViewController.m */; };
 		C01E97AC28764F4E0037DAE3 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C01E97AB28764F4E0037DAE3 /* HomeViewController.m */; };
+		C062FF55287DEF3D004F3B7E /* ExerciseDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C062FF54287DEF3D004F3B7E /* ExerciseDetailsViewController.m */; };
 		C0672344287612AD00F91288 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C0672343287612AD00F91288 /* AppDelegate.m */; };
 		C0672347287612AD00F91288 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C0672346287612AD00F91288 /* SceneDelegate.m */; };
 		C067234D287612AD00F91288 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C067234B287612AD00F91288 /* Main.storyboard */; };
@@ -77,6 +78,8 @@
 		C01E97A828764DD00037DAE3 /* BasicInformationViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BasicInformationViewController.m; sourceTree = "<group>"; };
 		C01E97AA28764F4E0037DAE3 /* HomeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
 		C01E97AB28764F4E0037DAE3 /* HomeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
+		C062FF53287DEF3D004F3B7E /* ExerciseDetailsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExerciseDetailsViewController.h; sourceTree = "<group>"; };
+		C062FF54287DEF3D004F3B7E /* ExerciseDetailsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ExerciseDetailsViewController.m; sourceTree = "<group>"; };
 		C067233F287612AD00F91288 /* Spotti.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Spotti.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0672342287612AD00F91288 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		C0672343287612AD00F91288 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -215,6 +218,8 @@
 				C0109C1528776ACC006FD29C /* FrequencyViewController.m */,
 				C0109C172878AAFA006FD29C /* WorkoutOverviewViewController.h */,
 				C0109C182878AAFA006FD29C /* WorkoutOverviewViewController.m */,
+				C062FF53287DEF3D004F3B7E /* ExerciseDetailsViewController.h */,
+				C062FF54287DEF3D004F3B7E /* ExerciseDetailsViewController.m */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -503,6 +508,7 @@
 				C0672355287612AE00F91288 /* main.m in Sources */,
 				C0109C0728774925006FD29C /* APIManager.m in Sources */,
 				C0109C1628776ACC006FD29C /* FrequencyViewController.m in Sources */,
+				C062FF55287DEF3D004F3B7E /* ExerciseDetailsViewController.m in Sources */,
 				C0109C1328775D21006FD29C /* FocusAreaViewController.m in Sources */,
 				C0672347287612AD00F91288 /* SceneDelegate.m in Sources */,
 				C01E97AC28764F4E0037DAE3 /* HomeViewController.m in Sources */,

@@ -15,6 +15,7 @@
 @dynamic exerciseDescription;
 @dynamic muscles;
 @dynamic user;
+@dynamic image;
 
 - (id)initWithDictionary: (NSDictionary *)dict{
     self = [super init];

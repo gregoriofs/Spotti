@@ -16,6 +16,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 
 - (void)exerciseListFromWorkout:(Workout*) workout currentExercise:(int) current completionBlock:(void(^)(NSArray* exercise))completion;
+-(void)getImage:(id)exerciseNum completionBlock:(void (^)(NSURL* url))completion;
+
 
 @end
 

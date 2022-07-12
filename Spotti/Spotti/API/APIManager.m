@@ -87,7 +87,6 @@ static NSString * const baseURLString = @"https://wger.de";
                 }
                 
                 completion([exercises copy]);
-                
             }
         }];
     
@@ -102,4 +101,39 @@ static NSString * const baseURLString = @"https://wger.de";
      conclusion: once i exit completion handler for task, nothing is being saved to the array outside even though within the handler, the array grows
 */
 }
+
+-(void)getImage:(id)exerciseNum completionBlock:(void (^)(NSURL * _Nonnull))completion{
+    
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@%@",@"https://wger.de",@"/api/v2/exerciseimage/",exerciseNum]];
+    NSLog(@"url %@", url);
+    NSURLRequest *request = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:10.0];
+    NSURLSession *session =  [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration] delegate:nil delegateQueue:[NSOperationQueue mainQueue]];
+
+    NSURLSessionDataTask *task = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error){
+        
+        if(error != nil){
+            NSLog(@"%@", error.localizedDescription);
+        }
+        else {
+            
+            NSDictionary *dataDictionary = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
+            
+            NSURL *image = dataDictionary[@"image"];
+            
+            NSLog(@"iamge %@", image);
+            
+            if(image == nil){
+                completion([NSURL URLWithString:@"https://www.dreamstime.com/achievement-exercise-flat-health-body-mind-vector-concept-illustration-office-multitasking-posture-person-sport-fitness-cartoon-image194275223"]);
+
+            }
+            completion(image);
+        }
+       
+        
+    }];
+    
+    [task resume];
+    
+}
+
 @end

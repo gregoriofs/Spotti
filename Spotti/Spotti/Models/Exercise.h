@@ -18,6 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (strong, nonatomic) NSString *exerciseDescription;
 @property (strong, nonatomic) NSArray *muscles;
 @property (strong, nonatomic) PFUser *user;
+@property (strong, nonatomic) PFFileObject *image;
 
 
 + (NSArray* )exercisesFromDictionaries: (NSArray* ) dictionary;
