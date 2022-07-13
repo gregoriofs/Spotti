@@ -21,6 +21,11 @@
 		C01E97A928764DD00037DAE3 /* BasicInformationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C01E97A828764DD00037DAE3 /* BasicInformationViewController.m */; };
 		C01E97AC28764F4E0037DAE3 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C01E97AB28764F4E0037DAE3 /* HomeViewController.m */; };
 		C062FF55287DEF3D004F3B7E /* ExerciseDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C062FF54287DEF3D004F3B7E /* ExerciseDetailsViewController.m */; };
+		C062FF58287E1746004F3B7E /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C062FF57287E1746004F3B7E /* ProfileViewController.m */; };
+		C062FF5B287E2509004F3B7E /* GymUser.m in Sources */ = {isa = PBXBuildFile; fileRef = C062FF5A287E2509004F3B7E /* GymUser.m */; };
+		C062FF5E287E3B6E004F3B7E /* AddingFriendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C062FF5D287E3B6E004F3B7E /* AddingFriendsViewController.m */; };
+		C062FF60287F3507004F3B7E /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C062FF5F287F3507004F3B7E /* UserNotifications.framework */; };
+		C062FF62287F350D004F3B7E /* UserNotificationsUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C062FF61287F350D004F3B7E /* UserNotificationsUI.framework */; };
 		C0672344287612AD00F91288 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C0672343287612AD00F91288 /* AppDelegate.m */; };
 		C0672347287612AD00F91288 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C0672346287612AD00F91288 /* SceneDelegate.m */; };
 		C067234D287612AD00F91288 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C067234B287612AD00F91288 /* Main.storyboard */; };
@@ -80,6 +85,14 @@
 		C01E97AB28764F4E0037DAE3 /* HomeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
 		C062FF53287DEF3D004F3B7E /* ExerciseDetailsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExerciseDetailsViewController.h; sourceTree = "<group>"; };
 		C062FF54287DEF3D004F3B7E /* ExerciseDetailsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ExerciseDetailsViewController.m; sourceTree = "<group>"; };
+		C062FF56287E1746004F3B7E /* ProfileViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
+		C062FF57287E1746004F3B7E /* ProfileViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
+		C062FF59287E2509004F3B7E /* GymUser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GymUser.h; sourceTree = "<group>"; };
+		C062FF5A287E2509004F3B7E /* GymUser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GymUser.m; sourceTree = "<group>"; };
+		C062FF5C287E3B6E004F3B7E /* AddingFriendsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddingFriendsViewController.h; sourceTree = "<group>"; };
+		C062FF5D287E3B6E004F3B7E /* AddingFriendsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddingFriendsViewController.m; sourceTree = "<group>"; };
+		C062FF5F287F3507004F3B7E /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
+		C062FF61287F350D004F3B7E /* UserNotificationsUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotificationsUI.framework; path = System/Library/Frameworks/UserNotificationsUI.framework; sourceTree = SDKROOT; };
 		C067233F287612AD00F91288 /* Spotti.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Spotti.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0672342287612AD00F91288 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		C0672343287612AD00F91288 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -106,6 +119,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C062FF62287F350D004F3B7E /* UserNotificationsUI.framework in Frameworks */,
+				C062FF60287F3507004F3B7E /* UserNotifications.framework in Frameworks */,
 				2792E2C33A8D9925D9660D4E /* Pods_Spotti.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -208,6 +223,8 @@
 				C067237C28763F8500F91288 /* LoginViewController.m */,
 				C01E97A728764DD00037DAE3 /* BasicInformationViewController.h */,
 				C01E97A828764DD00037DAE3 /* BasicInformationViewController.m */,
+				C062FF56287E1746004F3B7E /* ProfileViewController.h */,
+				C062FF57287E1746004F3B7E /* ProfileViewController.m */,
 				C01E97AA28764F4E0037DAE3 /* HomeViewController.h */,
 				C01E97AB28764F4E0037DAE3 /* HomeViewController.m */,
 				C0109C0E28775AFA006FD29C /* ObjectivesViewController.h */,
@@ -220,6 +237,8 @@
 				C0109C182878AAFA006FD29C /* WorkoutOverviewViewController.m */,
 				C062FF53287DEF3D004F3B7E /* ExerciseDetailsViewController.h */,
 				C062FF54287DEF3D004F3B7E /* ExerciseDetailsViewController.m */,
+				C062FF5C287E3B6E004F3B7E /* AddingFriendsViewController.h */,
+				C062FF5D287E3B6E004F3B7E /* AddingFriendsViewController.m */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -249,6 +268,8 @@
 				C0109C092877554A006FD29C /* Workout.m */,
 				C0109C0B28775642006FD29C /* Exercise.h */,
 				C0109C0C28775642006FD29C /* Exercise.m */,
+				C062FF59287E2509004F3B7E /* GymUser.h */,
+				C062FF5A287E2509004F3B7E /* GymUser.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -256,6 +277,8 @@
 		F2665297FF8E8EF4F941CBC4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C062FF61287F350D004F3B7E /* UserNotificationsUI.framework */,
+				C062FF5F287F3507004F3B7E /* UserNotifications.framework */,
 				4B7939CD6830B23CDAAABC94 /* Pods_Spotti.framework */,
 				4BFD6A8EEE75BE9E70AB3D95 /* Pods_Spotti_SpottiUITests.framework */,
 				70A3B26B041FBC0F717D3C9E /* Pods_SpottiTests.framework */,
@@ -503,10 +526,12 @@
 			files = (
 				C01E97A928764DD00037DAE3 /* BasicInformationViewController.m in Sources */,
 				C0109C1C2878B50A006FD29C /* ExerciseCell.m in Sources */,
+				C062FF58287E1746004F3B7E /* ProfileViewController.m in Sources */,
 				C067237D28763F8500F91288 /* LoginViewController.m in Sources */,
 				C0672344287612AD00F91288 /* AppDelegate.m in Sources */,
 				C0672355287612AE00F91288 /* main.m in Sources */,
 				C0109C0728774925006FD29C /* APIManager.m in Sources */,
+				C062FF5E287E3B6E004F3B7E /* AddingFriendsViewController.m in Sources */,
 				C0109C1628776ACC006FD29C /* FrequencyViewController.m in Sources */,
 				C062FF55287DEF3D004F3B7E /* ExerciseDetailsViewController.m in Sources */,
 				C0109C1328775D21006FD29C /* FocusAreaViewController.m in Sources */,
@@ -514,6 +539,7 @@
 				C01E97AC28764F4E0037DAE3 /* HomeViewController.m in Sources */,
 				C0109C0D28775642006FD29C /* Exercise.m in Sources */,
 				C0109C192878AAFA006FD29C /* WorkoutOverviewViewController.m in Sources */,
+				C062FF5B287E2509004F3B7E /* GymUser.m in Sources */,
 				C0109C1028775AFA006FD29C /* ObjectivesViewController.m in Sources */,
 				C0109C0A2877554A006FD29C /* Workout.m in Sources */,
 			);

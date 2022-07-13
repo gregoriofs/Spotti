@@ -13,11 +13,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (strong, nonatomic) NSURLSession *session;
 @property (strong, nonatomic) NSDictionary *muscleNumbers;
-
-
 - (void)exerciseListFromWorkout:(Workout*) workout currentExercise:(int) current completionBlock:(void(^)(NSArray* exercise))completion;
 -(void)getImage:(id)exerciseNum completionBlock:(void (^)(NSURL* url))completion;
-
 
 @end
 

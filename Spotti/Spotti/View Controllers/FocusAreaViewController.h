@@ -11,7 +11,6 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface FocusAreaViewController : UIViewController
-
 @property (strong, nonatomic) Workout *currentWorkout;
 @end
 

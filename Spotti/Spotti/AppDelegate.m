@@ -7,6 +7,8 @@
 
 #import "AppDelegate.h"
 #import <Parse/Parse.h>
+#import <UserNotifications/UserNotifications.h>
+#import "HomeViewController.h"
 
 @interface AppDelegate ()
 
@@ -14,22 +16,25 @@
 
 @implementation AppDelegate
 
-
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-    
     [Parse initializeWithConfiguration:[ParseClientConfiguration configurationWithBlock:^(id<ParseMutableClientConfiguration> configuration) {
             configuration.applicationId = @"xVnlYRBVdEVtuTFlNW9ZMwPE0ioOaNILpBc8tbJD";
             configuration.clientKey = @"Ip53v5apI7ixswIKYkiUAwVrMc4K7OvQkjzFOP5D";
             configuration.server = @"https://parseapi.back4app.com/";
         }]];
-    
+    UNAuthorizationOptions options = UNAuthorizationOptionAlert + UNAuthorizationOptionSound;
+    UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
+    [center requestAuthorizationWithOptions:options
+     completionHandler:^(BOOL granted, NSError * _Nullable error) {
+        if(!granted){
+            NSLog(@"not granted permission");
+        }
+    }];
     return YES;
 }
 
-
 #pragma mark - UISceneSession lifecycle
-
 
 - (UISceneConfiguration *)application:(UIApplication *)application configurationForConnectingSceneSession:(UISceneSession *)connectingSceneSession options:(UISceneConnectionOptions *)options {
     // Called when a new scene session is being created.
@@ -37,12 +42,10 @@
     return [[UISceneConfiguration alloc] initWithName:@"Default Configuration" sessionRole:connectingSceneSession.role];
 }
 
-
 - (void)application:(UIApplication *)application didDiscardSceneSessions:(NSSet<UISceneSession *> *)sceneSessions {
     // Called when the user discards a scene session.
     // If any sessions were discarded while the application was not running, this will be called shortly after application:didFinishLaunchingWithOptions.
     // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
 }
-
 
 @end

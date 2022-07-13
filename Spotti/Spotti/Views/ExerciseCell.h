@@ -17,7 +17,6 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UITextField *setsInput;
 @property (weak, nonatomic) IBOutlet UILabel *exerciseName;
 
-
 @end
 
 NS_ASSUME_NONNULL_END

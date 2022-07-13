@@ -12,10 +12,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 
 @interface ExerciseDetailsViewController : UIViewController
-
 @property (strong, nonatomic) Exercise *exercise;
 @property (strong, nonatomic) NSURL *imageURL;
-
 @end
 
 NS_ASSUME_NONNULL_END

@@ -12,9 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface ObjectivesViewController : UIViewController
 
-
 @property (strong, nonatomic) Workout *currentWorkout;
-
 
 @end
 

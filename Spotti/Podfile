@@ -8,6 +8,8 @@ target 'Spotti' do
   # Pods for Spotti
 pod 'Parse'
 pod 'AFNetworking'
+pod 'Parse/UI'
+
   target 'SpottiTests' do
     inherit! :search_paths
     # Pods for testing
