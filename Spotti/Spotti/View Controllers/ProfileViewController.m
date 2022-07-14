@@ -15,6 +15,11 @@
 @property (weak, nonatomic) IBOutlet UILabel *friends;
 @property (weak, nonatomic) IBOutlet UIImageView *backgroundImage;
 @property (weak, nonatomic) IBOutlet PFImageView *profilePic;
+@property (weak, nonatomic) IBOutlet UIView *infoView;
+@property (weak, nonatomic) IBOutlet UIView *statView;
+@property (weak, nonatomic) IBOutlet UILabel *favoriteExercise;
+@property (weak, nonatomic) IBOutlet UILabel *currentStreak;
+@property (weak, nonatomic) IBOutlet UILabel *personalRecord;
 
 @end
 
@@ -45,6 +50,16 @@
     self.friends.text = [NSString stringWithFormat:@"%lu",(unsigned long)currentUser.friends.count];
     [self.backgroundImage setImageWithURL:[NSURL URLWithString:@"https://media.istockphoto.com/photos/empty-gym-picture-id1132006407?k=20&m=1132006407&s=612x612&w=0&h=Z7nJu8jntywb9jOhvjlCS7lijbU4_hwHcxoVkxv77sg="]];
     [self settheProfilePic:currentUser];
+    self.name.layer.cornerRadius = 5;
+    self.friends.layer.cornerRadius = 5;
+    self.joinedAt.layer.cornerRadius = 5;
+    self.gymLocation.layer.cornerRadius = 5;
+    self.infoView.layer.cornerRadius = 8;
+    self.favoriteExercise.layer.cornerRadius = 5;
+    self.currentStreak.layer.cornerRadius = 5;
+    self.personalRecord.layer.cornerRadius = 5;
+    self.statView.layer.cornerRadius = 8;
+    
 }
 
 - (void)settheProfilePic:(GymUser *)user {
