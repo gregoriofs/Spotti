@@ -29,7 +29,6 @@
     [query findObjectsInBackgroundWithBlock:^(NSArray *posts, NSError *error) {
         if (posts != nil) {
             self.allUsers = posts;
-            NSLog(@"%@", posts);
             [self.tableView reloadData];
         } else {
             NSLog(@"%@", error.localizedDescription);

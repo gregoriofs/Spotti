@@ -32,7 +32,9 @@
     self.objectives.text = self.workout.objective;
     self.focusAreas.text = [self.workout.focusAreas componentsJoinedByString:@","];
     self.frequency.text = [NSString stringWithFormat:@"%@ times a week", self.workout.frequency];
-    [self fillExerciseList];
+    if(!self.fromList){
+        [self fillExerciseList];
+    }
 }
 
 - (void)fillExerciseList{

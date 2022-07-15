@@ -14,6 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface WorkoutOverviewViewController : UIViewController
 @property (strong, nonatomic) Workout *workout;
 @property (strong, nonatomic) NSArray __block *exercises;
+@property (assign, nonatomic) BOOL fromList;
 @end
 
 NS_ASSUME_NONNULL_END

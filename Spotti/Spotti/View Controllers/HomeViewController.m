@@ -11,10 +11,14 @@
 #import "SceneDelegate.h"
 #import "APIManager.h"
 #import "UserNotifications/UserNotifications.h"
+#import "GymUser.h"
 
 @interface HomeViewController ()
 
 @property (strong, nonatomic) UNUserNotificationCenter *center;
+@property (weak, nonatomic) IBOutlet UIButton *createSessionButton;
+@property (weak, nonatomic) IBOutlet UIButton *addFriendsButton;
+@property (weak, nonatomic) IBOutlet UILabel *welcomeLabel;
 
 @end
 
@@ -32,9 +36,13 @@
       }
     }];
     [self scheduleEmptyWorkoutNotification];
+    self.createSessionButton.layer.cornerRadius = 5;
+    self.addFriendsButton.layer.cornerRadius = 5;
+    self.createSessionButton.layer.cornerRadius = 5;
+    self.welcomeLabel.text = [NSString stringWithFormat:@"Welcome %@!", [GymUser currentUser].username];
 }
 
--(void)scheduleEmptyWorkoutNotification{
+- (void)scheduleEmptyWorkoutNotification{
     PFQuery *query = [PFQuery queryWithClassName:@"Workout"];
     [query whereKey:@"completed" equalTo:[NSNumber numberWithBool:NO]];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error){
@@ -43,7 +51,7 @@
         }
         //Filter by workouts that are more than a day old; need to figure out how to have it continuously checking
         NSArray *incompleteForMoreThanADay = [objects filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(Workout *evaluatedObject, NSDictionary<NSString *,id> * _Nullable bindings) {
-            return [[NSDate date] timeIntervalSinceDate:evaluatedObject.createdAt] >= 82400;
+            return [[NSDate date] timeIntervalSinceDate:evaluatedObject.createdAt] >= 1;
         }
                                                                                   ]
         ];
