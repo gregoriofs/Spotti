@@ -8,6 +8,7 @@
 #import "GymUser.h"
 
 @implementation GymUser
+
 @dynamic firstName;
 @dynamic lasttName;
 @dynamic gender;
@@ -19,5 +20,7 @@
 @dynamic profilePic;
 @dynamic lastWorkout;
 @dynamic streak;
+@dynamic gym;
 
 @end
+

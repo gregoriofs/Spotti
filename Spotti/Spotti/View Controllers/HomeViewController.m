@@ -13,7 +13,7 @@
 #import "UserNotifications/UserNotifications.h"
 #import "GymUser.h"
 
-@interface HomeViewController ()
+@interface HomeViewController () <UNUserNotificationCenterDelegate>
 
 @property (strong, nonatomic) UNUserNotificationCenter *center;
 @property (weak, nonatomic) IBOutlet UIButton *createSessionButton;
@@ -24,6 +24,11 @@
 
 @implementation HomeViewController
 
+- (void)userNotificationCenter:(UNUserNotificationCenter *)center willPresentNotification:(UNNotification *)notification withCompletionHandler:(void (^)(UNNotificationPresentationOptions))completionHandler{
+//    completionHandler(UNNotificationPresentationOptionList);
+    completionHandler(UNNotificationPresentationOptionList | UNNotificationPresentationOptionBanner | UNNotificationPresentationOptionSound);
+}
+//TODO: Why are notifications not showing??
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.center = [UNUserNotificationCenter currentNotificationCenter];
@@ -35,38 +40,49 @@
           self.hasNotificationPermission = YES;
       }
     }];
-    [self scheduleEmptyWorkoutNotification];
+    self.center.delegate = self;
+    [self scheduleLackOfExerciseNotification];
     self.createSessionButton.layer.cornerRadius = 5;
     self.addFriendsButton.layer.cornerRadius = 5;
     self.createSessionButton.layer.cornerRadius = 5;
     self.welcomeLabel.text = [NSString stringWithFormat:@"Welcome %@!", [GymUser currentUser].username];
 }
 
+-(void)scheduleLackOfExerciseNotification{
+    GymUser *currentUser = [GymUser currentUser];
+    if([[NSDate date] timeIntervalSinceDate:currentUser.lastWorkout] > 1){
+        [self scheduleNotification:@"No Workout Completed In A While" contentBody:@"We haven't seen you in a while! Come back and complete a workout to get back on track!" identifier:@"LackOfWorkoutNotification"];
+    }
+}
+
 - (void)scheduleEmptyWorkoutNotification{
-    PFQuery *query = [PFQuery queryWithClassName:@"Workout"];
-    [query whereKey:@"completed" equalTo:[NSNumber numberWithBool:NO]];
-    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error){
-        if(error != nil){
-            NSLog(@"%@",error.localizedDescription);
-        }
-        //Filter by workouts that are more than a day old; need to figure out how to have it continuously checking
-        NSArray *incompleteForMoreThanADay = [objects filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(Workout *evaluatedObject, NSDictionary<NSString *,id> * _Nullable bindings) {
-            return [[NSDate date] timeIntervalSinceDate:evaluatedObject.createdAt] >= 1;
-        }
-                                                                                  ]
-        ];
-        if(incompleteForMoreThanADay.count != 0){
-            UNMutableNotificationContent *content = [UNMutableNotificationContent new];
-            content.title = @"Unfinished Workouts!";
-            content.body = [NSString stringWithFormat:@"You have %lu incomplete workout(s) for more than a day. Come back quickly and finish them!", (unsigned long)incompleteForMoreThanADay.count];
-            content.sound = [UNNotificationSound defaultSound];
-            UNTimeIntervalNotificationTrigger *trigger = [UNTimeIntervalNotificationTrigger triggerWithTimeInterval:1 repeats:NO];
-            NSString *identifier = @"EmptyWorkoutNotification";
-            UNNotificationRequest *request = [UNNotificationRequest requestWithIdentifier:identifier content:content trigger:trigger];
-            [self.center addNotificationRequest:request withCompletionHandler:^(NSError *error){
-                NSLog(@"%@", error.localizedDescription);
-            }];
-        }
+        PFQuery *query = [PFQuery queryWithClassName:@"Workout"];
+        [query whereKey:@"completed" equalTo:[NSNumber numberWithBool:NO]];
+        [query whereKey:@"user" equalTo:[GymUser currentUser]];
+        [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error){
+            if(error != nil){
+                NSLog(@"%@",error.localizedDescription);
+            }
+            //Filter by workouts that are more than a day old; need to figure out how to have it continuously checking
+            NSArray *incompleteForMoreThanADay = [objects filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(Workout *evaluatedObject, NSDictionary<NSString *,id> * _Nullable bindings) {
+                return [[NSDate date] timeIntervalSinceDate:evaluatedObject.createdAt] > 1;
+            }
+                                                                                      ]
+            ];
+            if(incompleteForMoreThanADay.count != 0){
+                [self scheduleNotification:@"Unfinished Workouts!" contentBody:[NSString stringWithFormat:@"You have %lu unfinished workout(s). Come back and complete them!", (long)incompleteForMoreThanADay.count] identifier:@"EmptyWorkoutNotification"];
+            }
+        }];
+}
+
+- (void)scheduleNotification: title contentBody: contentBody identifier:identifier{
+    UNMutableNotificationContent *content = [UNMutableNotificationContent new];
+    content.title = title;
+    content.body = contentBody;
+    content.sound = [UNNotificationSound defaultSound];
+    UNTimeIntervalNotificationTrigger *trigger = [UNTimeIntervalNotificationTrigger triggerWithTimeInterval:1 repeats:NO];
+    UNNotificationRequest *request = [UNNotificationRequest requestWithIdentifier:identifier content:content trigger:trigger];
+    [self.center addNotificationRequest:request withCompletionHandler:^(NSError *error){
     }];
 }
 

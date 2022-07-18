@@ -9,6 +9,7 @@
 #import "WorkoutCell.h"
 #import "Workout.h"
 #import "WorkoutOverviewViewController.h"
+#import "UserNotifications/UserNotifications.h"
 
 @interface ProfileViewController () <UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate>
 
@@ -30,7 +31,7 @@
 @end
 
 @implementation ProfileViewController
-
+//TODO: move workout viewing to its own screen with tableview if scrollview can't be fixed
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.workoutTableView.delegate = self;
@@ -44,6 +45,7 @@
     self.friends.text = [NSString stringWithFormat:@"%lu",(unsigned long)currentUser.friends.count];
     [self.backgroundImage setImageWithURL:[NSURL URLWithString:@"https://media.istockphoto.com/photos/empty-gym-picture-id1132006407?k=20&m=1132006407&s=612x612&w=0&h=Z7nJu8jntywb9jOhvjlCS7lijbU4_hwHcxoVkxv77sg="]];
     [self settheProfilePic:currentUser];
+    self.gymLocation.text = currentUser.gym;
     self.profilePic.layer.cornerRadius = 256/2;
     self.name.layer.cornerRadius = 5;
     self.friends.layer.cornerRadius = 5;
@@ -88,7 +90,6 @@
         imagePickerVC.sourceType = UIImagePickerControllerSourceTypeCamera;
     }
     else {
-        NSLog(@"Camera 🚫 available so we will use photo library instead");
         imagePickerVC.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
     }
     [self presentViewController:imagePickerVC animated:YES completion:nil];
@@ -132,7 +133,7 @@
     PFQuery *query = [PFQuery queryWithClassName:@"Workout"];
     [query whereKey:@"user" equalTo:[GymUser currentUser]];
     [query setLimit:5];
-    [query orderByAscending:@"createdAt"];
+    [query orderByDescending:@"createdAt"];
     [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
             if(error != nil){
                 NSLog(@"%@", error.localizedDescription);

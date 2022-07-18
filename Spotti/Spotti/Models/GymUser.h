@@ -22,6 +22,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (strong, nonatomic) PFFileObject *profilePic;
 @property (strong, nonatomic) NSDate *lastWorkout;
 @property (strong, nonatomic) NSNumber *streak;
+@property (strong, nonatomic) NSString *gym;
 
 @end
 
