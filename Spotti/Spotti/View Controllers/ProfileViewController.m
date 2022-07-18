@@ -36,13 +36,14 @@
     [super viewDidLoad];
     self.workoutTableView.delegate = self;
     self.workoutTableView.dataSource = self;
-    GymUser *currentUser = [GymUser currentUser];
+    GymUser *currentUser = [[self.parentViewController restorationIdentifier] isEqualToString:@"homeVC"] ? [GymUser currentUser] : self.user;
+    [currentUser fetchIfNeeded];
     self.name.text   = [NSString stringWithFormat:@"%@ %@",currentUser.firstName, currentUser.lasttName];
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     formatter.dateFormat = @"MM/d/y, hh:mm aa";
     self.joinedAt.text = [formatter stringFromDate:currentUser.createdAt];
     self.gymLocation.text = @"The gym";
-    self.friends.text = [NSString stringWithFormat:@"%lu",(unsigned long)currentUser.friends.count];
+    self.friends.text = [NSString stringWithFormat:@"%lu friends",(unsigned long)currentUser.friends.count];
     [self.backgroundImage setImageWithURL:[NSURL URLWithString:@"https://media.istockphoto.com/photos/empty-gym-picture-id1132006407?k=20&m=1132006407&s=612x612&w=0&h=Z7nJu8jntywb9jOhvjlCS7lijbU4_hwHcxoVkxv77sg="]];
     [self settheProfilePic:currentUser];
     self.gymLocation.text = currentUser.gym;
@@ -131,7 +132,8 @@
 
 - (void)getWorkouts{
     PFQuery *query = [PFQuery queryWithClassName:@"Workout"];
-    [query whereKey:@"user" equalTo:[GymUser currentUser]];
+    GymUser *user = [[self.parentViewController restorationIdentifier] isEqualToString:@"homeVC"] ? [GymUser currentUser] : self.user;
+    [query whereKey:@"user" equalTo:user];
     [query setLimit:5];
     [query orderByDescending:@"createdAt"];
     [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {

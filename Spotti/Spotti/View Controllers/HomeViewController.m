@@ -12,8 +12,9 @@
 #import "APIManager.h"
 #import "UserNotifications/UserNotifications.h"
 #import "GymUser.h"
+#import "ProfileViewController.h"
 
-@interface HomeViewController () <UNUserNotificationCenterDelegate>
+@interface HomeViewController () <UNUserNotificationCenterDelegate, UITabBarControllerDelegate>
 
 @property (strong, nonatomic) UNUserNotificationCenter *center;
 @property (weak, nonatomic) IBOutlet UIButton *createSessionButton;
@@ -95,4 +96,10 @@
     }];
 }
 
+- (void)tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController{
+    if(tabBarController.selectedIndex == 1){
+        ProfileViewController* next = tabBarController.viewControllers[1];
+        next.user = [GymUser currentUser];
+    }
+}
 @end

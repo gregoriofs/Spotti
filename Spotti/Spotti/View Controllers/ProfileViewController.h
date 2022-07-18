@@ -15,6 +15,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface ProfileViewController : UIViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+@property (strong, nonatomic) GymUser *user;
 + (PFFileObject *)getPFFileFromImage: (UIImage * _Nullable)image;
 @property (strong, nonatomic) NSArray *arrayOfWorkouts;
 @end
