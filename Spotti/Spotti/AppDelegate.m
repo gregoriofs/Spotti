@@ -23,13 +23,10 @@
             configuration.clientKey = @"Ip53v5apI7ixswIKYkiUAwVrMc4K7OvQkjzFOP5D";
             configuration.server = @"https://parseapi.back4app.com/";
         }]];
-    UNAuthorizationOptions options = UNAuthorizationOptionAlert + UNAuthorizationOptionSound;
+    UNAuthorizationOptions options = UNAuthorizationOptionAlert + UNAuthorizationOptionSound + UNAuthorizationOptionBadge;
     UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
     [center requestAuthorizationWithOptions:options
      completionHandler:^(BOOL granted, NSError * _Nullable error) {
-        if(!granted){
-            NSLog(@"not granted permission");
-        }
     }];
     return YES;
 }

@@ -1,13 +1,13 @@
 //
-//  ExerciseCell.m
+//  ExerciseCellType2.m
 //  Spotti
 //
-//  Created by Gregorio Floretino Sanchez on 7/8/22.
+//  Created by Gregorio Floretino Sanchez on 7/15/22.
 //
 
-#import "ExerciseCell.h"
+#import "ExerciseCellType2.h"
 
-@implementation ExerciseCell
+@implementation ExerciseCellType2
 
 - (void)awakeFromNib {
     [super awakeFromNib];
@@ -16,9 +16,8 @@
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
+
     // Configure the view for the selected state
 }
-
-
 
 @end

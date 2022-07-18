@@ -44,6 +44,7 @@
     UINavigationController *nextViewController = [segue destinationViewController];
     WorkoutOverviewViewController *vc = (WorkoutOverviewViewController*)nextViewController.topViewController;
     vc.workout = self.currentWorkout;
+    vc.fromList = NO;
 }
 
 @end

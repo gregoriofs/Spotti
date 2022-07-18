@@ -20,6 +20,9 @@
 		C0109C1C2878B50A006FD29C /* ExerciseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C0109C1B2878B50A006FD29C /* ExerciseCell.m */; };
 		C01E97A928764DD00037DAE3 /* BasicInformationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C01E97A828764DD00037DAE3 /* BasicInformationViewController.m */; };
 		C01E97AC28764F4E0037DAE3 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C01E97AB28764F4E0037DAE3 /* HomeViewController.m */; };
+		C055F6FF2880A07B00E10231 /* WorkoutCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C055F6FE2880A07B00E10231 /* WorkoutCell.m */; };
+		C055F7022881EB7100E10231 /* FriendsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C055F7012881EB7100E10231 /* FriendsCell.m */; };
+		C055F70528822A4100E10231 /* ExerciseCellType2.m in Sources */ = {isa = PBXBuildFile; fileRef = C055F70428822A4100E10231 /* ExerciseCellType2.m */; };
 		C062FF55287DEF3D004F3B7E /* ExerciseDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C062FF54287DEF3D004F3B7E /* ExerciseDetailsViewController.m */; };
 		C062FF58287E1746004F3B7E /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C062FF57287E1746004F3B7E /* ProfileViewController.m */; };
 		C062FF5B287E2509004F3B7E /* GymUser.m in Sources */ = {isa = PBXBuildFile; fileRef = C062FF5A287E2509004F3B7E /* GymUser.m */; };
@@ -83,6 +86,12 @@
 		C01E97A828764DD00037DAE3 /* BasicInformationViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BasicInformationViewController.m; sourceTree = "<group>"; };
 		C01E97AA28764F4E0037DAE3 /* HomeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
 		C01E97AB28764F4E0037DAE3 /* HomeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
+		C055F6FD2880A07B00E10231 /* WorkoutCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WorkoutCell.h; sourceTree = "<group>"; };
+		C055F6FE2880A07B00E10231 /* WorkoutCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WorkoutCell.m; sourceTree = "<group>"; };
+		C055F7002881EB7100E10231 /* FriendsCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FriendsCell.h; sourceTree = "<group>"; };
+		C055F7012881EB7100E10231 /* FriendsCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FriendsCell.m; sourceTree = "<group>"; };
+		C055F70328822A4100E10231 /* ExerciseCellType2.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExerciseCellType2.h; sourceTree = "<group>"; };
+		C055F70428822A4100E10231 /* ExerciseCellType2.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ExerciseCellType2.m; sourceTree = "<group>"; };
 		C062FF53287DEF3D004F3B7E /* ExerciseDetailsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExerciseDetailsViewController.h; sourceTree = "<group>"; };
 		C062FF54287DEF3D004F3B7E /* ExerciseDetailsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ExerciseDetailsViewController.m; sourceTree = "<group>"; };
 		C062FF56287E1746004F3B7E /* ProfileViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
@@ -248,6 +257,12 @@
 			children = (
 				C0109C1A2878B50A006FD29C /* ExerciseCell.h */,
 				C0109C1B2878B50A006FD29C /* ExerciseCell.m */,
+				C055F70328822A4100E10231 /* ExerciseCellType2.h */,
+				C055F70428822A4100E10231 /* ExerciseCellType2.m */,
+				C055F6FD2880A07B00E10231 /* WorkoutCell.h */,
+				C055F6FE2880A07B00E10231 /* WorkoutCell.m */,
+				C055F7002881EB7100E10231 /* FriendsCell.h */,
+				C055F7012881EB7100E10231 /* FriendsCell.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -528,16 +543,19 @@
 				C0109C1C2878B50A006FD29C /* ExerciseCell.m in Sources */,
 				C062FF58287E1746004F3B7E /* ProfileViewController.m in Sources */,
 				C067237D28763F8500F91288 /* LoginViewController.m in Sources */,
+				C055F6FF2880A07B00E10231 /* WorkoutCell.m in Sources */,
 				C0672344287612AD00F91288 /* AppDelegate.m in Sources */,
 				C0672355287612AE00F91288 /* main.m in Sources */,
 				C0109C0728774925006FD29C /* APIManager.m in Sources */,
 				C062FF5E287E3B6E004F3B7E /* AddingFriendsViewController.m in Sources */,
 				C0109C1628776ACC006FD29C /* FrequencyViewController.m in Sources */,
 				C062FF55287DEF3D004F3B7E /* ExerciseDetailsViewController.m in Sources */,
+				C055F7022881EB7100E10231 /* FriendsCell.m in Sources */,
 				C0109C1328775D21006FD29C /* FocusAreaViewController.m in Sources */,
 				C0672347287612AD00F91288 /* SceneDelegate.m in Sources */,
 				C01E97AC28764F4E0037DAE3 /* HomeViewController.m in Sources */,
 				C0109C0D28775642006FD29C /* Exercise.m in Sources */,
+				C055F70528822A4100E10231 /* ExerciseCellType2.m in Sources */,
 				C0109C192878AAFA006FD29C /* WorkoutOverviewViewController.m in Sources */,
 				C062FF5B287E2509004F3B7E /* GymUser.m in Sources */,
 				C0109C1028775AFA006FD29C /* ObjectivesViewController.m in Sources */,

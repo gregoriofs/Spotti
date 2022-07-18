@@ -42,6 +42,7 @@
     currentUser[@"friends"] = [NSArray new];
     currentUser[@"lastWorkout"] = [NSDate date];
     currentUser[@"streak"] = [NSNumber numberWithInt:0];
+    currentUser[@"gym"] = @"The gym";
     [currentUser saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error){
             if(succeeded){
                 [self performSegueWithIdentifier:@"successfulInfoSubmission" sender:self];

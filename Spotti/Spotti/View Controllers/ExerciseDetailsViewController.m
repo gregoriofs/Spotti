@@ -7,9 +7,10 @@
 
 #import "ExerciseDetailsViewController.h"
 #import "UIImageView+AFNetworking.h"
+#import "ProfileViewController.h"
 
 @interface ExerciseDetailsViewController ()
-@property (weak, nonatomic) IBOutlet UIImageView *exerciseImage;
+@property (weak, nonatomic) IBOutlet PFImageView *exerciseImage;
 @property (weak, nonatomic) IBOutlet UILabel *exerciseName;
 @property (weak, nonatomic) IBOutlet UILabel *exerciseDescription;
 @end
@@ -21,7 +22,8 @@
     [super viewDidLoad];
     self.exerciseName.text = self.exercise.exerciseName;
     self.exerciseDescription.text = self.exercise.exerciseDescription;
-    [self.exerciseImage setImageWithURL:self.imageURL];
+    self.exerciseImage.file = self.exercise.image;
+    [self.exerciseImage loadInBackground];
 }
 
 @end

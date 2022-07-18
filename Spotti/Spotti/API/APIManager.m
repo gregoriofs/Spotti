@@ -28,6 +28,7 @@ static NSString * const baseURLString = @"https://wger.de";
 }
 
 - (void)exerciseListFromWorkout:(Workout*) workout currentExercise:(int) current completionBlock:(void(^)(NSArray *exercise))completion{
+    //TODO: Get image for the exercise base if possible, might have to make two api queries simultaneously
     NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@",@"https://wger.de",@"/api/v2/exercise/?limit=200&language=2"]];
         NSURLRequest *request = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:10.0];
         NSURLSession *session =  [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration] delegate:nil delegateQueue:[NSOperationQueue mainQueue]];
