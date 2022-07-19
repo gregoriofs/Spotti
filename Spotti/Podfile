@@ -9,6 +9,7 @@ target 'Spotti' do
 pod 'Parse'
 pod 'AFNetworking'
 pod 'Parse/UI'
+pod 'AutoCompletion'
 
   target 'SpottiTests' do
     inherit! :search_paths

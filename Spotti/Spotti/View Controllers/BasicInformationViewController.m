@@ -21,6 +21,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *weight;
 @property (weak, nonatomic) IBOutlet UITextField *fitnessLevel;
 @property (weak, nonatomic) IBOutlet UITextView *bio;
+@property (weak, nonatomic) IBOutlet UITextField *gym;
 
 @end
 
@@ -42,7 +43,7 @@
     currentUser[@"friends"] = [NSArray new];
     currentUser[@"lastWorkout"] = [NSDate date];
     currentUser[@"streak"] = [NSNumber numberWithInt:0];
-    currentUser[@"gym"] = @"The gym";
+    currentUser[@"gym"] = self.gym.text;
     [currentUser saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error){
             if(succeeded){
                 [self performSegueWithIdentifier:@"successfulInfoSubmission" sender:self];
@@ -51,6 +52,10 @@
                 NSLog(@"%@", error.localizedDescription);
             }
     }];
+}
+- (IBAction)dismissKeyboard:(id)sender {
+    
+    [self.view endEditing:YES];
 }
 
 @end

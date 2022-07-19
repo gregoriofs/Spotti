@@ -57,9 +57,9 @@
 
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
     Exercise *currentExercise = self.workout.exerciseArray[indexPath.row];
-    ExerciseCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ExerciseCell"];
     [currentExercise fetchIfNeeded];
-    if([currentExercise.numberSets intValue] != 0){
+    ExerciseCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ExerciseCell"];
+    if(([currentExercise.numberSets intValue] != 0) || ![self.workout.user.objectId isEqualToString:[GymUser currentUser].objectId]){
         ExerciseCellType2 *cell2 = [tableView dequeueReusableCellWithIdentifier:@"ExerciseCellV2"];
         cell2.exercise = currentExercise;
         cell2.exerciseName.text = currentExercise.exerciseName;

@@ -33,11 +33,15 @@
     self.tableView.estimatedRowHeight = 92;
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     self.locationManager = [CLLocationManager new];
-    self.locationManager.delegate = self;
-    _locationManager.desiredAccuracy = kCLLocationAccuracyThreeKilometers;
-    _locationManager.distanceFilter = 200;
-    [_locationManager requestWhenInUseAuthorization];
     [self queryAllUsers];
+    if([_locationManager locationServicesEnabled]){
+        _locationManager.delegate = self;
+        _locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+        _locationManager.distanceFilter = 50;
+        [_locationManager requestWhenInUseAuthorization];
+        NSLog(@"auth status %d", _locationManager.authorizationStatus);
+    }
+    [self mapSearch];
 }
 
 -(void)queryAllUsers{
@@ -71,8 +75,8 @@
     return self.filteredList.count;
 }
 
--(void)locationManagerDidChangeAuthorization:(CLLocationManager *)manager status:(CLAuthorizationStatus)status{
-    if (status == kCLAuthorizationStatusAuthorizedWhenInUse) {
+- (void)locationManagerDidChangeAuthorization:(CLLocationManager *)manager{
+    if (manager.authorizationStatus == kCLAuthorizationStatusAuthorizedWhenInUse){
         [manager startUpdatingLocation];
     }
 }
@@ -80,6 +84,10 @@
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray<CLLocation *> *)locations{
     CLLocation *location = [locations firstObject];
     _lastLocation = location.coordinate;
+    PFGeoPoint *currLocation = [PFGeoPoint new];
+    currLocation.latitude = location.coordinate.latitude;
+    currLocation.longitude = location.coordinate.longitude;
+    [[GymUser currentUser] setObject:currLocation forKey:@"lastLocation"];
 }
 
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText{
@@ -97,9 +105,29 @@
 
 - (void)mapSearch{
     //Use mkcoordinateregion to limit search around user
-    
-//    MKLocalSearch *searchGyms = [MKLocalSearch alloc] initWithRequest:[MKLocalSearchRequest ]
+    MKCoordinateRegion region = MKCoordinateRegionMake(self.lastLocation, MKCoordinateSpanMake(.05, .05));
+    MKLocalSearchRequest *request = [MKLocalSearchRequest new];
+    request.naturalLanguageQuery = @"gym";
+    request.region = region;
+    MKLocalSearch *searchGyms = [[MKLocalSearch alloc] initWithRequest:request];
+    NSMutableArray *usersNearGym = [NSMutableArray new];
+    [searchGyms startWithCompletionHandler:^(MKLocalSearchResponse * _Nullable response, NSError * _Nullable error) {
+            if(error != nil){
+                NSLog(@"%@",error.localizedDescription);
+            }
+            for(MKMapItem *item in response.mapItems){
+                float lat = item.placemark.coordinate.latitude;
+                float longit = item.placemark.coordinate.longitude;
+                for(GymUser *user in self.allUsers){
+                    CLLocationDistance distance = [[[CLLocation alloc]initWithLatitude:lat longitude:longit] distanceFromLocation:[[CLLocation alloc]initWithLatitude:user.lastLocation.latitude longitude:user.lastLocation.longitude]];
+                    if(distance <= 1610){
+                        [usersNearGym addObject:user];
+                    }
+                }
+            }
+    }];
 }
+
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if([[segue identifier] isEqualToString:@"addFriendSegue"]){
         NSIndexPath *currPath = [self.tableView indexPathForCell:sender];
@@ -109,5 +137,5 @@
     }
 }
 
-//To search by gyms: Add MapKit, create an MKLocalSearch and get user's current location to get nearby gyms. Once I have a list of gyms, I can filter all users by those that attend one of those gyms.
+//To search by gyms: Add MapKit, create an MKLocalSearch and get user's current location to get nearby gyms. Once I have a list of gyms, check within a certain radius for users near that gym and display those. I can filter all users by those that attend one of those gyms.
 @end

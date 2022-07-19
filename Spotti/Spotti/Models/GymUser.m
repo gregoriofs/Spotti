@@ -21,6 +21,6 @@
 @dynamic lastWorkout;
 @dynamic streak;
 @dynamic gym;
-
+@dynamic lastLocation;
 @end
 

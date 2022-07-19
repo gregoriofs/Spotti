@@ -23,7 +23,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (strong, nonatomic) NSDate *lastWorkout;
 @property (strong, nonatomic) NSNumber *streak;
 @property (strong, nonatomic) NSString *gym;
-
+@property (strong, nonatomic) PFGeoPoint *lastLocation;
 @end
 
 NS_ASSUME_NONNULL_END

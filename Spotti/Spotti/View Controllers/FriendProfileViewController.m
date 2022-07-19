@@ -36,9 +36,6 @@
             [self.addFriendButton setTitle:@"Already Friends" forState:UIControlStateNormal];
         }];
     }
-    else{
-        NSLog(@"AAlreadfy added");
-    }
 }
 - (BOOL)checkIfFriend:(NSString *)addedUserId{
     for(GymUser *friend in [GymUser currentUser].friends){

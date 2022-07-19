@@ -49,7 +49,8 @@
     self.welcomeLabel.text = [NSString stringWithFormat:@"Welcome %@!", [GymUser currentUser].username];
 }
 
--(void)scheduleLackOfExerciseNotification{
+- (void)scheduleLackOfExerciseNotification{
+    //Timer that actively checks last workout asynchronously
     GymUser *currentUser = [GymUser currentUser];
     if([[NSDate date] timeIntervalSinceDate:currentUser.lastWorkout] > 1){
         [self scheduleNotification:@"No Workout Completed In A While" contentBody:@"We haven't seen you in a while! Come back and complete a workout to get back on track!" identifier:@"LackOfWorkoutNotification"];

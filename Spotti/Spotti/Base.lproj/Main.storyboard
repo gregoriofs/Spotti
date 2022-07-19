@@ -761,7 +761,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Bio" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Gxa-Gd-vea">
-                                <rect key="frame" x="67" y="557" width="281" height="104"/>
+                                <rect key="frame" x="67" y="655" width="281" height="104"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemGrayColor"/>
                                 <color key="textColor" systemColor="labelColor"/>
@@ -775,19 +775,19 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Weight" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wDF-BS-byM">
-                                <rect key="frame" x="67" y="438" width="281" height="34"/>
+                                <rect key="frame" x="67" y="431" width="281" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Fitness Level" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="O0x-D7-l2Y">
-                                <rect key="frame" x="67" y="497" width="281" height="34"/>
+                                <rect key="frame" x="67" y="498" width="281" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v3I-qs-xen">
-                                <rect key="frame" x="155" y="689" width="104" height="42"/>
+                                <rect key="frame" x="155" y="775" width="104" height="42"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Submit"/>
@@ -808,9 +808,19 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Gym" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yad-CO-zMG" customClass="AutoCompletionTextField">
+                                <rect key="frame" x="67" y="567" width="281" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="F8I-eF-3ic"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <gestureRecognizers/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="cv5-jS-cLE" appends="YES" id="6KG-Ji-Bfb"/>
+                        </connections>
                     </view>
                     <navigationItem key="navigationItem" id="UU7-bI-RhU"/>
                     <connections>
@@ -820,6 +830,7 @@
                         <outlet property="firstName" destination="d09-OE-fPw" id="hAI-nA-9wc"/>
                         <outlet property="fitnessLevel" destination="O0x-D7-l2Y" id="hh3-RN-85Z"/>
                         <outlet property="gender" destination="AYe-w9-b39" id="h1s-UH-9SV"/>
+                        <outlet property="gym" destination="yad-CO-zMG" id="hoh-Ke-i7C"/>
                         <outlet property="inches" destination="0J5-Nz-hKj" id="ViO-Sf-UbY"/>
                         <outlet property="lastName" destination="k6H-d4-gWt" id="S3e-FH-hSc"/>
                         <outlet property="weight" destination="wDF-BS-byM" id="9Lu-fN-N58"/>
@@ -827,6 +838,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gCe-8Z-x3l" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="cv5-jS-cLE">
+                    <connections>
+                        <action selector="dismissKeyboard:" destination="2NZ-IM-63n" id="f2r-dp-4cB"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1955.072463768116" y="-555.13392857142856"/>
         </scene>
@@ -1554,9 +1570,14 @@
             <point key="canvasLocation" x="5335" y="1130"/>
         </scene>
     </scenes>
+    <designables>
+        <designable name="yad-CO-zMG">
+            <size key="intrinsicContentSize" width="58" height="34"/>
+        </designable>
+    </designables>
     <inferredMetricsTieBreakers>
         <segue reference="dzc-xX-pTD"/>
-        <segue reference="NA6-SA-lHT"/>
+        <segue reference="9xC-pt-Bsx"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="arrowtriangle.right" catalog="system" width="128" height="113"/>
