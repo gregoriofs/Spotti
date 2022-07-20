@@ -1,10 +1,7 @@
-# Spotti
-Gym tracking application for beginners and experienced gym goers alike.
-
 Spotti Capstone Product Spec
 ===
-
 # Spotti
+Gym tracking application for beginners and experienced gym goers alike.
 
 ## Table of Contents
 1. [Overview](#Overview)
