@@ -1256,6 +1256,9 @@
                                     <segment title="By Username"/>
                                     <segment title="By Gym"/>
                                 </segments>
+                                <connections>
+                                    <action selector="segControl:" destination="uDp-0o-y4z" eventType="valueChanged" id="MAa-LB-7Jz"/>
+                                </connections>
                             </segmentedControl>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Qn1-xx-LMQ"/>

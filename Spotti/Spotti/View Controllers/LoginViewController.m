@@ -42,10 +42,8 @@
 }
 
 - (IBAction)dismissKeyboard:(id)sender {
-    
     [self.usernameField resignFirstResponder];
     [self.passwordField resignFirstResponder];
-    
 }
 
 - (void)loginUser {

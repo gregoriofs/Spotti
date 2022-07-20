@@ -26,6 +26,8 @@
 		C055F7082885D90A00E10231 /* FriendProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C055F7072885D90A00E10231 /* FriendProfileViewController.m */; };
 		C055F70A28861F1700E10231 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C055F70928861F1700E10231 /* MapKit.framework */; };
 		C055F70C2886213E00E10231 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C055F70B2886213E00E10231 /* CoreLocation.framework */; };
+		C055F7122887617500E10231 /* PriorityQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = C055F7112887617500E10231 /* PriorityQueue.m */; };
+		C055F7152887624900E10231 /* PriorityQueueNode.m in Sources */ = {isa = PBXBuildFile; fileRef = C055F7142887624900E10231 /* PriorityQueueNode.m */; };
 		C062FF55287DEF3D004F3B7E /* ExerciseDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C062FF54287DEF3D004F3B7E /* ExerciseDetailsViewController.m */; };
 		C062FF58287E1746004F3B7E /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C062FF57287E1746004F3B7E /* ProfileViewController.m */; };
 		C062FF5B287E2509004F3B7E /* GymUser.m in Sources */ = {isa = PBXBuildFile; fileRef = C062FF5A287E2509004F3B7E /* GymUser.m */; };
@@ -99,6 +101,10 @@
 		C055F7072885D90A00E10231 /* FriendProfileViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FriendProfileViewController.m; sourceTree = "<group>"; };
 		C055F70928861F1700E10231 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		C055F70B2886213E00E10231 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		C055F7102887617500E10231 /* PriorityQueue.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PriorityQueue.h; sourceTree = "<group>"; };
+		C055F7112887617500E10231 /* PriorityQueue.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PriorityQueue.m; sourceTree = "<group>"; };
+		C055F7132887624900E10231 /* PriorityQueueNode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PriorityQueueNode.h; sourceTree = "<group>"; };
+		C055F7142887624900E10231 /* PriorityQueueNode.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PriorityQueueNode.m; sourceTree = "<group>"; };
 		C062FF53287DEF3D004F3B7E /* ExerciseDetailsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExerciseDetailsViewController.h; sourceTree = "<group>"; };
 		C062FF54287DEF3D004F3B7E /* ExerciseDetailsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ExerciseDetailsViewController.m; sourceTree = "<group>"; };
 		C062FF56287E1746004F3B7E /* ProfileViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
@@ -296,6 +302,10 @@
 				C0109C0C28775642006FD29C /* Exercise.m */,
 				C062FF59287E2509004F3B7E /* GymUser.h */,
 				C062FF5A287E2509004F3B7E /* GymUser.m */,
+				C055F7102887617500E10231 /* PriorityQueue.h */,
+				C055F7112887617500E10231 /* PriorityQueue.m */,
+				C055F7132887624900E10231 /* PriorityQueueNode.h */,
+				C055F7142887624900E10231 /* PriorityQueueNode.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -555,10 +565,12 @@
 				C01E97A928764DD00037DAE3 /* BasicInformationViewController.m in Sources */,
 				C0109C1C2878B50A006FD29C /* ExerciseCell.m in Sources */,
 				C062FF58287E1746004F3B7E /* ProfileViewController.m in Sources */,
+				C055F7152887624900E10231 /* PriorityQueueNode.m in Sources */,
 				C067237D28763F8500F91288 /* LoginViewController.m in Sources */,
 				C055F6FF2880A07B00E10231 /* WorkoutCell.m in Sources */,
 				C0672344287612AD00F91288 /* AppDelegate.m in Sources */,
 				C0672355287612AE00F91288 /* main.m in Sources */,
+				C055F7122887617500E10231 /* PriorityQueue.m in Sources */,
 				C0109C0728774925006FD29C /* APIManager.m in Sources */,
 				C062FF5E287E3B6E004F3B7E /* AddingFriendsViewController.m in Sources */,
 				C0109C1628776ACC006FD29C /* FrequencyViewController.m in Sources */,

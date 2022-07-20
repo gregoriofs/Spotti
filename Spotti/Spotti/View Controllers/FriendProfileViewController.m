@@ -11,7 +11,6 @@
 @interface FriendProfileViewController ()
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UIButton *addFriendButton;
-
 @end
 
 @implementation FriendProfileViewController
@@ -37,6 +36,7 @@
         }];
     }
 }
+
 - (BOOL)checkIfFriend:(NSString *)addedUserId{
     for(GymUser *friend in [GymUser currentUser].friends){
         if([friend.objectId isEqualToString:addedUserId]){
@@ -45,16 +45,13 @@
     }
     return NO;
 }
-//showingFriendsWorkoutSegue
+
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
     if([[segue identifier] isEqualToString:@"showingFriendsWorkoutSegue"]){
         UINavigationController *destination = [segue destinationViewController];
         WorkoutOverviewViewController *newVC = (WorkoutOverviewViewController *)destination.topViewController;
         newVC.workout = self.arrayOfWorkouts[[self.tableView indexPathForCell:sender].row];
     }
-    
 }
 
 @end

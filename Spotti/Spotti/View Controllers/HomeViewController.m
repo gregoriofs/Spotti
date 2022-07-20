@@ -42,7 +42,7 @@
       }
     }];
     self.center.delegate = self;
-    [self scheduleLackOfExerciseNotification];
+//    [self scheduleLackOfExerciseNotification];
     self.createSessionButton.layer.cornerRadius = 5;
     self.addFriendsButton.layer.cornerRadius = 5;
     self.createSessionButton.layer.cornerRadius = 5;
