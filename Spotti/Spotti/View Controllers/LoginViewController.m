@@ -41,6 +41,13 @@
     }];
 }
 
+- (IBAction)dismissKeyboard:(id)sender {
+    
+    [self.usernameField resignFirstResponder];
+    [self.passwordField resignFirstResponder];
+    
+}
+
 - (void)loginUser {
     NSString *username = self.usernameField.text;
     NSString *password = self.passwordField.text;

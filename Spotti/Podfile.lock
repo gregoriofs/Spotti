@@ -14,6 +14,7 @@ PODS:
   - AFNetworking/Serialization (4.0.1)
   - AFNetworking/UIKit (4.0.1):
     - AFNetworking/NSURLSession
+  - AutoCompletion (1.2.1)
   - Bolts/Tasks (1.9.1)
   - Parse (1.19.3):
     - Parse/Core (= 1.19.3)
@@ -24,20 +25,23 @@ PODS:
 
 DEPENDENCIES:
   - AFNetworking
+  - AutoCompletion
   - Parse
   - Parse/UI
 
 SPEC REPOS:
   trunk:
     - AFNetworking
+    - AutoCompletion
     - Bolts
     - Parse
 
 SPEC CHECKSUMS:
   AFNetworking: 7864c38297c79aaca1500c33288e429c3451fdce
+  AutoCompletion: ef2aef06b77e8f82dc49bff7e16860eacd891249
   Bolts: 8c1e8aab2f603387b8b9924f57d1d64f43d3ffdc
   Parse: 0abb63a0ff6fa34a3f64b81d595a294e2ece143a
 
-PODFILE CHECKSUM: 8e731b1e50ab83e5a98782889e3c8e202402487a
+PODFILE CHECKSUM: 0aa0004c176448c75a0c926e2b55caf7d82d7cc9
 
 COCOAPODS: 1.11.3

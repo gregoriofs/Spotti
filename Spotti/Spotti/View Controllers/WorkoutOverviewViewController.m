@@ -57,9 +57,9 @@
 
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
     Exercise *currentExercise = self.workout.exerciseArray[indexPath.row];
-    ExerciseCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ExerciseCell"];
     [currentExercise fetchIfNeeded];
-    if([currentExercise.numberSets intValue] != 0){
+    ExerciseCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ExerciseCell"];
+    if(([currentExercise.numberSets intValue] != 0) || ![self.workout.user.objectId isEqualToString:[GymUser currentUser].objectId]){
         ExerciseCellType2 *cell2 = [tableView dequeueReusableCellWithIdentifier:@"ExerciseCellV2"];
         cell2.exercise = currentExercise;
         cell2.exerciseName.text = currentExercise.exerciseName;
@@ -137,10 +137,12 @@
 - (void)saveWorkoutAndReturnHome{
     for(int i = 0; i < self.workout.exerciseArray.count;i++){
         ExerciseCell* cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:i inSection:0]];
-        if(![cell.repsInput.text isEqualToString:@""]){
-            NSNumberFormatter *formatter = [NSNumberFormatter new];
-            cell.exercise.numberSets = [formatter numberFromString:cell.setsInput.text];
-            cell.exercise.numberReps = [formatter numberFromString:cell.repsInput.text];
+        NSNumberFormatter *formatter = [NSNumberFormatter new];
+        NSNumber *repsValid = [formatter numberFromString:cell.repsInput.text];
+        NSNumber *setsValid = [formatter numberFromString:cell.setsInput.text];
+        if(![cell.repsInput.text isEqualToString:@""] && repsValid && setsValid){
+            cell.exercise.numberSets = setsValid;
+            cell.exercise.numberReps = repsValid;
             [cell.exercise saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
                 if(error != nil){
                     NSLog(@"%@", error.localizedDescription);
@@ -169,6 +171,10 @@
     else{
         [currentUser setObject:[NSNumber numberWithInt:0] forKey:@"streak"];
     }
+}
+
+- (IBAction)dismissKeyboard:(id)sender {
+    [self.view endEditing:YES];
 }
 
 @end

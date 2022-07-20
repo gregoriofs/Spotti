@@ -12,8 +12,9 @@
 #import "APIManager.h"
 #import "UserNotifications/UserNotifications.h"
 #import "GymUser.h"
+#import "ProfileViewController.h"
 
-@interface HomeViewController () <UNUserNotificationCenterDelegate>
+@interface HomeViewController () <UNUserNotificationCenterDelegate, UITabBarControllerDelegate>
 
 @property (strong, nonatomic) UNUserNotificationCenter *center;
 @property (weak, nonatomic) IBOutlet UIButton *createSessionButton;
@@ -48,7 +49,8 @@
     self.welcomeLabel.text = [NSString stringWithFormat:@"Welcome %@!", [GymUser currentUser].username];
 }
 
--(void)scheduleLackOfExerciseNotification{
+- (void)scheduleLackOfExerciseNotification{
+    //Timer that actively checks last workout asynchronously
     GymUser *currentUser = [GymUser currentUser];
     if([[NSDate date] timeIntervalSinceDate:currentUser.lastWorkout] > 1){
         [self scheduleNotification:@"No Workout Completed In A While" contentBody:@"We haven't seen you in a while! Come back and complete a workout to get back on track!" identifier:@"LackOfWorkoutNotification"];
@@ -95,4 +97,10 @@
     }];
 }
 
+- (void)tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController{
+    if(tabBarController.selectedIndex == 1){
+        ProfileViewController* next = tabBarController.viewControllers[1];
+        next.user = [GymUser currentUser];
+    }
+}
 @end
