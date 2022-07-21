@@ -55,7 +55,6 @@
     }
 }
 
-
 -(void)queryAllUsers{
     //TODO: take care of random username entry
     //Pop up window indicating that user wasn't found
@@ -73,9 +72,9 @@
 }
 
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
+    //tableview isn't set up correctly
+    //TODO: figure out cell issue, cell setter to set all properties
     FriendsCell *cell = [tableView dequeueReusableCellWithIdentifier:@"FriendsCell"forIndexPath:indexPath];
-    cell.username.text = nil;
-    cell.gym.text = nil;
     GymUser *cellUser = self.filteredList[indexPath.row];
     cell.user = cellUser;
     cell.profileImage.file = cellUser.profilePic;
@@ -111,7 +110,7 @@
         }];
         self.filteredList = [self.allUsers filteredArrayUsingPredicate:predicate];
     }
-    else{
+    else {
         self.filteredList = [NSArray new];
     }
     [self.tableView reloadData];

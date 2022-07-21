@@ -10,33 +10,37 @@
 #import "WorkoutOverviewViewController.h"
 
 @interface FrequencyViewController ()
-@property (strong, nonatomic) NSMutableArray *exerciseList;
+@property (strong, nonatomic) NSNumber *freq;
 @end
 
 @implementation FrequencyViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.exerciseList = [[NSMutableArray alloc] init];
 }
 
 - (IBAction)didTapOnceaWeek:(id)sender {
-    self.currentWorkout.frequency = [NSNumber numberWithInt:1];
+    self.freq = [NSNumber numberWithInt:1];
+    NSLog(@"frequency: %d", [self.currentWorkout.frequency intValue]);
 }
 
 - (IBAction)didTapTwiceaWeek:(id)sender {
-    self.currentWorkout.frequency = [NSNumber numberWithInt:2];
+    self.freq = [NSNumber numberWithInt:2];
+    NSLog(@"frequency: %d", [self.currentWorkout.frequency intValue]);
 }
 
 - (IBAction)didTapThriceaWeek:(id)sender {
-    self.currentWorkout.frequency = [NSNumber numberWithInt:3];
+    self.freq = [NSNumber numberWithInt:3];
+    NSLog(@"frequency: %d", [self.currentWorkout.frequency intValue]);
 }
 
 - (IBAction)didTapFourTimes:(id)sender {
-    self.currentWorkout.frequency = [NSNumber numberWithInt:4];
+    self.freq = [NSNumber numberWithInt:4];
+    NSLog(@"frequency: %d", [self.currentWorkout.frequency intValue]);
 }
 
 - (IBAction)didTapFinish:(id)sender {
+    self.currentWorkout.frequency = self.freq;
     [self performSegueWithIdentifier:@"finishedSession" sender:self];
 }
 

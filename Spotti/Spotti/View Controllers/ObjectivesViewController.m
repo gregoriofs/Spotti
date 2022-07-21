@@ -14,7 +14,7 @@
 @end
 
 @implementation ObjectivesViewController
-
+//Remove
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.currentWorkout = [Workout new];

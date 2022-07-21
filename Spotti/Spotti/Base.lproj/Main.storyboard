@@ -164,6 +164,89 @@
             </objects>
             <point key="canvasLocation" x="2894.202898550725" y="199.55357142857142"/>
         </scene>
+        <!--Listof Workouts View Controller-->
+        <scene sceneID="ZcB-vT-1jd">
+            <objects>
+                <viewController id="X2P-lh-WsX" customClass="ListofWorkoutsViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="qgd-DZ-TEV">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="r31-6z-wAd">
+                                <rect key="frame" x="23" y="88" width="368" height="702"/>
+                                <color key="backgroundColor" systemColor="systemBlueColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="702" id="ohR-gX-3bF"/>
+                                </constraints>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="WorkoutCell" rowHeight="63" id="e43-T4-8xk" customClass="WorkoutCell">
+                                        <rect key="frame" x="0.0" y="44.5" width="368" height="63"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="e43-T4-8xk" id="aD9-mw-Q4Y">
+                                            <rect key="frame" x="0.0" y="0.0" width="368" height="63"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Workout" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m8l-vt-Zex">
+                                                    <rect key="frame" x="20" y="11" width="245" height="40"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="01E-pU-wHt">
+                                                    <rect key="frame" x="302" y="15" width="58" height="32"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="43" id="cBV-wg-BO6"/>
+                                                        <constraint firstAttribute="width" constant="43" id="vIe-cN-0zG"/>
+                                                    </constraints>
+                                                    <state key="normal" title="Button"/>
+                                                    <buttonConfiguration key="configuration" style="plain" image="arrowtriangle.right" catalog="system"/>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="m8l-vt-Zex" firstAttribute="centerY" secondItem="01E-pU-wHt" secondAttribute="centerY" id="5K8-co-opJ"/>
+                                                <constraint firstItem="m8l-vt-Zex" firstAttribute="top" secondItem="aD9-mw-Q4Y" secondAttribute="topMargin" id="GOc-zI-EXT"/>
+                                                <constraint firstItem="01E-pU-wHt" firstAttribute="leading" secondItem="aD9-mw-Q4Y" secondAttribute="leading" constant="302" id="Gq5-12-Dp4"/>
+                                                <constraint firstAttribute="bottom" secondItem="01E-pU-wHt" secondAttribute="bottom" constant="16" id="IcW-ua-kI8"/>
+                                                <constraint firstAttribute="trailing" secondItem="m8l-vt-Zex" secondAttribute="trailing" constant="103" id="K8l-kq-uaw"/>
+                                                <constraint firstItem="01E-pU-wHt" firstAttribute="leading" secondItem="m8l-vt-Zex" secondAttribute="trailing" constant="52" id="VFO-vr-IXE"/>
+                                                <constraint firstItem="m8l-vt-Zex" firstAttribute="leading" secondItem="aD9-mw-Q4Y" secondAttribute="leadingMargin" id="bAQ-BK-DcZ"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="01E-pU-wHt" secondAttribute="trailing" constant="-12" id="maM-Db-C6R"/>
+                                                <constraint firstAttribute="bottom" secondItem="m8l-vt-Zex" secondAttribute="bottom" constant="12" id="ues-wv-bTt"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="workoutName" destination="m8l-vt-Zex" id="baB-KQ-gTX"/>
+                                            <segue destination="67U-AK-TYF" kind="presentation" id="pwZ-5X-faz"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Here's all Your Previous Workouts!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ygD-PT-jtm">
+                                <rect key="frame" x="32" y="54" width="359" height="19"/>
+                                <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="16"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="NZK-Ue-AvN"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="r31-6z-wAd" firstAttribute="top" secondItem="NZK-Ue-AvN" secondAttribute="top" constant="44" id="Q2S-lv-wLv"/>
+                            <constraint firstItem="ygD-PT-jtm" firstAttribute="trailing" secondItem="r31-6z-wAd" secondAttribute="trailing" id="Uch-LD-owg"/>
+                            <constraint firstItem="r31-6z-wAd" firstAttribute="centerX" secondItem="qgd-DZ-TEV" secondAttribute="centerX" id="VTx-gF-eMb"/>
+                            <constraint firstItem="ygD-PT-jtm" firstAttribute="leading" secondItem="NZK-Ue-AvN" secondAttribute="leading" constant="32" id="Vjy-zF-haw"/>
+                            <constraint firstItem="r31-6z-wAd" firstAttribute="leading" secondItem="NZK-Ue-AvN" secondAttribute="leading" constant="23" id="ZTR-Gv-HHn"/>
+                            <constraint firstItem="ygD-PT-jtm" firstAttribute="top" secondItem="NZK-Ue-AvN" secondAttribute="top" constant="10" id="hLc-DK-ABk"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="workouttableView" destination="r31-6z-wAd" id="wg0-1q-YVK"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1i6-fn-xYc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="966.66666666666674" y="1827.4553571428571"/>
+        </scene>
         <!--Profile-->
         <scene sceneID="wJk-BM-I8a">
             <objects>
@@ -296,7 +379,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Previous Workouts" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X8g-1f-Peh">
-                                                <rect key="frame" x="8" y="201" width="198" height="27"/>
+                                                <rect key="frame" x="8" y="202" width="198" height="26"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="198" id="u3S-Ey-dvb"/>
                                                 </constraints>
@@ -304,69 +387,31 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="shM-bi-D1J">
-                                                <rect key="frame" x="8" y="236" width="369" height="349"/>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uEc-QS-dI7">
+                                                <rect key="frame" x="8" y="236" width="369" height="37"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="349" id="6dp-07-HD3"/>
+                                                    <constraint firstAttribute="height" constant="37" id="lJS-ze-f3U"/>
                                                 </constraints>
-                                                <prototypes>
-                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="WorkoutCell" rowHeight="63" id="Txa-C4-tbe" customClass="WorkoutCell">
-                                                        <rect key="frame" x="0.0" y="44.5" width="369" height="63"/>
-                                                        <autoresizingMask key="autoresizingMask"/>
-                                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Txa-C4-tbe" id="r6x-FY-x4w">
-                                                            <rect key="frame" x="0.0" y="0.0" width="369" height="63"/>
-                                                            <autoresizingMask key="autoresizingMask"/>
-                                                            <subviews>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Workout" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AQR-zm-YOE">
-                                                                    <rect key="frame" x="20" y="11" width="246" height="40"/>
-                                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                    <nil key="textColor"/>
-                                                                    <nil key="highlightedColor"/>
-                                                                </label>
-                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LbM-wU-zjg">
-                                                                    <rect key="frame" x="302" y="15" width="59" height="32"/>
-                                                                    <constraints>
-                                                                        <constraint firstAttribute="width" constant="43" id="KJB-t3-HI4"/>
-                                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="43" id="kIz-Uz-99K"/>
-                                                                    </constraints>
-                                                                    <state key="normal" title="Button"/>
-                                                                    <buttonConfiguration key="configuration" style="plain" image="arrowtriangle.right" catalog="system"/>
-                                                                </button>
-                                                            </subviews>
-                                                            <constraints>
-                                                                <constraint firstItem="AQR-zm-YOE" firstAttribute="centerY" secondItem="LbM-wU-zjg" secondAttribute="centerY" id="7k1-dr-iYH"/>
-                                                                <constraint firstAttribute="bottom" secondItem="LbM-wU-zjg" secondAttribute="bottom" constant="16" id="CZV-ab-Mlz"/>
-                                                                <constraint firstAttribute="trailingMargin" secondItem="LbM-wU-zjg" secondAttribute="trailing" constant="-12" id="ClL-uZ-T6K"/>
-                                                                <constraint firstItem="LbM-wU-zjg" firstAttribute="leading" secondItem="r6x-FY-x4w" secondAttribute="leading" constant="302" id="ZPC-wd-m6k"/>
-                                                                <constraint firstItem="AQR-zm-YOE" firstAttribute="leading" secondItem="r6x-FY-x4w" secondAttribute="leadingMargin" id="nec-km-eCp"/>
-                                                                <constraint firstAttribute="bottom" secondItem="AQR-zm-YOE" secondAttribute="bottom" constant="12" id="ptK-RO-P3p"/>
-                                                                <constraint firstAttribute="trailing" secondItem="AQR-zm-YOE" secondAttribute="trailing" constant="103" id="swM-LI-b8o"/>
-                                                                <constraint firstItem="LbM-wU-zjg" firstAttribute="leading" secondItem="AQR-zm-YOE" secondAttribute="trailing" constant="52" id="wOE-E7-GwE"/>
-                                                                <constraint firstItem="AQR-zm-YOE" firstAttribute="top" secondItem="r6x-FY-x4w" secondAttribute="topMargin" id="ytM-VL-hH1"/>
-                                                            </constraints>
-                                                        </tableViewCellContentView>
-                                                        <connections>
-                                                            <outlet property="workoutName" destination="AQR-zm-YOE" id="yv0-dg-5YM"/>
-                                                            <segue destination="67U-AK-TYF" kind="presentation" identifier="fromListSegue" id="Hrh-kO-wW9"/>
-                                                        </connections>
-                                                    </tableViewCell>
-                                                </prototypes>
-                                            </tableView>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" title="View Previous"/>
+                                                <connections>
+                                                    <segue destination="X2P-lh-WsX" kind="presentation" id="0VH-oE-Wm9"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
                                             <constraint firstItem="OkW-gQ-ty8" firstAttribute="top" secondItem="0GK-pb-xHg" secondAttribute="bottom" constant="8" symbolic="YES" id="1TA-7E-GDq"/>
                                             <constraint firstItem="0GK-pb-xHg" firstAttribute="top" secondItem="uPA-9H-jsi" secondAttribute="top" constant="3" id="2bv-mb-Jvx"/>
                                             <constraint firstItem="OkW-gQ-ty8" firstAttribute="top" secondItem="uPA-9H-jsi" secondAttribute="topMargin" constant="28" id="3Tw-oU-suu"/>
-                                            <constraint firstItem="shM-bi-D1J" firstAttribute="leading" secondItem="uPA-9H-jsi" secondAttribute="leading" constant="8" id="8Tt-Ee-FLp"/>
-                                            <constraint firstItem="OkW-gQ-ty8" firstAttribute="leading" secondItem="shM-bi-D1J" secondAttribute="leading" id="I89-Yk-BAR"/>
-                                            <constraint firstItem="X8g-1f-Peh" firstAttribute="top" secondItem="OkW-gQ-ty8" secondAttribute="bottom" constant="-1" id="R8a-ez-be6"/>
-                                            <constraint firstItem="shM-bi-D1J" firstAttribute="top" secondItem="OkW-gQ-ty8" secondAttribute="bottom" constant="34" id="dKJ-a7-dUT"/>
+                                            <constraint firstItem="OkW-gQ-ty8" firstAttribute="trailing" secondItem="uEc-QS-dI7" secondAttribute="trailing" id="4HA-HX-mJg"/>
+                                            <constraint firstItem="uEc-QS-dI7" firstAttribute="top" secondItem="X8g-1f-Peh" secondAttribute="bottom" constant="8" symbolic="YES" id="Cy0-gr-gNz"/>
+                                            <constraint firstItem="0GK-pb-xHg" firstAttribute="leading" secondItem="uPA-9H-jsi" secondAttribute="leadingMargin" id="QUS-4u-l30"/>
+                                            <constraint firstItem="X8g-1f-Peh" firstAttribute="top" secondItem="OkW-gQ-ty8" secondAttribute="bottom" id="R8a-ez-be6"/>
+                                            <constraint firstItem="X8g-1f-Peh" firstAttribute="leading" secondItem="uEc-QS-dI7" secondAttribute="leading" id="eMz-D2-Bic"/>
                                             <constraint firstAttribute="bottom" secondItem="OkW-gQ-ty8" secondAttribute="bottom" constant="195" id="f0j-it-s6G"/>
-                                            <constraint firstItem="OkW-gQ-ty8" firstAttribute="trailing" secondItem="shM-bi-D1J" secondAttribute="trailing" id="lX0-1i-7s4"/>
+                                            <constraint firstItem="OkW-gQ-ty8" firstAttribute="trailing" secondItem="uPA-9H-jsi" secondAttribute="trailingMargin" id="jqm-0s-O8N"/>
                                             <constraint firstItem="0GK-pb-xHg" firstAttribute="leading" secondItem="OkW-gQ-ty8" secondAttribute="leading" id="pJ4-Lk-ACk"/>
-                                            <constraint firstAttribute="trailing" secondItem="shM-bi-D1J" secondAttribute="trailing" constant="8" id="qiZ-GS-4la"/>
                                             <constraint firstItem="X8g-1f-Peh" firstAttribute="leading" secondItem="OkW-gQ-ty8" secondAttribute="leading" id="vxQ-zW-o9w"/>
                                         </constraints>
                                     </view>
@@ -375,7 +420,12 @@
                                     <constraint firstItem="uPA-9H-jsi" firstAttribute="leading" secondItem="DuH-fS-byq" secondAttribute="leading" id="Isw-22-QBB"/>
                                     <constraint firstItem="uPA-9H-jsi" firstAttribute="top" secondItem="DuH-fS-byq" secondAttribute="top" constant="8" id="Mk8-wB-bZW"/>
                                     <constraint firstAttribute="trailing" secondItem="uPA-9H-jsi" secondAttribute="trailing" id="bhH-tN-oW4"/>
+                                    <constraint firstItem="uPA-9H-jsi" firstAttribute="leading" secondItem="cf2-2H-9WX" secondAttribute="leading" id="gSZ-L1-CYf"/>
                                     <constraint firstAttribute="bottom" secondItem="uPA-9H-jsi" secondAttribute="bottom" constant="-98" id="oGk-Q1-BX4"/>
+                                    <constraint firstItem="uPA-9H-jsi" firstAttribute="width" secondItem="DuH-fS-byq" secondAttribute="width" id="rOM-aG-ugk"/>
+                                    <constraint firstItem="uPA-9H-jsi" firstAttribute="bottom" secondItem="cf2-2H-9WX" secondAttribute="bottom" constant="98" id="uD4-FI-yU7"/>
+                                    <constraint firstItem="cf2-2H-9WX" firstAttribute="trailing" secondItem="uPA-9H-jsi" secondAttribute="trailing" id="yOA-Bx-ySa"/>
+                                    <constraint firstItem="uPA-9H-jsi" firstAttribute="top" secondItem="cf2-2H-9WX" secondAttribute="top" constant="8" id="z91-W5-Seo"/>
                                 </constraints>
                                 <viewLayoutGuide key="contentLayoutGuide" id="cf2-2H-9WX"/>
                                 <viewLayoutGuide key="frameLayoutGuide" id="oBe-AH-pIq"/>
@@ -435,12 +485,11 @@
                         <outlet property="profilePic" destination="4a2-Za-jyM" id="skw-gh-5D8"/>
                         <outlet property="scrollView" destination="DuH-fS-byq" id="HG8-cz-6so"/>
                         <outlet property="statView" destination="OkW-gQ-ty8" id="nR6-Dj-bS6"/>
-                        <outlet property="workoutTableView" destination="shM-bi-D1J" id="JBu-Vh-kf9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Hlb-GL-g3N" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1583" y="1083"/>
+            <point key="canvasLocation" x="1582.608695652174" y="1082.8125"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="vAK-oB-qOO">
@@ -658,7 +707,6 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <action selector="didTapBack:" destination="MJh-FI-WH5" eventType="touchUpInside" id="piu-s1-G4m"/>
                                     <action selector="didTapOnceaWeek:" destination="vhI-Ho-v4Q" eventType="touchUpInside" id="SSN-dA-rcX"/>
                                 </connections>
                             </button>
@@ -671,7 +719,6 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <action selector="didTapBack:" destination="MJh-FI-WH5" eventType="touchUpInside" id="QWo-rF-D1X"/>
                                     <action selector="didTapTwiceaWeek:" destination="vhI-Ho-v4Q" eventType="touchUpInside" id="DX6-fU-WLX"/>
                                 </connections>
                             </button>
@@ -684,7 +731,6 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <action selector="didTapBack:" destination="MJh-FI-WH5" eventType="touchUpInside" id="eSV-s6-VsX"/>
                                     <action selector="didTapFourTimes:" destination="vhI-Ho-v4Q" eventType="touchUpInside" id="cFC-Ol-UMh"/>
                                 </connections>
                             </button>
@@ -697,7 +743,6 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <action selector="didTapBack:" destination="MJh-FI-WH5" eventType="touchUpInside" id="XYb-dr-ZnC"/>
                                     <action selector="didTapThriceaWeek:" destination="vhI-Ho-v4Q" eventType="touchUpInside" id="f0T-3S-xqg"/>
                                 </connections>
                             </button>
@@ -710,7 +755,6 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <action selector="didTapBack:" destination="MJh-FI-WH5" eventType="touchUpInside" id="5cd-Ty-mCM"/>
                                     <action selector="didTapFinish:" destination="vhI-Ho-v4Q" eventType="touchUpInside" id="inI-Yf-KjW"/>
                                     <action selector="didTapFourTimes:" destination="vhI-Ho-v4Q" eventType="touchUpInside" id="9ut-oe-wn8"/>
                                 </connections>
@@ -1099,7 +1143,7 @@
                                 <action selector="didTapFinishWorkout:" destination="ivM-BA-3Ib" id="Kr5-Hb-6Xg"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Home" id="nj2-30-322">
+                        <barButtonItem key="rightBarButtonItem" title="Save" id="nj2-30-322">
                             <connections>
                                 <action selector="didTapHome:" destination="ivM-BA-3Ib" id="vDk-1H-QQm"/>
                             </connections>
@@ -1164,7 +1208,7 @@
         <!--Navigation Controller-->
         <scene sceneID="6E6-bQ-bAe">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="67U-AK-TYF" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="workoutOverview" automaticallyAdjustsScrollViewInsets="NO" id="67U-AK-TYF" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="EWf-J5-78N"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="zhU-MZ-tzc">
@@ -1579,7 +1623,7 @@
         </designable>
     </designables>
     <inferredMetricsTieBreakers>
-        <segue reference="Hrh-kO-wW9"/>
+        <segue reference="pwZ-5X-faz"/>
         <segue reference="9xC-pt-Bsx"/>
     </inferredMetricsTieBreakers>
     <resources>

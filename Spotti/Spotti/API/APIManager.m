@@ -7,7 +7,7 @@
 
 #import "APIManager.h"
 #import "Workout.h"
-
+#import "Exercise.h"
 
 static NSString * const baseURLString = @"https://wger.de";
 
@@ -40,7 +40,9 @@ static NSString * const baseURLString = @"https://wger.de";
             {
                 NSDictionary *dataDictionary = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
                 NSArray *results = dataDictionary[@"results"];
+                NSLog(@"freq in api: %d", [workout.frequency intValue] );
                 int totalExercises = [workout.frequency intValue] >= 3 ? 6 : 8;
+                
                 int numExercisesPerArea = totalExercises/(workout.focusAreas.count);
                 NSMutableArray *exercises = [NSMutableArray new];
                 for(int i = 0; i < workout.focusAreas.count; i++){

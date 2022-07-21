@@ -28,6 +28,7 @@
 		C055F70C2886213E00E10231 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C055F70B2886213E00E10231 /* CoreLocation.framework */; };
 		C055F7122887617500E10231 /* PriorityQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = C055F7112887617500E10231 /* PriorityQueue.m */; };
 		C055F7152887624900E10231 /* PriorityQueueNode.m in Sources */ = {isa = PBXBuildFile; fileRef = C055F7142887624900E10231 /* PriorityQueueNode.m */; };
+		C055F718288A087000E10231 /* ListofWorkoutsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C055F717288A087000E10231 /* ListofWorkoutsViewController.m */; };
 		C062FF55287DEF3D004F3B7E /* ExerciseDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C062FF54287DEF3D004F3B7E /* ExerciseDetailsViewController.m */; };
 		C062FF58287E1746004F3B7E /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C062FF57287E1746004F3B7E /* ProfileViewController.m */; };
 		C062FF5B287E2509004F3B7E /* GymUser.m in Sources */ = {isa = PBXBuildFile; fileRef = C062FF5A287E2509004F3B7E /* GymUser.m */; };
@@ -105,6 +106,8 @@
 		C055F7112887617500E10231 /* PriorityQueue.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PriorityQueue.m; sourceTree = "<group>"; };
 		C055F7132887624900E10231 /* PriorityQueueNode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PriorityQueueNode.h; sourceTree = "<group>"; };
 		C055F7142887624900E10231 /* PriorityQueueNode.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PriorityQueueNode.m; sourceTree = "<group>"; };
+		C055F716288A087000E10231 /* ListofWorkoutsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ListofWorkoutsViewController.h; sourceTree = "<group>"; };
+		C055F717288A087000E10231 /* ListofWorkoutsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ListofWorkoutsViewController.m; sourceTree = "<group>"; };
 		C062FF53287DEF3D004F3B7E /* ExerciseDetailsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExerciseDetailsViewController.h; sourceTree = "<group>"; };
 		C062FF54287DEF3D004F3B7E /* ExerciseDetailsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ExerciseDetailsViewController.m; sourceTree = "<group>"; };
 		C062FF56287E1746004F3B7E /* ProfileViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
@@ -265,6 +268,8 @@
 				C062FF5D287E3B6E004F3B7E /* AddingFriendsViewController.m */,
 				C055F7062885D90A00E10231 /* FriendProfileViewController.h */,
 				C055F7072885D90A00E10231 /* FriendProfileViewController.m */,
+				C055F716288A087000E10231 /* ListofWorkoutsViewController.h */,
+				C055F717288A087000E10231 /* ListofWorkoutsViewController.m */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -563,6 +568,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C01E97A928764DD00037DAE3 /* BasicInformationViewController.m in Sources */,
+				C055F718288A087000E10231 /* ListofWorkoutsViewController.m in Sources */,
 				C0109C1C2878B50A006FD29C /* ExerciseCell.m in Sources */,
 				C062FF58287E1746004F3B7E /* ProfileViewController.m in Sources */,
 				C055F7152887624900E10231 /* PriorityQueueNode.m in Sources */,

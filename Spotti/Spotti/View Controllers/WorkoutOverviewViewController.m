@@ -16,12 +16,14 @@
 #import "HomeViewController.h"
 #import "ExerciseDetailsViewController.h"
 #import "GymUser.h"
+#import "ProfileViewController.h"
 
 @interface WorkoutOverviewViewController () <UITableViewDelegate,UITableViewDataSource, UITabBarDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UILabel *objectives;
 @property (weak, nonatomic) IBOutlet UILabel *focusAreas;
 @property (weak, nonatomic) IBOutlet UILabel *frequency;
+
 @end
 
 @implementation WorkoutOverviewViewController
@@ -32,7 +34,9 @@
     self.tableView.delegate = self;
     self.objectives.text = self.workout.objective;
     self.focusAreas.text = [self.workout.focusAreas componentsJoinedByString:@","];
-    self.frequency.text = [NSString stringWithFormat:@"%@ times a week", self.workout.frequency];
+    NSLog(@"freq %d",[self.workout.frequency intValue]);
+    self.frequency.text = [NSString stringWithFormat:@"%d times a week", [self.workout.frequency intValue]];
+    
     if(!self.fromList){
         [self fillExerciseList];
     }
@@ -113,11 +117,8 @@
 }
 
 - (IBAction)didTapFinishWorkout:(id)sender {
-    
-    //TODO: NEED TO SAVE ALL THE REPS AND SETS FOR EACH EXERCISE
     //TODO: add popup in the case where reps or sets aren't all filled for an exercise telling them to complete workout before saving
     //TODO: figure out how to save things continuously for progress and also saving exercises to users so their stats can be accessed later in profile
-    
     if(![self checkEmptyInputs]){
         self.workout.completed = [NSNumber numberWithBool:YES];
         GymUser *currentUser = [GymUser currentUser];
@@ -152,8 +153,13 @@
         if(succeeded){
             SceneDelegate *myDelegate = (SceneDelegate *)self.view.window.windowScene.delegate;
             UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-            HomeViewController *home = [storyboard instantiateViewControllerWithIdentifier:@"homeVC"];
-            myDelegate.window.rootViewController = home;
+            if(!self.fromList){
+                HomeViewController *home = [storyboard instantiateViewControllerWithIdentifier:@"homeVC"];
+                myDelegate.window.rootViewController = home;
+            }
+            else{
+                [self.delegate dismissWorkoutVC];
+            }
         }
         else{
             NSLog(@"%@", error.localizedDescription);
