@@ -26,10 +26,9 @@
 @implementation HomeViewController
 
 - (void)userNotificationCenter:(UNUserNotificationCenter *)center willPresentNotification:(UNNotification *)notification withCompletionHandler:(void (^)(UNNotificationPresentationOptions))completionHandler{
-//    completionHandler(UNNotificationPresentationOptionList);
     completionHandler(UNNotificationPresentationOptionList | UNNotificationPresentationOptionBanner | UNNotificationPresentationOptionSound);
 }
-//TODO: Why are notifications not showing??
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.center = [UNUserNotificationCenter currentNotificationCenter];
@@ -42,7 +41,6 @@
       }
     }];
     self.center.delegate = self;
-//    [self scheduleLackOfExerciseNotification];
     self.createSessionButton.layer.cornerRadius = 5;
     self.addFriendsButton.layer.cornerRadius = 5;
     self.createSessionButton.layer.cornerRadius = 5;

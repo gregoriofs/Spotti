@@ -17,8 +17,9 @@
 #import "ExerciseDetailsViewController.h"
 #import "GymUser.h"
 #import "ProfileViewController.h"
+#import "ExerciseListViewController.h"
 
-@interface WorkoutOverviewViewController () <UITableViewDelegate,UITableViewDataSource, UITabBarDelegate>
+@interface WorkoutOverviewViewController () <UITableViewDelegate,UITableViewDataSource, UITabBarDelegate, choseExercise>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UILabel *objectives;
 @property (weak, nonatomic) IBOutlet UILabel *focusAreas;
@@ -34,7 +35,6 @@
     self.tableView.delegate = self;
     self.objectives.text = self.workout.objective;
     self.focusAreas.text = [self.workout.focusAreas componentsJoinedByString:@","];
-    NSLog(@"freq %d",[self.workout.frequency intValue]);
     self.frequency.text = [NSString stringWithFormat:@"%d times a week", [self.workout.frequency intValue]];
     
     if(!self.fromList){
@@ -56,6 +56,11 @@
         Exercise *currExercise = self.workout.exerciseArray[currPath.row];
         ExerciseDetailsViewController *next = [segue destinationViewController];
         next.exercise = currExercise;
+    }
+    else if([[segue identifier] isEqualToString:@"addingExercise"]){
+        ExerciseListViewController* next = [segue destinationViewController];
+        next.addingExercise = YES;
+        next.delegate = self;
     }
 }
 
@@ -181,4 +186,13 @@
     [self.view endEditing:YES];
 }
 
+- (void)addedNewExercise:(Exercise *)exercise{
+    NSMutableArray *temp = [self.workout.exerciseArray mutableCopy];
+    [temp addObject:exercise];
+    self.workout.exerciseArray = [temp copy];
+    [self.workout setObject:[temp copy] forKey:@"exerciseArray"];
+    [self.tableView reloadData];
+    [self dismissViewControllerAnimated:YES completion:^{
+    }];
+}
 @end

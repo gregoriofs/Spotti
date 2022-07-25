@@ -63,32 +63,11 @@
     self.workoutTableView.estimatedRowHeight = 65;
     self.scrollView.delegate = self;
     self.scrollView.bounces = false;
-//    self.workoutTableView.bounces = false;
-//    [self.workoutTableView setScrollEnabled:false];
     self.addProfilePictureButton.layer.cornerRadius = 5;
-//    [self getWorkouts];
     [self findFavoriteExercise:^(NSString *mostPopular) {
             self.favoriteExercise.text = [NSString stringWithFormat:@"Favorite Exercise: %@", mostPopular];
     }];
-    
 }
-
-//- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
-//    CGFloat yOffset = scrollView.contentOffset.y;
-//    if (scrollView == self.scrollView){
-//        if (yOffset >= 300){
-//            [self.scrollView setScrollEnabled:NO];
-//            [self.workoutTableView setScrollEnabled:YES];
-//        }
-//    }
-//    if (scrollView == self.workoutTableView){
-//        if (yOffset <= 0){
-//            [self.scrollView setScrollEnabled:YES];
-//            [self.workoutTableView setScrollEnabled:NO];
-//        }
-//    }
-//}
-
 
 - (IBAction)didTapProfilePicture:(id)sender {
     UIImagePickerController *imagePickerVC = [UIImagePickerController new];
@@ -180,7 +159,6 @@
                 NSLog(@"%@", error.localizedDescription);
             }
             else{
-                NSLog(@"number of workouts %lu", (unsigned long)objects.count);
                 self.arrayOfWorkouts = objects;
                 [self.workoutTableView reloadData];
             }
@@ -200,15 +178,12 @@
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
     ListofWorkoutsViewController *newVC = [segue destinationViewController];
     newVC.user = [GymUser currentUser];
 }
 
 - (void)dismissWorkoutVC {
     [self dismissViewControllerAnimated:YES completion:^{
-            NSLog(@"hello");
     }];
 }
 

@@ -21,27 +21,22 @@
 
 - (IBAction)didTapOnceaWeek:(id)sender {
     self.freq = [NSNumber numberWithInt:1];
-    NSLog(@"frequency: %d", [self.currentWorkout.frequency intValue]);
 }
 
 - (IBAction)didTapTwiceaWeek:(id)sender {
     self.freq = [NSNumber numberWithInt:2];
-    NSLog(@"frequency: %d", [self.currentWorkout.frequency intValue]);
 }
 
 - (IBAction)didTapThriceaWeek:(id)sender {
     self.freq = [NSNumber numberWithInt:3];
-    NSLog(@"frequency: %d", [self.currentWorkout.frequency intValue]);
 }
 
 - (IBAction)didTapFourTimes:(id)sender {
     self.freq = [NSNumber numberWithInt:4];
-    NSLog(@"frequency: %d", [self.currentWorkout.frequency intValue]);
 }
 
 - (IBAction)didTapFinish:(id)sender {
     self.currentWorkout.frequency = self.freq;
-    [self performSegueWithIdentifier:@"finishedSession" sender:self];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {

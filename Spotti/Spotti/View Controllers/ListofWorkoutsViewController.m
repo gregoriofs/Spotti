@@ -36,7 +36,6 @@
                 NSLog(@"%@", error.localizedDescription);
             }
             else{
-                NSLog(@"number of workouts %lu", (unsigned long)objects.count);
                 self.arrayOfWorkouts = objects;
                 [self.workouttableView reloadData];
             }
@@ -65,7 +64,6 @@
 
 - (void)dismissWorkoutVC {
     [self dismissViewControllerAnimated:YES completion:^{
-            NSLog(@"hello");
     }];
 }
 

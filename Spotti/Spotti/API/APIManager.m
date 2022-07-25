@@ -27,6 +27,24 @@ static NSString * const baseURLString = @"https://wger.de";
     return self;
 }
 
+- (void)exerciseList:(NSInteger)currentOffset completionBlock:(void(^)(NSArray *exercises))completion{
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@%ld",@"https://wger.de",@"/api/v2/exercise/?limit=20&language=2&offset=",(long)currentOffset]];
+        NSURLRequest *request = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:10.0];
+        NSURLSession *session =  [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration] delegate:nil delegateQueue:[NSOperationQueue mainQueue]];
+        NSURLSessionDataTask *task = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+            if(error != nil){
+                NSLog(@"%@", [error localizedDescription]);
+            }
+            else
+            {
+                NSDictionary *dataDictionary = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
+                NSArray *results = [Exercise exercisesFromDictionaries:dataDictionary[@"results"]];
+                completion(results);
+            }
+        }];
+    [task resume];
+}
+
 - (void)exerciseListFromWorkout:(Workout*) workout currentExercise:(int) current completionBlock:(void(^)(NSArray *exercise))completion{
     //TODO: Get image for the exercise base if possible, might have to make two api queries simultaneously
     NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@",@"https://wger.de",@"/api/v2/exercise/?limit=200&language=2"]];
@@ -40,9 +58,7 @@ static NSString * const baseURLString = @"https://wger.de";
             {
                 NSDictionary *dataDictionary = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
                 NSArray *results = dataDictionary[@"results"];
-                NSLog(@"freq in api: %d", [workout.frequency intValue] );
                 int totalExercises = [workout.frequency intValue] >= 3 ? 6 : 8;
-                
                 int numExercisesPerArea = totalExercises/(workout.focusAreas.count);
                 NSMutableArray *exercises = [NSMutableArray new];
                 for(int i = 0; i < workout.focusAreas.count; i++){
