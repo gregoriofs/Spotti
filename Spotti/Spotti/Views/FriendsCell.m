@@ -10,14 +10,16 @@
 @implementation FriendsCell
 
 - (void)awakeFromNib {
-    [super awakeFromNib];
-    // Initialization code
-}
+    [super awakeFromNib];}
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
+}
 
-    // Configure the view for the selected state
+- (void)setUser:(GymUser *)user{
+    _user = user;
+    _username.text = user.username;
+    _gym.text = user.gym;
 }
 
 @end

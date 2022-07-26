@@ -11,10 +11,17 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@protocol dismissVC <NSObject>
+
+- (void)dismissWorkoutVC;
+
+@end
+
 @interface WorkoutOverviewViewController : UIViewController
 @property (strong, nonatomic) Workout *workout;
 @property (strong, nonatomic) NSArray __block *exercises;
 @property (assign, nonatomic) BOOL fromList;
+@property (weak, nonatomic) id<dismissVC> delegate;
 @end
 
 NS_ASSUME_NONNULL_END

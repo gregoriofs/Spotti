@@ -20,16 +20,16 @@
 @property (weak, nonatomic) IBOutlet UIButton *createSessionButton;
 @property (weak, nonatomic) IBOutlet UIButton *addFriendsButton;
 @property (weak, nonatomic) IBOutlet UILabel *welcomeLabel;
+@property (weak, nonatomic) IBOutlet UIButton *exerciseListButton;
 
 @end
 
 @implementation HomeViewController
 
 - (void)userNotificationCenter:(UNUserNotificationCenter *)center willPresentNotification:(UNNotification *)notification withCompletionHandler:(void (^)(UNNotificationPresentationOptions))completionHandler{
-//    completionHandler(UNNotificationPresentationOptionList);
     completionHandler(UNNotificationPresentationOptionList | UNNotificationPresentationOptionBanner | UNNotificationPresentationOptionSound);
 }
-//TODO: Why are notifications not showing??
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.center = [UNUserNotificationCenter currentNotificationCenter];
@@ -42,10 +42,9 @@
       }
     }];
     self.center.delegate = self;
-//    [self scheduleLackOfExerciseNotification];
     self.createSessionButton.layer.cornerRadius = 5;
     self.addFriendsButton.layer.cornerRadius = 5;
-    self.createSessionButton.layer.cornerRadius = 5;
+    self.exerciseListButton.layer.cornerRadius = 5;
     self.welcomeLabel.text = [NSString stringWithFormat:@"Welcome %@!", [GymUser currentUser].username];
 }
 

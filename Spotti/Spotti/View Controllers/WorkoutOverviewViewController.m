@@ -16,12 +16,15 @@
 #import "HomeViewController.h"
 #import "ExerciseDetailsViewController.h"
 #import "GymUser.h"
+#import "ProfileViewController.h"
+#import "ExerciseListViewController.h"
 
-@interface WorkoutOverviewViewController () <UITableViewDelegate,UITableViewDataSource, UITabBarDelegate>
+@interface WorkoutOverviewViewController () <UITableViewDelegate,UITableViewDataSource, UITabBarDelegate, choseExercise>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UILabel *objectives;
 @property (weak, nonatomic) IBOutlet UILabel *focusAreas;
 @property (weak, nonatomic) IBOutlet UILabel *frequency;
+
 @end
 
 @implementation WorkoutOverviewViewController
@@ -32,7 +35,8 @@
     self.tableView.delegate = self;
     self.objectives.text = self.workout.objective;
     self.focusAreas.text = [self.workout.focusAreas componentsJoinedByString:@","];
-    self.frequency.text = [NSString stringWithFormat:@"%@ times a week", self.workout.frequency];
+    self.frequency.text = [NSString stringWithFormat:@"%d times a week", [self.workout.frequency intValue]];
+    
     if(!self.fromList){
         [self fillExerciseList];
     }
@@ -41,7 +45,7 @@
 - (void)fillExerciseList{
     APIManager *manager = [APIManager new];
     [manager exerciseListFromWorkout:self.workout currentExercise:1 completionBlock:^(NSArray *exercises){
-        self.workout.exerciseArray = [Exercise exercisesFromDictionaries:exercises];
+        self.workout.exerciseArray = [Exercise exercisesFromDictionaries:exercises shouldSave:YES];
         [self.tableView reloadData];
     }];
 }
@@ -52,6 +56,11 @@
         Exercise *currExercise = self.workout.exerciseArray[currPath.row];
         ExerciseDetailsViewController *next = [segue destinationViewController];
         next.exercise = currExercise;
+    }
+    else if([[segue identifier] isEqualToString:@"addingExercise"]){
+        ExerciseListViewController* next = [segue destinationViewController];
+        next.addingExercise = YES;
+        next.delegate = self;
     }
 }
 
@@ -113,11 +122,8 @@
 }
 
 - (IBAction)didTapFinishWorkout:(id)sender {
-    
-    //TODO: NEED TO SAVE ALL THE REPS AND SETS FOR EACH EXERCISE
     //TODO: add popup in the case where reps or sets aren't all filled for an exercise telling them to complete workout before saving
     //TODO: figure out how to save things continuously for progress and also saving exercises to users so their stats can be accessed later in profile
-    
     if(![self checkEmptyInputs]){
         self.workout.completed = [NSNumber numberWithBool:YES];
         GymUser *currentUser = [GymUser currentUser];
@@ -152,8 +158,13 @@
         if(succeeded){
             SceneDelegate *myDelegate = (SceneDelegate *)self.view.window.windowScene.delegate;
             UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-            HomeViewController *home = [storyboard instantiateViewControllerWithIdentifier:@"homeVC"];
-            myDelegate.window.rootViewController = home;
+            if(!self.fromList){
+                HomeViewController *home = [storyboard instantiateViewControllerWithIdentifier:@"homeVC"];
+                myDelegate.window.rootViewController = home;
+            }
+            else{
+                [self.delegate dismissWorkoutVC];
+            }
         }
         else{
             NSLog(@"%@", error.localizedDescription);
@@ -175,4 +186,13 @@
     [self.view endEditing:YES];
 }
 
+- (void)addedNewExercise:(Exercise *)exercise{
+    NSMutableArray *temp = [self.workout.exerciseArray mutableCopy];
+    [temp addObject:exercise];
+    self.workout.exerciseArray = [temp copy];
+    [self.workout setObject:[temp copy] forKey:@"exerciseArray"];
+    [self.tableView reloadData];
+    [self dismissViewControllerAnimated:YES completion:^{
+    }];
+}
 @end

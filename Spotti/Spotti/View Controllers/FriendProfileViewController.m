@@ -51,6 +51,7 @@
         UINavigationController *destination = [segue destinationViewController];
         WorkoutOverviewViewController *newVC = (WorkoutOverviewViewController *)destination.topViewController;
         newVC.workout = self.arrayOfWorkouts[[self.tableView indexPathForCell:sender].row];
+        newVC.fromList = YES;
     }
 }
 

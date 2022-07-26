@@ -15,7 +15,7 @@
 #import "PriorityQueue.h"
 #import "PriorityQueueNode.h"
 
-@interface AddingFriendsViewController () <UISearchDisplayDelegate, UISearchBarDelegate, UITableViewDataSource, UITableViewDelegate, CLLocationManagerDelegate>
+@interface AddingFriendsViewController () <UISearchDisplayDelegate, UISearchBarDelegate, UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate, CLLocationManagerDelegate>
 @property (strong, nonatomic) NSArray *filteredList;
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 @property (strong, nonatomic) NSArray *allUsers;
@@ -23,19 +23,25 @@
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (assign, nonatomic) CLLocationCoordinate2D lastLocation;
 @property (strong, nonatomic) CLLocationManager *locationManager;
+@property (assign, nonatomic) BOOL isLoading;
+@property (assign, nonatomic) NSInteger currentPage;
+@property (strong, nonatomic) UIActivityIndicatorView *activityIndicator;
 @end
 
 @implementation AddingFriendsViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.activityIndicator = [UIActivityIndicatorView new];
     self.searchBar.delegate = self;
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     self.tableView.estimatedRowHeight = 92;
     self.tableView.rowHeight = UITableViewAutomaticDimension;
+    self.currentPage = 0;
     self.locationManager = [CLLocationManager new];
-   [self queryAllUsers];
+    self.allUsers = [NSArray new];
+    [self queryAllUsers:self.currentPage];
     if([_locationManager locationServicesEnabled]){
         _locationManager.delegate = self;
         _locationManager.desiredAccuracy = kCLLocationAccuracyBest;
@@ -55,16 +61,27 @@
     }
 }
 
-
--(void)queryAllUsers{
+-(void)queryAllUsers:(NSInteger)page{
     //TODO: take care of random username entry
     //Pop up window indicating that user wasn't found
     PFQuery *query = [GymUser query];
+    NSInteger pageLimit = 8;
+    [query setLimit:10];
+    [query setSkip:pageLimit * page];
     [query whereKey:@"objectId" notEqualTo:[GymUser currentUser].objectId];
     [query findObjectsInBackgroundWithBlock:^(NSArray *users, NSError *error) {
         if (users != nil) {
-            self.allUsers = users;
-            [self mapSearch];
+            NSMutableArray *temp = [self.allUsers mutableCopy];
+            for(GymUser *user in users){
+                if(![temp containsObject:user]){
+                    [temp addObject:user];
+                }
+            }
+            self.allUsers = [temp copy];
+            self.currentPage += 1;
+            self.isLoading = NO;
+            [self.activityIndicator stopAnimating];
+            [self.tableView reloadData];
         }
         else {
             NSLog(@"%@", error.localizedDescription);
@@ -72,16 +89,29 @@
     }];
 }
 
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    if(!self.isLoading){
+        NSInteger scrollViewContentHeight = self.tableView.contentSize.height;
+        NSInteger scrollOffsetThreshold = scrollViewContentHeight - self.tableView.bounds.size.height;
+        if(scrollView.contentOffset.y > scrollOffsetThreshold && self.tableView.isDragging){
+            self.isLoading = YES;
+            [self.activityIndicator startAnimating];
+            [self queryAllUsers:self.currentPage];
+            if([self.segmentedControl selectedSegmentIndex] == 1){
+                [self mapSearch];
+            }
+        }
+    }
+}
+
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
+    //tableview isn't set up correctly
+    //TODO: figure out cell issue, cell setter to set all properties
     FriendsCell *cell = [tableView dequeueReusableCellWithIdentifier:@"FriendsCell"forIndexPath:indexPath];
-    cell.username.text = nil;
-    cell.gym.text = nil;
     GymUser *cellUser = self.filteredList[indexPath.row];
-    cell.user = cellUser;
     cell.profileImage.file = cellUser.profilePic;
     [cell.profileImage loadInBackground];
-    cell.username.text = cellUser.username;
-    cell.gym.text = cellUser.gym;
+    [cell setUser:cellUser];
     return cell;
 }
 
@@ -111,7 +141,7 @@
         }];
         self.filteredList = [self.allUsers filteredArrayUsingPredicate:predicate];
     }
-    else{
+    else {
         self.filteredList = [NSArray new];
     }
     [self.tableView reloadData];
@@ -123,7 +153,7 @@
     request.naturalLanguageQuery = @"Gyms";
     request.region = region;
     MKLocalSearch *searchGyms = [[MKLocalSearch alloc] initWithRequest:request];
-    
+    //look at the gyms certain users frequent
     PriorityQueue *queue = [PriorityQueue new];
     queue.comparator = ^NSComparisonResult(PriorityQueueNode* obj1, PriorityQueueNode* obj2) {
         NSComparisonResult result = NSOrderedSame;

@@ -15,7 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (strong, nonatomic) NSDictionary *muscleNumbers;
 - (void)exerciseListFromWorkout:(Workout*) workout currentExercise:(int) current completionBlock:(void(^)(NSArray* exercise))completion;
 -(void)getImage:(id)exerciseNum completionBlock:(void (^)(NSURL* url))completion;
-
+- (void)exerciseList:(NSInteger)numberofExercises completionBlock:(void(^)(NSArray *exercises))completion;
 @end
 
 NS_ASSUME_NONNULL_END

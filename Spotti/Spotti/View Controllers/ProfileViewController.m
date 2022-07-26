@@ -10,8 +10,9 @@
 #import "Workout.h"
 #import "WorkoutOverviewViewController.h"
 #import "UserNotifications/UserNotifications.h"
-
-@interface ProfileViewController () <UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate>
+#import "Exercise.h"
+#import "ListofWorkoutsViewController.h"
+@interface ProfileViewController () <UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate, dismissVC>
 
 @property (weak, nonatomic) IBOutlet UILabel *name;
 @property (weak, nonatomic) IBOutlet UILabel *joinedAt;
@@ -48,6 +49,7 @@
     [self settheProfilePic:currentUser];
     self.gymLocation.text = currentUser.gym;
     self.profilePic.layer.cornerRadius = 256/2;
+    self.currentStreak.text = [NSString stringWithFormat:@"%d days in a row!", [currentUser.streak intValue]];
     self.name.layer.cornerRadius = 5;
     self.friends.layer.cornerRadius = 5;
     self.joinedAt.layer.cornerRadius = 5;
@@ -61,26 +63,11 @@
     self.workoutTableView.estimatedRowHeight = 65;
     self.scrollView.delegate = self;
     self.scrollView.bounces = false;
-    self.workoutTableView.bounces = false;
-    [self.workoutTableView setScrollEnabled:false];
     self.addProfilePictureButton.layer.cornerRadius = 5;
-    [self getWorkouts];
-}
-
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
-    CGFloat yOffset = scrollView.contentOffset.y;
-    if (scrollView == self.scrollView){
-        if (yOffset >= 300){
-            [self.scrollView setScrollEnabled:NO];
-            [self.workoutTableView setScrollEnabled:YES];
-        }
-    }
-    if (scrollView == self.workoutTableView){
-        if (yOffset <= 0){
-            [self.scrollView setScrollEnabled:YES];
-            [self.workoutTableView setScrollEnabled:NO];
-        }
-    }
+    [self findFavoriteExercise:^(NSString *mostPopular, NSString *mostReps) {
+            self.favoriteExercise.text = [NSString stringWithFormat:@"Favorite Exercise: %@", mostPopular];
+        self.personalRecord.text = mostReps;
+    }];
 }
 
 - (IBAction)didTapProfilePicture:(id)sender {
@@ -99,6 +86,43 @@
 - (void)settheProfilePic:(GymUser *)user {
     self.profilePic.file = user.profilePic;
     [self.profilePic loadInBackground];
+}
+
+
+- (void)findFavoriteExercise:(void(^)(NSString *mostPopular, NSString *highestRecord))completionBlock{
+    
+    PFQuery *query = [PFQuery queryWithClassName:@"Exercise"];
+    [query whereKey:@"user" equalTo:[GymUser currentUser]];
+    
+    [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
+            NSMutableDictionary *frequency = [NSMutableDictionary new];
+            NSInteger maximumReps = 0;
+            NSString *mostReps = nil;
+            for(Exercise *exercise in objects){
+                if([exercise.numberReps intValue] > maximumReps){
+                    maximumReps = [exercise.numberReps intValue];
+                    mostReps = [NSString stringWithFormat:@"%@ for %d reps for %d sets", exercise.exerciseName, [exercise.numberReps intValue], [exercise.numberSets intValue]];
+                }
+                NSString *key = exercise.exerciseName;
+                if(![[frequency allKeys] containsObject:key]){
+                    [frequency setObject:[NSNumber numberWithInt:1] forKey:key];
+                }
+                else{
+                    frequency[key] = [NSNumber numberWithInt:[frequency[key] intValue] + 1];
+                }
+            }
+        
+        NSNumber *maxValue = [NSNumber numberWithInt:0];
+        NSString *maxkey = nil;
+        
+        for(NSString *key in [frequency allKeys]) {
+            if([frequency[key] intValue] > [maxValue intValue]){
+                maxkey = key;
+                maxValue = frequency[key];
+            }
+        }
+        completionBlock(maxkey, mostReps);
+    }];
 }
 
 + (PFFileObject *)getPFFileFromImage: (UIImage * _Nullable)image {
@@ -131,6 +155,7 @@
 }
 
 - (void)getWorkouts{
+    
     PFQuery *query = [PFQuery queryWithClassName:@"Workout"];
     GymUser *user = [[self.parentViewController restorationIdentifier] isEqualToString:@"homeVC"] ? [GymUser currentUser] : self.user;
     [query whereKey:@"user" equalTo:user];
@@ -160,12 +185,13 @@
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-    UINavigationController *destination = [segue destinationViewController];
-    WorkoutOverviewViewController *newVC = (WorkoutOverviewViewController *)destination.topViewController;
-    newVC.workout = self.arrayOfWorkouts[[self.workoutTableView indexPathForCell:sender].row];
-    newVC.fromList = YES;
+    ListofWorkoutsViewController *newVC = [segue destinationViewController];
+    newVC.user = [GymUser currentUser];
+}
+
+- (void)dismissWorkoutVC {
+    [self dismissViewControllerAnimated:YES completion:^{
+    }];
 }
 
 @end

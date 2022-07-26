@@ -7,7 +7,7 @@
 
 #import "APIManager.h"
 #import "Workout.h"
-
+#import "Exercise.h"
 
 static NSString * const baseURLString = @"https://wger.de";
 
@@ -25,6 +25,24 @@ static NSString * const baseURLString = @"https://wger.de";
     self.muscleNumbers = [muscleNumbers copy];
     self.session = [NSURLSession sharedSession];
     return self;
+}
+
+- (void)exerciseList:(NSInteger)currentOffset completionBlock:(void(^)(NSArray *exercises))completion{
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@%ld",@"https://wger.de",@"/api/v2/exercise/?limit=20&language=2&offset=",(long)currentOffset]];
+        NSURLRequest *request = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:10.0];
+        NSURLSession *session =  [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration] delegate:nil delegateQueue:[NSOperationQueue mainQueue]];
+        NSURLSessionDataTask *task = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+            if(error != nil){
+                NSLog(@"%@", [error localizedDescription]);
+            }
+            else
+            {
+                NSDictionary *dataDictionary = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
+                NSArray *results = [Exercise exercisesFromDictionaries:dataDictionary[@"results"] shouldSave:NO];
+                completion(results);
+            }
+        }];
+    [task resume];
 }
 
 - (void)exerciseListFromWorkout:(Workout*) workout currentExercise:(int) current completionBlock:(void(^)(NSArray *exercise))completion{

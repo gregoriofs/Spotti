@@ -19,37 +19,43 @@
     self.areas = [[NSMutableSet alloc]init];
 }
 
-- (IBAction)didTapChest:(id)sender {
+- (IBAction)didTapChest:(UIButton *)sender {
+    [sender setHighlighted:YES];
     NSString *area = [(UIButton *)sender currentTitle];
     [self.areas addObject:area];
 }
 
-- (IBAction)didTapBack:(id)sender {
+- (IBAction)didTapBack:(UIButton *)sender {
+    [sender setHighlighted:YES];
     NSString *area = [(UIButton *)sender currentTitle];
     [self.areas addObject:area];
 }
 
-- (IBAction)didTapBiceps:(id)sender {
+- (IBAction)didTapBiceps:(UIButton *)sender {
+    NSString *area = [(UIButton *)sender currentTitle];
+    [sender setHighlighted:YES];
+    [self.areas addObject:area];
+}
+
+- (IBAction)didTapTriceps:(UIButton *)sender {
+    [sender setHighlighted:YES];
     NSString *area = [(UIButton *)sender currentTitle];
     [self.areas addObject:area];
 }
 
-- (IBAction)didTapTriceps:(id)sender {
+- (IBAction)didTapLegs:(UIButton *)sender {
+    [sender setHighlighted:YES];
     NSString *area = [(UIButton *)sender currentTitle];
     [self.areas addObject:area];
 }
 
-- (IBAction)didTapLegs:(id)sender {
+- (IBAction)didTapShoulders:(UIButton *)sender {
+    [sender setHighlighted:YES];
     NSString *area = [(UIButton *)sender currentTitle];
     [self.areas addObject:area];
 }
 
-- (IBAction)didTapShoulders:(id)sender {
-    NSString *area = [(UIButton *)sender currentTitle];
-    [self.areas addObject:area];
-}
-
-- (IBAction)didTapNext:(id)sender {
+- (IBAction)didTapNext:(UIButton *)sender {
     self.currentWorkout.focusAreas = [self.areas allObjects];
     [self performSegueWithIdentifier:@"showFrequencySegue" sender:nil];
 }
