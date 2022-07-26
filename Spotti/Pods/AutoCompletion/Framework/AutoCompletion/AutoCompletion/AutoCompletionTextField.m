@@ -11,13 +11,10 @@
 #define kDefaultDamping 0.2
 #define kDefaultFrequency 3
 
-@interface AutoCompletionTextField ()<UITableViewDelegate> {
-}
-
+@interface AutoCompletionTextField ()<UITableViewDelegate>
 @property (strong, nonatomic) UITableView *autocompleteTableView;
 @property (strong, nonatomic) AutoCompletionDataSource *dataSource;
 @property (strong, nonatomic) UITextField *placeholderTextField;
-
 @end
 
 @implementation AutoCompletionTextField
@@ -46,10 +43,8 @@
 {
     _autocompleteTableView = [[UITableView alloc] initWithFrame:[self getAutoCompleteInitialFrame] style:UITableViewStylePlain];
     _autocompleteTableView.delegate = self;
-    
     _dataSource = [[AutoCompletionDataSource alloc] init];
     _autocompleteTableView.dataSource = _dataSource;
-
     [self setDefaultValues];
     [self addSuggestionPlaceholderTextField];
 }
@@ -86,11 +81,9 @@
 
 - (NSString *)extractSubstringFromString:(NSString *)originalString
                       startingWithString:(NSString *)userInputString {
-    
     if ([userInputString length] == 0) {
         return originalString;
     }
-    
     if ([originalString rangeOfString:userInputString options:NSCaseInsensitiveSearch].location != NSNotFound) {
         NSRange range = [originalString rangeOfString:userInputString options:NSCaseInsensitiveSearch];
         return [originalString substringWithRange:NSMakeRange(range.location, [originalString length] - range.location)];
@@ -192,9 +185,7 @@
     {
         __weak typeof(self) weakSelf = self;
         [_suggestionsResultDataSource fetchSuggestionsForIncompleteString:self.text withCompletionBlock:^(NSArray *items, NSString *textKey) {
-            
             NSAssert([NSThread isMainThread], @"This completion block must be called on the main thread");
-            
             [weakSelf.dataSource setSuggestItems:[NSArray arrayWithArray:items]];
             [weakSelf.autocompleteTableView reloadData];
             if ([items count] > 0)
@@ -232,7 +223,6 @@
         [_suggestionsResultDelegate textField:self didSelectItem:item];
         self.placeholderTextField.text = @"";
     }
-    
     if (_shouldHideTableOnSelection)
     {
         [self hideSuggestionsTableView];
@@ -260,8 +250,6 @@
     }
     else
     {
-        
-        
         [UIView animateWithDuration:0.3 delay:0 usingSpringWithDamping:0.8 initialSpringVelocity:10 options:UIViewAnimationOptionCurveEaseInOut animations:^{
             _autocompleteTableView.frame = [self getAutoCompleteTableViewFrameForNumberOfRows:rows];
         } completion:nil];
@@ -349,10 +337,8 @@
     {
         textFrame = self.frame;
     }
-    
     frame.origin.y = textFrame.size.height + textFrame.origin.y + _tableOffset.vertical;
     frame.origin.x = textFrame.origin.x + (self.frame.size.width - textFrame.size.width)/2 + _tableOffset.horizontal;
-    
     if (_tableWidth != NSNotFound)
     {
         frame.size.width = _tableWidth;
@@ -361,16 +347,13 @@
     {
         frame.size.width = textFrame.size.width;
     }
-    
     return frame;
 }
 
 - (CGRect)getAutoCompleteTableViewFrameForNumberOfRows:(NSInteger)rows
 {
     CGRect frame = [self getAutoCompleteInitialFrame];
-    
     frame.size.height = [self getTableViewHeightForNumberOfRows:rows];
-    
     return frame;
 }
 
@@ -383,7 +366,6 @@
     {
         height = _tableHeight;
     }
-    
     UIWindow *window = [[UIApplication sharedApplication] keyWindow];
     float windowHeight = window.frame.size.height;
     CGRect textFrame = [self textAbsoluteFrame];
@@ -391,7 +373,6 @@
     {
         height = windowHeight - (textFrame.origin.y + textFrame.size.height + 5 + _tableOffset.vertical);
     }
-    
     return height;
 }
 

@@ -15,7 +15,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *exerciseDescription;
 @end
 //TODO: add image to detail view
-
 @implementation ExerciseDetailsViewController
 
 - (void)viewDidLoad {

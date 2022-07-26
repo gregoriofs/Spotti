@@ -85,7 +85,6 @@
                 return YES;
             }
         }
-        //add code for when reps and sets are present
     }
     return NO;
 }
@@ -111,7 +110,6 @@
     else{
         //add popup to tell them to fill in both reps and sets for a cell
     }
-    
 }
 
 - (IBAction)didTapFinishWorkout:(id)sender {
@@ -168,7 +166,7 @@
     if([[NSDate date] timeIntervalSinceDate:currentUser.lastWorkout] < 82400){
         [currentUser incrementKey:@"streak"];
     }
-    else{
+    else {
         [currentUser setObject:[NSNumber numberWithInt:0] forKey:@"streak"];
     }
 }
