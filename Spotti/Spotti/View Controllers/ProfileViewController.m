@@ -64,8 +64,9 @@
     self.scrollView.delegate = self;
     self.scrollView.bounces = false;
     self.addProfilePictureButton.layer.cornerRadius = 5;
-    [self findFavoriteExercise:^(NSString *mostPopular) {
+    [self findFavoriteExercise:^(NSString *mostPopular, NSString *mostReps) {
             self.favoriteExercise.text = [NSString stringWithFormat:@"Favorite Exercise: %@", mostPopular];
+        self.personalRecord.text = mostReps;
     }];
 }
 
@@ -88,14 +89,20 @@
 }
 
 
-- (void)findFavoriteExercise:(void(^)(NSString *mostPopular))completionBlock{
+- (void)findFavoriteExercise:(void(^)(NSString *mostPopular, NSString *highestRecord))completionBlock{
     
     PFQuery *query = [PFQuery queryWithClassName:@"Exercise"];
     [query whereKey:@"user" equalTo:[GymUser currentUser]];
     
     [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
             NSMutableDictionary *frequency = [NSMutableDictionary new];
+            NSInteger maximumReps = 0;
+            NSString *mostReps = nil;
             for(Exercise *exercise in objects){
+                if([exercise.numberReps intValue] > maximumReps){
+                    maximumReps = [exercise.numberReps intValue];
+                    mostReps = [NSString stringWithFormat:@"%@ for %d reps for %d sets", exercise.exerciseName, [exercise.numberReps intValue], [exercise.numberSets intValue]];
+                }
                 NSString *key = exercise.exerciseName;
                 if(![[frequency allKeys] containsObject:key]){
                     [frequency setObject:[NSNumber numberWithInt:1] forKey:key];
@@ -114,7 +121,7 @@
                 maxValue = frequency[key];
             }
         }
-        completionBlock(maxkey);
+        completionBlock(maxkey, mostReps);
     }];
 }
 

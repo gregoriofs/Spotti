@@ -14,7 +14,6 @@
 @end
 
 @implementation ObjectivesViewController
-//Remove
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.currentWorkout = [Workout new];
@@ -29,6 +28,7 @@
     }
     NSString *title = [(UIButton *)sender currentTitle];
     self.currentWorkout.objective = title;
+    [self performSegueWithIdentifier:@"focusAreaSegue" sender:self];
 }
 
 - (IBAction)didTapConditioning:(id)sender {
@@ -37,6 +37,7 @@
     }
     NSString *title = [(UIButton *)sender currentTitle];
     self.currentWorkout.objective = title;
+    [self performSegueWithIdentifier:@"focusAreaSegue" sender:self];
 }
 
 - (IBAction)didTapMuscleGrowth:(id)sender {
@@ -45,6 +46,7 @@
     }
     NSString *title = [(UIButton *)sender currentTitle];
     self.currentWorkout.objective = title;
+    [self performSegueWithIdentifier:@"focusAreaSegue" sender:self];
 }
 
 - (IBAction)didTapFitness:(id)sender {
@@ -53,13 +55,14 @@
     }
     NSString *title = [(UIButton *)sender currentTitle];
     self.currentWorkout.objective = title;
+    [self performSegueWithIdentifier:@"focusAreaSegue" sender:self];
 }
-
-- (IBAction)didTapNext:(id)sender {
-    if(self.currentWorkout.objective != nil){
-        [self performSegueWithIdentifier:@"focusAreaSegue" sender:self];
-    }
-}
+//
+//- (IBAction)didTapNext:(id)sender {
+//    if(self.currentWorkout.objective != nil){
+//
+//    }
+//}
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     //Potential error: not selecting the navigation controller, just the focus vc so it won't properly update or something similar

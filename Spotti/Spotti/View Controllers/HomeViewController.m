@@ -20,6 +20,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *createSessionButton;
 @property (weak, nonatomic) IBOutlet UIButton *addFriendsButton;
 @property (weak, nonatomic) IBOutlet UILabel *welcomeLabel;
+@property (weak, nonatomic) IBOutlet UIButton *exerciseListButton;
 
 @end
 
@@ -43,7 +44,7 @@
     self.center.delegate = self;
     self.createSessionButton.layer.cornerRadius = 5;
     self.addFriendsButton.layer.cornerRadius = 5;
-    self.createSessionButton.layer.cornerRadius = 5;
+    self.exerciseListButton.layer.cornerRadius = 5;
     self.welcomeLabel.text = [NSString stringWithFormat:@"Welcome %@!", [GymUser currentUser].username];
 }
 
