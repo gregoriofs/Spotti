@@ -30,15 +30,17 @@
     return self;
 }
 
-+ (NSArray* )exercisesFromDictionaries: (NSArray* ) dictionary{
++ (NSArray* )exercisesFromDictionaries: (NSArray* ) dictionary shouldSave:(BOOL)save{
     NSMutableArray *exercises = [[NSMutableArray alloc] init];
     for(NSDictionary* exercise in dictionary){
         Exercise *new = [[Exercise alloc] initWithDictionary:exercise];
-        [Exercise saveExercise:new completionBlock:^(BOOL succeeded, NSError * _Nullable error) {
-                    if(error != nil){
-                        NSLog(@"%@",error.localizedDescription);
-                    }
-        }];
+        if(save){
+            [Exercise saveExercise:new completionBlock:^(BOOL succeeded, NSError * _Nullable error) {
+                        if(error != nil){
+                            NSLog(@"%@",error.localizedDescription);
+                        }
+            }];
+        }
         [exercises addObject:new];
     }
     return [exercises copy];

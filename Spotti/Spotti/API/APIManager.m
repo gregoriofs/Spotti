@@ -38,7 +38,7 @@ static NSString * const baseURLString = @"https://wger.de";
             else
             {
                 NSDictionary *dataDictionary = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
-                NSArray *results = [Exercise exercisesFromDictionaries:dataDictionary[@"results"]];
+                NSArray *results = [Exercise exercisesFromDictionaries:dataDictionary[@"results"] shouldSave:NO];
                 completion(results);
             }
         }];

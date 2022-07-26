@@ -16,4 +16,10 @@
     [super setSelected:selected animated:animated];
 }
 
+- (void)setUser:(GymUser *)user{
+    _user = user;
+    _username.text = user.username;
+    _gym.text = user.gym;
+}
+
 @end

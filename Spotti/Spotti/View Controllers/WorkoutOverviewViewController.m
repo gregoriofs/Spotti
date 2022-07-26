@@ -45,7 +45,7 @@
 - (void)fillExerciseList{
     APIManager *manager = [APIManager new];
     [manager exerciseListFromWorkout:self.workout currentExercise:1 completionBlock:^(NSArray *exercises){
-        self.workout.exerciseArray = [Exercise exercisesFromDictionaries:exercises];
+        self.workout.exerciseArray = [Exercise exercisesFromDictionaries:exercises shouldSave:YES];
         [self.tableView reloadData];
     }];
 }

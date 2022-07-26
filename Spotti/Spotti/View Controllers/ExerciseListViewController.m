@@ -25,7 +25,7 @@
     self.tableView.dataSource = self;
     _isPaginationOn = NO;
     self.exerciseList = [NSArray new];
-    [self makeRequest:NO completionBlock:^(NSArray *result) {
+    [self makeRequest:^(NSArray *result) {
         self.exerciseList = result;
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.tableView reloadData];
@@ -62,7 +62,7 @@
     return self.exerciseList.count;
 }
 
-- (void)makeRequest:(BOOL)isPagination completionBlock: (void (^)(NSArray *result))completion{
+- (void)makeRequest: (void (^)(NSArray *result))completion{
     APIManager *manager = [APIManager new];
     [manager exerciseList:(self.exerciseList.count + 20) completionBlock:^(NSArray * _Nonnull exercises) {
         [self.activityIndicator stopAnimating];
@@ -76,6 +76,7 @@
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    
     if(!self.isPaginationOn){
         NSInteger scrollViewContentHeight = self.tableView.contentSize.height;
         NSInteger scrollOffsetThreshold = scrollViewContentHeight - self.tableView.bounds.size.height;
@@ -83,7 +84,7 @@
         if(scrollView.contentOffset.y > scrollOffsetThreshold && self.tableView.isDragging){
             self.isPaginationOn = YES;
             [self.activityIndicator startAnimating];
-            [self makeRequest:YES completionBlock:^(NSArray *result) {
+            [self makeRequest:^(NSArray *result) {
             }];
             
         }
