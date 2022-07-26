@@ -8,14 +8,13 @@
 #import "ExerciseListViewController.h"
 #import "ExerciseListCell.h"
 #import "APIManager.h"
+#import "ExerciseDetailsViewController.h"
 
 @interface ExerciseListViewController () <UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) NSArray *exerciseList;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 @property (assign, nonatomic) BOOL isPaginationOn;
-
-
 @end
 
 @implementation ExerciseListViewController
@@ -25,6 +24,7 @@
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     _isPaginationOn = NO;
+    self.exerciseList = [NSArray new];
     [self makeRequest:NO completionBlock:^(NSArray *result) {
         self.exerciseList = result;
         dispatch_async(dispatch_get_main_queue(), ^{
@@ -63,40 +63,39 @@
 }
 
 - (void)makeRequest:(BOOL)isPagination completionBlock: (void (^)(NSArray *result))completion{
-    if(!isPagination){
-        _isPaginationOn = YES;
-        [self.activityIndicator startAnimating];
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-            APIManager *manager = [APIManager new];
-            NSArray __block *res = [NSArray new];
-            [manager exerciseList:(self.exerciseList.count + 20) completionBlock:^(NSArray * _Nonnull exercises) {
-                [self.activityIndicator stopAnimating];
-                res = exercises;
-                completion(exercises);
-            }];
-            self.isPaginationOn = NO;
-        });
-    }
-    else {
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [self.activityIndicator stopAnimating];
-            self.isPaginationOn = NO;
-            [self.tableView reloadData];
-        });
-    }
+    APIManager *manager = [APIManager new];
+    [manager exerciseList:(self.exerciseList.count + 20) completionBlock:^(NSArray * _Nonnull exercises) {
+        [self.activityIndicator stopAnimating];
+        NSMutableArray *tempCopy = [self.exerciseList mutableCopy];
+        [tempCopy addObjectsFromArray:exercises];
+        self.exerciseList = [tempCopy copy];
+        self.isPaginationOn = NO;
+        [self.activityIndicator stopAnimating];
+        [self.tableView reloadData];
+    }];
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{
-    NSInteger pos = scrollView.contentOffset.y;
-    NSInteger contentHeight = scrollView.contentSize.height;
-    if ((pos > contentHeight - 20 - scrollView.frame.size.height) && !_isPaginationOn){
-        [self makeRequest:YES completionBlock:^(NSArray *result) {
-                    self.exerciseList = result;
-                    dispatch_async(dispatch_get_main_queue(), ^{
-                        [self.tableView reloadData];
-                    });
-        }];
+    if(!self.isPaginationOn){
+        NSInteger scrollViewContentHeight = self.tableView.contentSize.height;
+        NSInteger scrollOffsetThreshold = scrollViewContentHeight - self.tableView.bounds.size.height;
+        
+        if(scrollView.contentOffset.y > scrollOffsetThreshold && self.tableView.isDragging){
+            self.isPaginationOn = YES;
+            [self.activityIndicator startAnimating];
+            [self makeRequest:YES completionBlock:^(NSArray *result) {
+            }];
+            
+        }
     }
 }
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+        ExerciseDetailsViewController *next = [segue destinationViewController];
+        Exercise *curr = self.exerciseList[[self.tableView indexPathForCell:sender].row];
+        next.exercise = curr;
+
+}
+
 
 @end
