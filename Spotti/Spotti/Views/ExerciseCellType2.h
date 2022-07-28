@@ -11,6 +11,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface ExerciseCellType2 : ExerciseCell
+@property (weak, nonatomic) IBOutlet UILabel *weightAmount;
 @property (weak, nonatomic) IBOutlet UILabel *numReps;
 @property (weak, nonatomic) IBOutlet UILabel *numSets;
 @end

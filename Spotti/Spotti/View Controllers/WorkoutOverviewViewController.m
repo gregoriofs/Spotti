@@ -36,7 +36,6 @@
     self.objectives.text = self.workout.objective;
     self.focusAreas.text = [self.workout.focusAreas componentsJoinedByString:@","];
     self.frequency.text = [NSString stringWithFormat:@"%d times a week", [self.workout.frequency intValue]];
-    
     if(!self.fromList){
         [self fillExerciseList];
     }
@@ -70,14 +69,10 @@
     ExerciseCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ExerciseCell"];
     if(([currentExercise.numberSets intValue] != 0) || ![self.workout.user.objectId isEqualToString:[GymUser currentUser].objectId]){
         ExerciseCellType2 *cell2 = [tableView dequeueReusableCellWithIdentifier:@"ExerciseCellV2"];
-        cell2.exercise = currentExercise;
-        cell2.exerciseName.text = currentExercise.exerciseName;
-        cell2.numReps.text = [NSString stringWithFormat:@"%d",[currentExercise.numberReps intValue]];
-        cell2.numSets.text = [NSString stringWithFormat:@"%d",[currentExercise.numberSets intValue]];
+        [cell2 setExercise:currentExercise];
         return cell2;
     }
-    cell.exercise = currentExercise;
-    cell.exerciseName.text = currentExercise.exerciseName;
+    [cell setExercise:currentExercise];
     return cell;
 }
 
@@ -144,9 +139,11 @@
         NSNumberFormatter *formatter = [NSNumberFormatter new];
         NSNumber *repsValid = [formatter numberFromString:cell.repsInput.text];
         NSNumber *setsValid = [formatter numberFromString:cell.setsInput.text];
-        if(![cell.repsInput.text isEqualToString:@""] && repsValid && setsValid){
+        NSNumber *weightValid = [formatter numberFromString:cell.weightInput.text];
+        if(![cell.repsInput.text isEqualToString:@""] && repsValid && setsValid && weightValid){
             cell.exercise.numberSets = setsValid;
             cell.exercise.numberReps = repsValid;
+            cell.exercise.lastWeight = weightValid;
             [cell.exercise saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
                 if(error != nil){
                     NSLog(@"%@", error.localizedDescription);
@@ -172,7 +169,7 @@
     }];
 }
 
--(void)updateStreak{
+- (void)updateStreak{
     GymUser *currentUser = [GymUser currentUser];
     if([[NSDate date] timeIntervalSinceDate:currentUser.lastWorkout] < 82400){
         [currentUser incrementKey:@"streak"];
@@ -195,4 +192,5 @@
     [self dismissViewControllerAnimated:YES completion:^{
     }];
 }
+
 @end

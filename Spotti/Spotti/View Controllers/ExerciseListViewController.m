@@ -11,6 +11,7 @@
 #import "ExerciseDetailsViewController.h"
 
 @interface ExerciseListViewController () <UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate>
+
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) NSArray *exerciseList;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
@@ -64,7 +65,7 @@
 
 - (void)makeRequest: (void (^)(NSArray *result))completion{
     APIManager *manager = [APIManager new];
-    [manager exerciseList:(self.exerciseList.count + 20) completionBlock:^(NSArray * _Nonnull exercises) {
+    [manager exerciseList:(self.exerciseList.count + 20) allExercises:NO completionBlock:^(NSArray * _Nonnull exercises) {
         [self.activityIndicator stopAnimating];
         NSMutableArray *tempCopy = [self.exerciseList mutableCopy];
         [tempCopy addObjectsFromArray:exercises];
@@ -76,17 +77,14 @@
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{
-    
     if(!self.isPaginationOn){
         NSInteger scrollViewContentHeight = self.tableView.contentSize.height;
         NSInteger scrollOffsetThreshold = scrollViewContentHeight - self.tableView.bounds.size.height;
-        
         if(scrollView.contentOffset.y > scrollOffsetThreshold && self.tableView.isDragging){
             self.isPaginationOn = YES;
             [self.activityIndicator startAnimating];
             [self makeRequest:^(NSArray *result) {
             }];
-            
         }
     }
 }
@@ -95,7 +93,6 @@
         ExerciseDetailsViewController *next = [segue destinationViewController];
         Exercise *curr = self.exerciseList[[self.tableView indexPathForCell:sender].row];
         next.exercise = curr;
-
 }
 
 
