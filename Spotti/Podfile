@@ -10,6 +10,7 @@ pod 'Parse'
 pod 'AFNetworking'
 pod 'Parse/UI'
 pod 'AutoCompletion'
+pod 'MKDropdownMenu'
 
   target 'SpottiTests' do
     inherit! :search_paths

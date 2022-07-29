@@ -19,6 +19,10 @@
     // Configure the view for the selected state
 }
 
+- (void)setExercise:(Exercise *)exercise{
+    _exercise = exercise;
+    _exerciseName.text = exercise.exerciseName;
+}
 
 
 @end

@@ -63,6 +63,7 @@
     self.workoutTableView.estimatedRowHeight = 65;
     self.scrollView.delegate = self;
     self.scrollView.bounces = false;
+    [self.favoriteExercise sizeToFit];
     self.addProfilePictureButton.layer.cornerRadius = 5;
     [self findFavoriteExercise:^(NSString *mostPopular, NSString *mostReps) {
             self.favoriteExercise.text = [NSString stringWithFormat:@"Favorite Exercise: %@", mostPopular];
@@ -88,20 +89,18 @@
     [self.profilePic loadInBackground];
 }
 
-
 - (void)findFavoriteExercise:(void(^)(NSString *mostPopular, NSString *highestRecord))completionBlock{
-    
     PFQuery *query = [PFQuery queryWithClassName:@"Exercise"];
     [query whereKey:@"user" equalTo:[GymUser currentUser]];
-    
+    [query orderByDescending:@"createdAt"];
     [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
             NSMutableDictionary *frequency = [NSMutableDictionary new];
-            NSInteger maximumReps = 0;
-            NSString *mostReps = nil;
+            NSInteger maxWeight = 0;
+            NSString *mostWeightExercise = nil;
             for(Exercise *exercise in objects){
-                if([exercise.numberReps intValue] > maximumReps){
-                    maximumReps = [exercise.numberReps intValue];
-                    mostReps = [NSString stringWithFormat:@"%@ for %d reps for %d sets", exercise.exerciseName, [exercise.numberReps intValue], [exercise.numberSets intValue]];
+                if([exercise.lastWeight intValue] >= maxWeight){
+                    maxWeight = [exercise.lastWeight intValue];
+                    mostWeightExercise = [NSString stringWithFormat:@"%@ for %d reps with%d lbs", exercise.exerciseName, [exercise.numberReps intValue], [exercise.lastWeight intValue]];
                 }
                 NSString *key = exercise.exerciseName;
                 if(![[frequency allKeys] containsObject:key]){
@@ -111,17 +110,15 @@
                     frequency[key] = [NSNumber numberWithInt:[frequency[key] intValue] + 1];
                 }
             }
-        
         NSNumber *maxValue = [NSNumber numberWithInt:0];
         NSString *maxkey = nil;
-        
         for(NSString *key in [frequency allKeys]) {
             if([frequency[key] intValue] > [maxValue intValue]){
                 maxkey = key;
                 maxValue = frequency[key];
             }
         }
-        completionBlock(maxkey, mostReps);
+        completionBlock(maxkey, mostWeightExercise);
     }];
 }
 
@@ -155,7 +152,6 @@
 }
 
 - (void)getWorkouts{
-    
     PFQuery *query = [PFQuery queryWithClassName:@"Workout"];
     GymUser *user = [[self.parentViewController restorationIdentifier] isEqualToString:@"homeVC"] ? [GymUser currentUser] : self.user;
     [query whereKey:@"user" equalTo:user];
