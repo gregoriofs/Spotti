@@ -36,6 +36,7 @@
     self.objectives.text = self.workout.objective;
     self.focusAreas.text = [self.workout.focusAreas componentsJoinedByString:@","];
     self.frequency.text = [NSString stringWithFormat:@"%d times a week", [self.workout.frequency intValue]];
+    
     if(!self.fromList){
         [self fillExerciseList];
     }
@@ -54,6 +55,7 @@
         NSIndexPath *currPath = [self.tableView indexPathForCell:sender];
         Exercise *currExercise = self.workout.exerciseArray[currPath.row];
         ExerciseDetailsViewController *next = [segue destinationViewController];
+        next.transitioningDelegate = self;
         next.exercise = currExercise;
     }
     else if([[segue identifier] isEqualToString:@"addingExercise"]){
@@ -112,7 +114,7 @@
         [self saveWorkoutAndReturnHome];
     }
     else{
-        //add popup to tell them to fill in both reps and sets for a cell
+//        add popup to tell them to fill in both reps and sets for a cell
     }
 }
 
@@ -192,5 +194,74 @@
     [self dismissViewControllerAnimated:YES completion:^{
     }];
 }
+
+- (void)animateTransition:(nonnull id<UIViewControllerContextTransitioning>)transitionContext {
+    
+    UIView *containerView = [transitionContext containerView];
+        UIViewController *fromVC = [transitionContext
+                viewControllerForKey:UITransitionContextFromViewControllerKey];
+        UIViewController *toVC   = [transitionContext
+                viewControllerForKey:UITransitionContextToViewControllerKey];
+     
+        UIView *toView = [transitionContext viewForKey:UITransitionContextToViewKey];
+        UIView *fromView = [transitionContext viewForKey:UITransitionContextFromViewKey];
+     
+        // Set up some variables for the animation.
+        CGRect containerFrame = containerView.frame;
+        CGRect toViewStartFrame = [transitionContext initialFrameForViewController:toVC];
+        CGRect toViewFinalFrame = [transitionContext finalFrameForViewController:toVC];
+        CGRect fromViewFinalFrame = [transitionContext finalFrameForViewController:fromVC];
+     
+        // Set up the animation parameters.
+//        if (self.presentign) {
+//            // Modify the frame of the presented view so that it starts
+//            // offscreen at the lower-right corner of the container.
+//
+//        }
+//        else {
+//            // Modify the frame of the dismissed view so it ends in
+//            // the lower-right corner of the container view.
+//            fromViewFinalFrame = CGRectMake(containerFrame.size.width,
+//                                          containerFrame.size.height,
+//                                          toView.frame.size.width,
+//                                          toView.frame.size.height);
+//        }
+        toViewStartFrame.origin.x = containerFrame.size.width;
+        toViewStartFrame.origin.y = containerFrame.size.height;
+        // Always add the "to" view to the container.
+        // And it doesn't hurt to set its start frame.
+        [containerView addSubview:toView];
+        toView.frame = toViewStartFrame;
+     
+        // Animate using the animator's own duration value.
+        [UIView animateWithDuration:[self transitionDuration:transitionContext]
+                         animations:^{
+//                             if (self.presenting) {
+//                                 // Move the presented view into position.
+//
+//                             }
+//                             else {
+//                                 // Move the dismissed view offscreen.
+//                                 [fromView setFrame:fromViewFinalFrame];
+//                             }
+            [toView setFrame:toViewFinalFrame];
+                         }
+                         completion:^(BOOL finished){
+                             BOOL success = ![transitionContext transitionWasCancelled];
+//
+//                             // After a failed presentation or successful dismissal, remove the view.
+//                             if ((self.presenting && !success) || (!self.presenting && success)) {
+//                                 [toView removeFromSuperview];
+//                             }
+     
+                             // Notify UIKit that the transition has finished
+                             [transitionContext completeTransition:success];
+                         }];
+}
+
+- (NSTimeInterval)transitionDuration:(id<UIViewControllerContextTransitioning>)transitionContext{
+    return 5.5;
+}
+
 
 @end

@@ -13,6 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface ExerciseDetailsViewController : UIViewController
 @property (strong, nonatomic) Exercise *exercise;
+@property (weak, nonatomic) IBOutlet UILabel *exerciseName;
 @end
 
 NS_ASSUME_NONNULL_END

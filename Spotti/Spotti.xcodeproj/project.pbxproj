@@ -49,6 +49,7 @@
 		C0672369287612AE00F91288 /* SpottiUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = C0672368287612AE00F91288 /* SpottiUITests.m */; };
 		C067236B287612AE00F91288 /* SpottiUITestsLaunchTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C067236A287612AE00F91288 /* SpottiUITestsLaunchTests.m */; };
 		C067237D28763F8500F91288 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C067237C28763F8500F91288 /* LoginViewController.m */; };
+		C0E57F39289362E600AEDEC6 /* ExerciseDetailSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = C0E57F38289362E600AEDEC6 /* ExerciseDetailSegue.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -147,6 +148,8 @@
 		C067236A287612AE00F91288 /* SpottiUITestsLaunchTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SpottiUITestsLaunchTests.m; sourceTree = "<group>"; };
 		C067237B28763F8500F91288 /* LoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		C067237C28763F8500F91288 /* LoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		C0E57F37289362E600AEDEC6 /* ExerciseDetailSegue.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExerciseDetailSegue.h; sourceTree = "<group>"; };
+		C0E57F38289362E600AEDEC6 /* ExerciseDetailSegue.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ExerciseDetailSegue.m; sourceTree = "<group>"; };
 		DAC0DED881B0BEFE77AC8139 /* Pods-Spotti-SpottiUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Spotti-SpottiUITests.release.xcconfig"; path = "Target Support Files/Pods-Spotti-SpottiUITests/Pods-Spotti-SpottiUITests.release.xcconfig"; sourceTree = "<group>"; };
 		DF64F3C434B30DDEA6627A40 /* Pods-Spotti.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Spotti.release.xcconfig"; path = "Target Support Files/Pods-Spotti/Pods-Spotti.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -234,6 +237,8 @@
 				C0672350287612AE00F91288 /* LaunchScreen.storyboard */,
 				C0672353287612AE00F91288 /* Info.plist */,
 				C0672354287612AE00F91288 /* main.m */,
+				C0E57F37289362E600AEDEC6 /* ExerciseDetailSegue.h */,
+				C0E57F38289362E600AEDEC6 /* ExerciseDetailSegue.m */,
 			);
 			path = Spotti;
 			sourceTree = "<group>";
@@ -589,6 +594,7 @@
 			files = (
 				C01E97A928764DD00037DAE3 /* BasicInformationViewController.m in Sources */,
 				C055F718288A087000E10231 /* ListofWorkoutsViewController.m in Sources */,
+				C0E57F39289362E600AEDEC6 /* ExerciseDetailSegue.m in Sources */,
 				C0109C1C2878B50A006FD29C /* ExerciseCell.m in Sources */,
 				C062FF58287E1746004F3B7E /* ProfileViewController.m in Sources */,
 				C055F7152887624900E10231 /* PriorityQueueNode.m in Sources */,

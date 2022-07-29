@@ -1094,7 +1094,7 @@
                                         <connections>
                                             <outlet property="exerciseName" destination="8TI-yt-J17" id="Bdg-7S-ahQ"/>
                                             <outlet property="focusArea" destination="kHP-ln-r4C" id="bQd-sT-dbk"/>
-                                            <segue destination="013-F2-45E" kind="show" id="JzT-1z-f9I"/>
+                                            <segue destination="013-F2-45E" kind="show" customClass="ExerciseDetailSegue" id="JzT-1z-f9I"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -1450,7 +1450,7 @@
             <objects>
                 <viewController id="013-F2-45E" customClass="ExerciseDetailsViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="JDF-79-hbz">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="X0U-VL-Wnf" customClass="PFImageView">
@@ -1905,7 +1905,7 @@
     </designables>
     <inferredMetricsTieBreakers>
         <segue reference="9CH-gh-V5S"/>
-        <segue reference="JzT-1z-f9I"/>
+        <segue reference="67D-DZ-SsI"/>
         <segue reference="h65-Qf-heI"/>
         <segue reference="NA6-SA-lHT"/>
     </inferredMetricsTieBreakers>

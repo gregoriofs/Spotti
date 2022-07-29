@@ -17,7 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end
 
-@interface WorkoutOverviewViewController : UIViewController
+@interface WorkoutOverviewViewController : UIViewController <UIViewControllerAnimatedTransitioning, UIViewControllerTransitioningDelegate>
 @property (strong, nonatomic) Workout *workout;
 @property (strong, nonatomic) NSArray __block *exercises;
 @property (assign, nonatomic) BOOL fromList;

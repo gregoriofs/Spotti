@@ -11,7 +11,6 @@
 
 @interface ExerciseDetailsViewController ()
 @property (weak, nonatomic) IBOutlet PFImageView *exerciseImage;
-@property (weak, nonatomic) IBOutlet UILabel *exerciseName;
 @property (weak, nonatomic) IBOutlet UILabel *exerciseDescription;
 @end
 //TODO: add image to detail view
