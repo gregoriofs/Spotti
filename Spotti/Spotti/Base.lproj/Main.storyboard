@@ -1059,7 +1059,7 @@
                                             <outlet property="addButton" destination="MD4-mI-4WV" id="zJo-d2-cJP"/>
                                             <outlet property="exerciseName" destination="6Jg-wD-xhk" id="z2i-y4-Unt"/>
                                             <outlet property="focusArea" destination="WS6-ap-oje" id="vek-HH-n26"/>
-                                            <segue destination="013-F2-45E" kind="show" identifier="showExerciseFromAdd" id="sXN-Zb-7aM"/>
+                                            <segue destination="013-F2-45E" kind="show" identifier="showExerciseFromAdd" customClass="ExerciseDetailSegue" id="sXN-Zb-7aM"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="exerciseListCellTwo" rowHeight="71" id="nVb-Be-eXp" customClass="ExerciseListCell2">
@@ -1450,7 +1450,7 @@
             <objects>
                 <viewController id="013-F2-45E" customClass="ExerciseDetailsViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="JDF-79-hbz">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="X0U-VL-Wnf" customClass="PFImageView">
@@ -1905,7 +1905,7 @@
     </designables>
     <inferredMetricsTieBreakers>
         <segue reference="9CH-gh-V5S"/>
-        <segue reference="67D-DZ-SsI"/>
+        <segue reference="sXN-Zb-7aM"/>
         <segue reference="h65-Qf-heI"/>
         <segue reference="NA6-SA-lHT"/>
     </inferredMetricsTieBreakers>
