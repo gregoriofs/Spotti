@@ -11,6 +11,7 @@ pod 'AFNetworking'
 pod 'Parse/UI'
 pod 'AutoCompletion'
 pod 'MKDropdownMenu'
+pod 'ChameleonFramework'
 
   target 'SpottiTests' do
     inherit! :search_paths

@@ -31,7 +31,6 @@
 		C055F718288A087000E10231 /* ListofWorkoutsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C055F717288A087000E10231 /* ListofWorkoutsViewController.m */; };
 		C055F71B288F03AE00E10231 /* ExerciseListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C055F71A288F03AE00E10231 /* ExerciseListViewController.m */; };
 		C055F71E288F04A700E10231 /* ExerciseListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C055F71D288F04A700E10231 /* ExerciseListCell.m */; };
-		C055F721288F0A0100E10231 /* LoadingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C055F720288F0A0100E10231 /* LoadingCell.m */; };
 		C055F724288F5C0A00E10231 /* ExerciseListCell2.m in Sources */ = {isa = PBXBuildFile; fileRef = C055F723288F5C0A00E10231 /* ExerciseListCell2.m */; };
 		C062FF55287DEF3D004F3B7E /* ExerciseDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C062FF54287DEF3D004F3B7E /* ExerciseDetailsViewController.m */; };
 		C062FF58287E1746004F3B7E /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C062FF57287E1746004F3B7E /* ProfileViewController.m */; };
@@ -49,6 +48,8 @@
 		C0672369287612AE00F91288 /* SpottiUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = C0672368287612AE00F91288 /* SpottiUITests.m */; };
 		C067236B287612AE00F91288 /* SpottiUITestsLaunchTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C067236A287612AE00F91288 /* SpottiUITestsLaunchTests.m */; };
 		C067237D28763F8500F91288 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C067237C28763F8500F91288 /* LoginViewController.m */; };
+		C0E57F39289362E600AEDEC6 /* ExerciseDetailSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = C0E57F38289362E600AEDEC6 /* ExerciseDetailSegue.m */; };
+		C0F6FBBF28998E03006B0EA7 /* sour-moha-rb5uiqzCOTo-unsplash.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C0F6FBBE28998E03006B0EA7 /* sour-moha-rb5uiqzCOTo-unsplash.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -116,8 +117,6 @@
 		C055F71A288F03AE00E10231 /* ExerciseListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ExerciseListViewController.m; sourceTree = "<group>"; };
 		C055F71C288F04A700E10231 /* ExerciseListCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExerciseListCell.h; sourceTree = "<group>"; };
 		C055F71D288F04A700E10231 /* ExerciseListCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ExerciseListCell.m; sourceTree = "<group>"; };
-		C055F71F288F0A0100E10231 /* LoadingCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoadingCell.h; sourceTree = "<group>"; };
-		C055F720288F0A0100E10231 /* LoadingCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoadingCell.m; sourceTree = "<group>"; };
 		C055F722288F5C0A00E10231 /* ExerciseListCell2.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExerciseListCell2.h; sourceTree = "<group>"; };
 		C055F723288F5C0A00E10231 /* ExerciseListCell2.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ExerciseListCell2.m; sourceTree = "<group>"; };
 		C062FF53287DEF3D004F3B7E /* ExerciseDetailsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExerciseDetailsViewController.h; sourceTree = "<group>"; };
@@ -147,6 +146,9 @@
 		C067236A287612AE00F91288 /* SpottiUITestsLaunchTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SpottiUITestsLaunchTests.m; sourceTree = "<group>"; };
 		C067237B28763F8500F91288 /* LoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		C067237C28763F8500F91288 /* LoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		C0E57F37289362E600AEDEC6 /* ExerciseDetailSegue.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExerciseDetailSegue.h; sourceTree = "<group>"; };
+		C0E57F38289362E600AEDEC6 /* ExerciseDetailSegue.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ExerciseDetailSegue.m; sourceTree = "<group>"; };
+		C0F6FBBE28998E03006B0EA7 /* sour-moha-rb5uiqzCOTo-unsplash.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "sour-moha-rb5uiqzCOTo-unsplash.jpg"; path = "../../../../../Downloads/sour-moha-rb5uiqzCOTo-unsplash.jpg"; sourceTree = "<group>"; };
 		DAC0DED881B0BEFE77AC8139 /* Pods-Spotti-SpottiUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Spotti-SpottiUITests.release.xcconfig"; path = "Target Support Files/Pods-Spotti-SpottiUITests/Pods-Spotti-SpottiUITests.release.xcconfig"; sourceTree = "<group>"; };
 		DF64F3C434B30DDEA6627A40 /* Pods-Spotti.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Spotti.release.xcconfig"; path = "Target Support Files/Pods-Spotti/Pods-Spotti.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -231,9 +233,12 @@
 				C0672346287612AD00F91288 /* SceneDelegate.m */,
 				C067234B287612AD00F91288 /* Main.storyboard */,
 				C067234E287612AE00F91288 /* Assets.xcassets */,
+				C0F6FBBE28998E03006B0EA7 /* sour-moha-rb5uiqzCOTo-unsplash.jpg */,
 				C0672350287612AE00F91288 /* LaunchScreen.storyboard */,
 				C0672353287612AE00F91288 /* Info.plist */,
 				C0672354287612AE00F91288 /* main.m */,
+				C0E57F37289362E600AEDEC6 /* ExerciseDetailSegue.h */,
+				C0E57F38289362E600AEDEC6 /* ExerciseDetailSegue.m */,
 			);
 			path = Spotti;
 			sourceTree = "<group>";
@@ -284,8 +289,6 @@
 				C055F717288A087000E10231 /* ListofWorkoutsViewController.m */,
 				C055F719288F03AE00E10231 /* ExerciseListViewController.h */,
 				C055F71A288F03AE00E10231 /* ExerciseListViewController.m */,
-				C055F71F288F0A0100E10231 /* LoadingCell.h */,
-				C055F720288F0A0100E10231 /* LoadingCell.m */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -460,6 +463,7 @@
 				C0672352287612AE00F91288 /* LaunchScreen.storyboard in Resources */,
 				C067234F287612AE00F91288 /* Assets.xcassets in Resources */,
 				C067234D287612AD00F91288 /* Main.storyboard in Resources */,
+				C0F6FBBF28998E03006B0EA7 /* sour-moha-rb5uiqzCOTo-unsplash.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -589,6 +593,7 @@
 			files = (
 				C01E97A928764DD00037DAE3 /* BasicInformationViewController.m in Sources */,
 				C055F718288A087000E10231 /* ListofWorkoutsViewController.m in Sources */,
+				C0E57F39289362E600AEDEC6 /* ExerciseDetailSegue.m in Sources */,
 				C0109C1C2878B50A006FD29C /* ExerciseCell.m in Sources */,
 				C062FF58287E1746004F3B7E /* ProfileViewController.m in Sources */,
 				C055F7152887624900E10231 /* PriorityQueueNode.m in Sources */,
@@ -597,7 +602,6 @@
 				C0672344287612AD00F91288 /* AppDelegate.m in Sources */,
 				C0672355287612AE00F91288 /* main.m in Sources */,
 				C055F7122887617500E10231 /* PriorityQueue.m in Sources */,
-				C055F721288F0A0100E10231 /* LoadingCell.m in Sources */,
 				C0109C0728774925006FD29C /* APIManager.m in Sources */,
 				C062FF5E287E3B6E004F3B7E /* AddingFriendsViewController.m in Sources */,
 				C0109C1628776ACC006FD29C /* FrequencyViewController.m in Sources */,

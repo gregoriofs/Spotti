@@ -7,17 +7,17 @@
 
 #import "FriendProfileViewController.h"
 #import "WorkoutOverviewViewController.h"
+#import "ListofWorkoutsViewController.h"
 
 @interface FriendProfileViewController ()
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UIButton *addFriendButton;
 @end
-
 @implementation FriendProfileViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [[GymUser currentUser] fetch];
+    [[GymUser currentUser] fetchInBackground];
     if([self checkIfFriend:self.user.objectId]){
         [self.addFriendButton setTitle:@"Already Friends" forState:UIControlStateNormal];
     }
@@ -47,11 +47,9 @@
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if([[segue identifier] isEqualToString:@"showingFriendsWorkoutSegue"]){
-        UINavigationController *destination = [segue destinationViewController];
-        WorkoutOverviewViewController *newVC = (WorkoutOverviewViewController *)destination.topViewController;
-        newVC.workout = self.arrayOfWorkouts[[self.tableView indexPathForCell:sender].row];
-        newVC.fromList = YES;
+    if([[segue identifier] isEqualToString:@"friendExercises"]){
+        ListofWorkoutsViewController *destination = [segue destinationViewController];
+        destination.user = self.user;
     }
 }
 
