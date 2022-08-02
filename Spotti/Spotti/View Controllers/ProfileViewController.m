@@ -38,7 +38,6 @@
     self.workoutTableView.delegate = self;
     self.workoutTableView.dataSource = self;
     GymUser *currentUser = [[self.parentViewController restorationIdentifier] isEqualToString:@"homeVC"] ? [GymUser currentUser] : self.user;
-    [currentUser fetchIfNeeded];
     self.name.text   = [NSString stringWithFormat:@"%@ %@",currentUser.firstName, currentUser.lasttName];
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     formatter.dateFormat = @"MM/d/y, hh:mm aa";
@@ -64,12 +63,15 @@
     self.scrollView.delegate = self;
     self.scrollView.bounces = false;
     [self.favoriteExercise sizeToFit];
+    [self.gymLocation sizeToFit];
     self.addProfilePictureButton.layer.cornerRadius = 5;
     [self findFavoriteExercise:^(NSString *mostPopular, NSString *mostReps) {
             self.favoriteExercise.text = [NSString stringWithFormat:@"Favorite Exercise: %@", mostPopular];
         self.personalRecord.text = mostReps;
     }];
 }
+
+
 
 - (IBAction)didTapProfilePicture:(id)sender {
     UIImagePickerController *imagePickerVC = [UIImagePickerController new];
@@ -100,7 +102,7 @@
             for(Exercise *exercise in objects){
                 if([exercise.lastWeight intValue] >= maxWeight){
                     maxWeight = [exercise.lastWeight intValue];
-                    mostWeightExercise = [NSString stringWithFormat:@"%@ for %d reps with%d lbs", exercise.exerciseName, [exercise.numberReps intValue], [exercise.lastWeight intValue]];
+                    mostWeightExercise = [NSString stringWithFormat:@"%@ for %d reps with %d lbs", exercise.exerciseName, [exercise.numberReps intValue], [exercise.lastWeight intValue]];
                 }
                 NSString *key = exercise.exerciseName;
                 if(![[frequency allKeys] containsObject:key]){
@@ -155,7 +157,6 @@
     PFQuery *query = [PFQuery queryWithClassName:@"Workout"];
     GymUser *user = [[self.parentViewController restorationIdentifier] isEqualToString:@"homeVC"] ? [GymUser currentUser] : self.user;
     [query whereKey:@"user" equalTo:user];
-    [query setLimit:5];
     [query orderByDescending:@"createdAt"];
     [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
             if(error != nil){

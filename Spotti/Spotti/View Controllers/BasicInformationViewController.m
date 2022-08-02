@@ -44,6 +44,7 @@
     currentUser[@"lastWorkout"] = [NSDate date];
     currentUser[@"streak"] = [NSNumber numberWithInt:0];
     currentUser[@"gym"] = self.gym.text;
+    currentUser[@"atGym"] = NO;
     [currentUser saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error){
             if(succeeded){
                 [self performSegueWithIdentifier:@"successfulInfoSubmission" sender:self];
@@ -53,6 +54,7 @@
             }
     }];
 }
+
 - (IBAction)dismissKeyboard:(id)sender {
     [self.view endEditing:YES];
 }

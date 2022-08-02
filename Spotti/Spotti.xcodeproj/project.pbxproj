@@ -49,6 +49,7 @@
 		C067236B287612AE00F91288 /* SpottiUITestsLaunchTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C067236A287612AE00F91288 /* SpottiUITestsLaunchTests.m */; };
 		C067237D28763F8500F91288 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C067237C28763F8500F91288 /* LoginViewController.m */; };
 		C0E57F39289362E600AEDEC6 /* ExerciseDetailSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = C0E57F38289362E600AEDEC6 /* ExerciseDetailSegue.m */; };
+		C0F6FBBF28998E03006B0EA7 /* sour-moha-rb5uiqzCOTo-unsplash.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C0F6FBBE28998E03006B0EA7 /* sour-moha-rb5uiqzCOTo-unsplash.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -147,6 +148,7 @@
 		C067237C28763F8500F91288 /* LoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		C0E57F37289362E600AEDEC6 /* ExerciseDetailSegue.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExerciseDetailSegue.h; sourceTree = "<group>"; };
 		C0E57F38289362E600AEDEC6 /* ExerciseDetailSegue.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ExerciseDetailSegue.m; sourceTree = "<group>"; };
+		C0F6FBBE28998E03006B0EA7 /* sour-moha-rb5uiqzCOTo-unsplash.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "sour-moha-rb5uiqzCOTo-unsplash.jpg"; path = "../../../../../Downloads/sour-moha-rb5uiqzCOTo-unsplash.jpg"; sourceTree = "<group>"; };
 		DAC0DED881B0BEFE77AC8139 /* Pods-Spotti-SpottiUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Spotti-SpottiUITests.release.xcconfig"; path = "Target Support Files/Pods-Spotti-SpottiUITests/Pods-Spotti-SpottiUITests.release.xcconfig"; sourceTree = "<group>"; };
 		DF64F3C434B30DDEA6627A40 /* Pods-Spotti.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Spotti.release.xcconfig"; path = "Target Support Files/Pods-Spotti/Pods-Spotti.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -231,6 +233,7 @@
 				C0672346287612AD00F91288 /* SceneDelegate.m */,
 				C067234B287612AD00F91288 /* Main.storyboard */,
 				C067234E287612AE00F91288 /* Assets.xcassets */,
+				C0F6FBBE28998E03006B0EA7 /* sour-moha-rb5uiqzCOTo-unsplash.jpg */,
 				C0672350287612AE00F91288 /* LaunchScreen.storyboard */,
 				C0672353287612AE00F91288 /* Info.plist */,
 				C0672354287612AE00F91288 /* main.m */,
@@ -460,6 +463,7 @@
 				C0672352287612AE00F91288 /* LaunchScreen.storyboard in Resources */,
 				C067234F287612AE00F91288 /* Assets.xcassets in Resources */,
 				C067234D287612AD00F91288 /* Main.storyboard in Resources */,
+				C0F6FBBF28998E03006B0EA7 /* sour-moha-rb5uiqzCOTo-unsplash.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

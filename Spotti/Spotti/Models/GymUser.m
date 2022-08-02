@@ -22,5 +22,6 @@
 @dynamic streak;
 @dynamic gym;
 @dynamic lastLocation;
+@dynamic atGym;
 @end
 
