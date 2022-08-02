@@ -98,3 +98,7 @@ Progress Update Demo 7/20:
 
 ![ezgif com-gif-maker (10)](https://user-images.githubusercontent.com/74148230/180091232-da3dceec-1d7d-4c2f-ace0-75fb60b61400.gif)
 
+Progress Update Demo 8/2: Completed Notification Complexity Feature
+
+![ezgif com-gif-maker (13)](https://user-images.githubusercontent.com/74148230/182494648-9089e1fb-1dcc-4048-9f6f-5af82254b81d.gif)
+
