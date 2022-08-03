@@ -12,6 +12,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface WorkoutCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *workoutName;
+@property (weak, nonatomic) IBOutlet UILabel *createdAt;
+@property (weak, nonatomic) IBOutlet UILabel *complete;
 @property (strong, nonatomic) Workout *workout;
 @end
 

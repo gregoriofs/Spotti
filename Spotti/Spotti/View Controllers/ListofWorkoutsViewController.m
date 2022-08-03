@@ -46,7 +46,12 @@
     WorkoutCell *cell = [tableView dequeueReusableCellWithIdentifier:@"WorkoutCell"];
     Workout *workout = self.arrayOfWorkouts[indexPath.row];
     cell.workout = workout;
-    cell.workoutName.text = [NSString stringWithFormat:@"Workout %@",[workout.focusAreas componentsJoinedByString:@","]];
+    cell.complete.text = workout.completed ? @"Complete" : @"Incomplete";
+    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+    [dateFormat setDateFormat:@"yyyy-MM-dd"];
+    NSString *date = [dateFormat stringFromDate:workout.createdAt];
+    cell.createdAt.text = date;
+    cell.workoutName.text = [NSString stringWithFormat:@"Workout: %@",[workout.focusAreas componentsJoinedByString:@","]];
     return cell;
 }
 

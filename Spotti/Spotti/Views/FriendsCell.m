@@ -20,6 +20,8 @@
     _user = user;
     _username.text = user.username;
     _gym.text = user.gym;
+    _profileImage.file = user.profilePic;
+    [_profileImage loadInBackground];
 }
 
 @end

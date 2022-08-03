@@ -15,8 +15,12 @@
 #import "ProfileViewController.h"
 #import "MKDropdownMenu.h"
 #import "Exercise.h"
+#import "ObjectivesViewController.h"
+#import "WorkoutOverviewViewController.h"
+#import "MapKit/MapKit.h"
 
-@interface HomeViewController () <UNUserNotificationCenterDelegate, UITabBarControllerDelegate, MKDropdownMenuDataSource, MKDropdownMenuDelegate>
+
+@interface HomeViewController () <UNUserNotificationCenterDelegate, UITabBarControllerDelegate>
 
 @property (strong, nonatomic) UNUserNotificationCenter *center;
 @property (weak, nonatomic) IBOutlet UIButton *createSessionButton;
@@ -30,7 +34,9 @@
 @property (weak, nonatomic) IBOutlet UIButton *button2;
 @property (weak, nonatomic) IBOutlet UIButton *button;
 @property (weak, nonatomic) IBOutlet UIButton *button3;
+@property (weak, nonatomic) IBOutlet UIStackView *friendStackView;
 @property (strong, nonatomic) NSArray *exercises;
+@property (strong, nonatomic) NSArray *friendsAtGym;
 @end
 
 @implementation HomeViewController
@@ -42,14 +48,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.center = [UNUserNotificationCenter currentNotificationCenter];
-    [self.center getNotificationSettingsWithCompletionHandler:^(UNNotificationSettings * _Nonnull settings) {
-      if (settings.authorizationStatus != UNAuthorizationStatusAuthorized) {
-          self.hasNotificationPermission = NO;
-      }
-      else{
-          self.hasNotificationPermission = YES;
-      }
-    }];
     APIManager *manager = [APIManager new];
     [manager exerciseList:1 allExercises:YES completionBlock:^(NSArray * _Nonnull exercises) {
         self.exercises = exercises;
@@ -63,7 +61,7 @@
                             [self getMostRecentExercise:exercise.exerciseName completionBlock:^(NSArray *exercises) {
                                                             self.exercise1 = exercises;
                                 dispatch_async(dispatch_get_main_queue(), ^{
-                                    [self setUpStackView:i];
+                                    [self setUpStackView:i stackView:NO];
                                 });
                             }];
                         }];
@@ -73,7 +71,7 @@
                             [self getMostRecentExercise:exercise.exerciseName completionBlock:^(NSArray *exercises) {
                                                             self.exercise2 = exercises;
                                 dispatch_async(dispatch_get_main_queue(), ^{
-                                    [self setUpStackView:i];
+                                    [self setUpStackView:i stackView:NO];
                                 });
                             }];
                         }];
@@ -83,7 +81,7 @@
                             [self getMostRecentExercise:exercise.exerciseName completionBlock:^(NSArray *exercises) {
                                                             self.exercise3 = exercises;
                                 dispatch_async(dispatch_get_main_queue(), ^{
-                                    [self setUpStackView:i];
+                                    [self setUpStackView:i stackView:NO];
                                 });
                             }];
                         }];
@@ -106,60 +104,136 @@
             }
         });
     }];
-    [self setUpStackView:1];
+    [self setUpStackView:1 stackView:NO];
     self.stackView.distribution = UIStackViewDistributionEqualSpacing;
     self.stackView.spacing = 5.0;
+    self.friendStackView.spacing = 5.0;
     self.center.delegate = self;
     self.createSessionButton.layer.cornerRadius = 5;
     self.addFriendsButton.layer.cornerRadius = 5;
     self.exerciseListButton.layer.cornerRadius = 5;
+    [self addShadow:self.createSessionButton];
+    [self addShadow:self.exerciseListButton];
+    [self addShadow:self.addFriendsButton];
+    [self findFriendsAtGym:^(NSArray *friendsAtGym) {
+        self.friendsAtGym = friendsAtGym;
+        [self setUpStackView:nil stackView:YES];
+    }];
     self.welcomeLabel.text = [NSString stringWithFormat:@"Welcome %@!", [GymUser currentUser].username];
+//    [GymUser currentUser] curre
 }
 
-- (void)setUpStackView:(NSInteger)indexToInsert{
-    if(self.stackView.arrangedSubviews.count == 0){
-        [self.stackView addArrangedSubview:[self makeViewforStackView:nil]];
-        [self.stackView addArrangedSubview:[self makeViewforStackView:nil]];
-        [self.stackView addArrangedSubview:[self makeViewforStackView:nil]];
+- (void)addShadow: (UIButton *)button {
+    button.layer.shadowColor = [[UIColor grayColor] CGColor];
+    button.layer.shadowOffset = CGSizeMake(0, 5.0);
+    button.layer.shadowRadius = 5;
+    button.layer.shadowOpacity = 1.0;
+}
+
+- (IBAction)clickButton:(id)sender {
+    [sender setHighlighted:YES];
+}
+
+- (void)findFriendsAtGym:(void(^)(NSArray* friendsAtGym))completionBlock{
+    NSArray *friends = [GymUser currentUser].friends;
+    NSMutableArray *atGym = [NSMutableArray new];
+    for(GymUser* friend in friends){
+        [friend fetchIfNeededInBackgroundWithBlock:^(PFObject * _Nullable object, NSError * _Nullable error) {
+            GymUser *user = (GymUser *)object;
+            if(user.atGym){
+                [atGym addObject:user];
+            }
+        }];
     }
-    else{
-        UIView *newView = [self makeViewforStackView:self.exercise1[0]];;
-        if(indexToInsert == 1){
-            newView = [self makeViewforStackView:self.exercise2[0]];
+    completionBlock([atGym copy]);
+}
+
+- (void)setUpStackView:(NSInteger)indexToInsert stackView:(BOOL)isFriends{
+    if(!isFriends){
+        if(self.stackView.arrangedSubviews.count == 0){
+            [self.stackView addArrangedSubview:[self makeViewforStackView:nil friendView:nil]];
+            [self.stackView addArrangedSubview:[self makeViewforStackView:nil friendView:nil]];
+            [self.stackView addArrangedSubview:[self makeViewforStackView:nil friendView:nil]];
         }
-        else if (indexToInsert == 2){
-            newView = [self makeViewforStackView:self.exercise3[0]];
+        else{
+            UIView *newView = [self makeViewforStackView:self.exercise1[0] friendView:nil];;
+            if(indexToInsert == 1){
+                newView = [self makeViewforStackView:self.exercise2[0] friendView:nil];
+            }
+            else if (indexToInsert == 2){
+                newView = [self makeViewforStackView:self.exercise3[0] friendView:nil];
+            }
+            [self.stackView.arrangedSubviews[indexToInsert] removeFromSuperview];
+            [self.stackView insertArrangedSubview:newView atIndex:indexToInsert];
         }
-        [self.stackView.arrangedSubviews[indexToInsert] removeFromSuperview];
-        [self.stackView insertArrangedSubview:newView atIndex:indexToInsert];
+    }
+    else {
+        //Commented out code is the code that would be applied once there's actual friends at gym, will currently maintain placeholder code
+        // as example of what it would look like
+        //        NSInteger shownFriends = self.friendsAtGym.count > 3 ? 3 : self.friendsAtGym.count;
+        //        for(int i = 0; i < shownFriends; i++){
+        //            UIView *view = [self makeViewforStackView:nil friendView:self.friendsAtGym[i]];
+        //            [self.friendStackView addArrangedSubview:view];
+        //        }
+        NSInteger shownFriends = 3;
+        NSArray *friends = [GymUser currentUser].friends;
+        for(int i = 0; i < shownFriends; i++){
+            UIView *view = [self makeViewforStackView:nil friendView:friends[i]];
+            [self.friendStackView addArrangedSubview:view];
+        }
     }
 }
 
-- (UIView *)makeViewforStackView:(Exercise *)exercise{
+- (UIView *)makeViewforStackView:(Exercise *)exercise friendView:(GymUser *)friend{
     UIView *newView = [UIView new];
-    [newView setBackgroundColor:[UIColor colorWithRed:51.0f/255.0f green:102.0f/255.0f blue:153.0f/255.0f alpha:1.0f]];
-    [newView.heightAnchor constraintEqualToConstant:self.stackView.frame.size.height/3].active = true;
-    [newView.widthAnchor constraintEqualToConstant:20].active = true;
-    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(5, 25, 50, 30)];
-    if(exercise != nil){
-        UILabel *reps = [[UILabel alloc] initWithFrame:CGRectMake(190, 25, 50, 30)];
-        UILabel *sets = [[UILabel alloc] initWithFrame:CGRectMake(250, 25, 50, 30)];
-        label.text = exercise.exerciseName;
-        sets.text = [NSString stringWithFormat:@"%@ sets", exercise.numberSets];
-        reps.text = [NSString stringWithFormat:@"%@ sets", exercise.numberReps];
-        [reps sizeToFit];
-        [sets sizeToFit];
-        [newView addSubview:reps];
-        [newView addSubview:sets];
+    if(!friend){
+        [newView setBackgroundColor:[UIColor colorWithRed:51.0f/255.0f green:102.0f/255.0f blue:153.0f/255.0f alpha:1.0f]];
+        [newView.heightAnchor constraintEqualToConstant:self.stackView.frame.size.height/3].active = true;
+        [newView.widthAnchor constraintEqualToConstant:20].active = true;
+        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(5, 25, 50, 30)];
+        if(exercise != nil){
+            UILabel *reps = [[UILabel alloc] initWithFrame:CGRectMake(190, 25, 50, 30)];
+            UILabel *sets = [[UILabel alloc] initWithFrame:CGRectMake(250, 25, 50, 30)];
+            label.text = exercise.exerciseName;
+            sets.text = [NSString stringWithFormat:@"%@ sets", exercise.numberSets];
+            reps.text = [NSString stringWithFormat:@"%@ reps", exercise.numberReps];
+            [reps sizeToFit];
+            [sets sizeToFit];
+            [newView addSubview:reps];
+            [newView addSubview:sets];
+        }
+        else{
+            label.text = @"Please choose an exercise!";
+        }
+        [label setTextColor:[UIColor whiteColor]];
+        [label sizeToFit];
+        label.numberOfLines = 0;
+        newView.layer.cornerRadius = 5;
+        [newView addSubview:label];
     }
-    else{
-        label.text = @"Please choose an exercise!";
+    else {
+        [newView setBackgroundColor:[UIColor colorWithRed:51.0f/255.0f green:102.0f/255.0f blue:153.0f/255.0f alpha:1.0f]];
+        [newView.heightAnchor constraintEqualToConstant:self.friendStackView.frame.size.height/3].active = true;
+        [newView.widthAnchor constraintEqualToConstant:20].active = true;
+        newView.layer.cornerRadius = 5;
+        UILabel *name = [[UILabel alloc] initWithFrame:CGRectMake(70, newView.frame.size.height/2, 40, 30)];
+        UILabel *gymName = [[UILabel alloc] initWithFrame:CGRectMake(140, newView.frame.size.height/2, 40, 30)];
+        PFImageView *profilePic = [[PFImageView alloc] initWithFrame:CGRectMake(5, newView.frame.size.height/2 + 5, 50, 30)];
+        newView.layer.borderWidth = 5;  
+        newView.layer.borderColor = [UIColor blackColor].CGColor;
+        [friend fetchInBackgroundWithBlock:^(PFObject * _Nullable object, NSError * _Nullable error) {
+            profilePic.file = ((GymUser *)object).profilePic;
+            [profilePic loadInBackground];
+            name.text = friend.username;
+            gymName.text = friend.gym ? friend.gym : @"the gym";
+        }];
+        [gymName setTextColor:[UIColor whiteColor]];
+        [gymName sizeToFit];
+        [name setTextColor:[UIColor whiteColor]];
+        [newView addSubview:gymName];
+        [newView addSubview:name];
+        [newView addSubview:profilePic];
     }
-    [label setTextColor:[UIColor whiteColor]];
-    [label sizeToFit];
-    label.numberOfLines = 0;
-    newView.layer.cornerRadius = 5;
-    [newView addSubview:label];
     return newView;
 }
 
@@ -169,9 +243,9 @@
 
 - (IBAction)changeGraphInfo:(UIGestureRecognizer *)sender {
     if(sender.state != UIGestureRecognizerStateEnded){
-        UIView *view1 = [self makeViewforStackView:self.exercise1[1]];
-        UIView *view2 = [self makeViewforStackView:self.exercise2[1]];
-        UIView *view3 = [self makeViewforStackView:self.exercise3[1]];
+        UIView *view1 = [self makeViewforStackView:self.exercise1[1] friendView:nil];
+        UIView *view2 = [self makeViewforStackView:self.exercise2[1] friendView:nil];
+        UIView *view3 = [self makeViewforStackView:self.exercise3[1] friendView:nil];
         [view1 setBackgroundColor:[self hasImproved:self.exercise1[0] lessRecent:self.exercise1[1]]];
         [view2 setBackgroundColor:[self hasImproved:self.exercise2[0] lessRecent:self.exercise2[1]]];
         [view3 setBackgroundColor:[self hasImproved:self.exercise3[0] lessRecent:self.exercise3[1]]];
@@ -183,40 +257,11 @@
     }
     else {
         for(int j = 0 ; j < 3; j++){
-            [self setUpStackView:j];
+            [self setUpStackView:j stackView:NO];
         }
     }
 }
-
-- (void)scheduleLackOfExerciseNotification{
-    //Timer that actively checks last workout asynchronously
-    GymUser *currentUser = [GymUser currentUser];
-    if([[NSDate date] timeIntervalSinceDate:currentUser.lastWorkout] > 1){
-        [self scheduleNotification:@"No Workout Completed In A While" contentBody:@"We haven't seen you in a while! Come back and complete a workout to get back on track!" identifier:@"LackOfWorkoutNotification"];
-    }
-}
-
-- (void)scheduleEmptyWorkoutNotification{
-        PFQuery *query = [PFQuery queryWithClassName:@"Workout"];
-        [query whereKey:@"completed" equalTo:[NSNumber numberWithBool:NO]];
-        [query whereKey:@"user" equalTo:[GymUser currentUser]];
-        [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error){
-            if(error != nil){
-                NSLog(@"%@",error.localizedDescription);
-            }
-            //Filter by workouts that are more than a day old; need to figure out how to have it continuously checking
-            NSArray *incompleteForMoreThanADay = [objects filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(Workout *evaluatedObject, NSDictionary<NSString *,id> * _Nullable bindings) {
-                return [[NSDate date] timeIntervalSinceDate:evaluatedObject.createdAt] > 1;
-            }
-                                                                                      ]
-            ];
-            if(incompleteForMoreThanADay.count != 0){
-                [self scheduleNotification:@"Unfinished Workouts!" contentBody:[NSString stringWithFormat:@"You have %lu unfinished workout(s). Come back and complete them!", (long)incompleteForMoreThanADay.count] identifier:@"EmptyWorkoutNotification"];
-            }
-        }];
-}
-
--(void)getMostRecentExercise:(NSString *)exerciseName completionBlock:(void(^)(NSArray *exercises))completion{
+- (void)getMostRecentExercise:(NSString *)exerciseName completionBlock:(void(^)(NSArray *exercises))completion{
     PFQuery *query = [PFQuery queryWithClassName:@"Exercise"];
     [query whereKey:@"user" equalTo:[GymUser currentUser]];
     [query whereKey:@"exerciseName" equalTo:exerciseName];
@@ -227,11 +272,12 @@
     }];
 }
 
-- (void)scheduleNotification: title contentBody: contentBody identifier:identifier{
+     - (void)scheduleNotification:(NSString *)title contentBody:(NSString *)contentBody identifier:(NSString *)identifier categoryIdentifier:(NSString *)category{
     UNMutableNotificationContent *content = [UNMutableNotificationContent new];
     content.title = title;
     content.body = contentBody;
     content.sound = [UNNotificationSound defaultSound];
+    content.categoryIdentifier = category;
     UNTimeIntervalNotificationTrigger *trigger = [UNTimeIntervalNotificationTrigger triggerWithTimeInterval:1 repeats:NO];
     UNNotificationRequest *request = [UNNotificationRequest requestWithIdentifier:identifier content:content trigger:trigger];
     [self.center addNotificationRequest:request withCompletionHandler:^(NSError *error){
@@ -254,21 +300,33 @@
     }
 }
 
-- (NSInteger)numberOfComponentsInDropdownMenu:(nonnull MKDropdownMenu *)dropdownMenu {
-    return 1;
-}
-
-- (NSString *)dropdownMenu:(MKDropdownMenu *)dropdownMenu titleForComponent:(NSInteger)component{
-    return [NSString stringWithFormat:@"%ld", (long)component];
-}
-
-- (NSInteger)dropdownMenu:(nonnull MKDropdownMenu *)dropdownMenu numberOfRowsInComponent:(NSInteger)component {
-    return self.exercises.count;
-}
-
-- (NSString *)dropdownMenu:(MKDropdownMenu *)dropdownMenu titleForRow:(NSInteger)row forComponent:(NSInteger)component{
-    Exercise *exercise = self.exercises[row];
-    return exercise.exerciseName;
-}
+- (void)userNotificationCenter:(UNUserNotificationCenter *)center didReceiveNotificationResponse:(UNNotificationResponse *)response withCompletionHandler:(void (^)(void))completionHandler{
+        if([response.actionIdentifier isEqualToString:@"takeToWorkout"]){
+            SceneDelegate *myDelegate = (SceneDelegate *)self.view.window.windowScene.delegate;
+            UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+            ObjectivesViewController *start = [storyboard instantiateViewControllerWithIdentifier:@"focusAreaVC"]; 
+            myDelegate.window.rootViewController = start;
+        }
+        else{
+            PFQuery *query = [PFQuery queryWithClassName:@"Workout"];
+            GymUser *user = [GymUser currentUser];
+            [query whereKey:@"user" equalTo:user];
+            [query orderByDescending:@"createdAt"];
+            [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
+                if(error != nil){
+                    NSLog(@"%@", error.localizedDescription);
+                    }
+                else {
+                    SceneDelegate *myDelegate = (SceneDelegate *)self.view.window.windowScene.delegate;
+                    Workout *current = objects[0];
+                    UIStoryboard *main = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+                    UINavigationController *lastWorkout = [main instantiateViewControllerWithIdentifier:@"workoutOverview"];
+                    ((WorkoutOverviewViewController *)lastWorkout.topViewController).workout = current;
+                    ((WorkoutOverviewViewController *)lastWorkout.topViewController).fromList = NO;
+                    myDelegate.window.rootViewController = lastWorkout;
+                }
+            }];
+        }
+    }
 
 @end

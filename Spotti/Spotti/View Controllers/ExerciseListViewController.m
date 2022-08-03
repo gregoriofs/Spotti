@@ -52,10 +52,20 @@
     if(!self.addingExercise){
         cell = [tableView dequeueReusableCellWithIdentifier:@"exerciseListCellTwo"forIndexPath:indexPath];
     }
+    APIManager *manager = [APIManager new];
     Exercise *exercise = self.exerciseList[indexPath.row];
     cell.exercise = exercise;
     cell.exerciseName.text = exercise.exerciseName;
-    cell.focusArea.text = [exercise.muscles componentsJoinedByString:@","];
+    [cell.exerciseName sizeToFit];
+    NSMutableSet *muscleString = [NSMutableSet new];
+    for(int i = 0; i < exercise.muscles.count;i++){
+        for(NSString *key in [manager.muscleNumbers allKeys]){
+            if([manager.muscleNumbers[key] containsObject:exercise.muscles[i]]){
+                [muscleString addObject:key];
+            }
+        }
+    }
+    cell.focusArea.text = [[muscleString allObjects] componentsJoinedByString:@", "] ;
     return cell;
 }
 
@@ -94,6 +104,5 @@
         Exercise *curr = self.exerciseList[[self.tableView indexPathForCell:sender].row];
         next.exercise = curr;
 }
-
 
 @end

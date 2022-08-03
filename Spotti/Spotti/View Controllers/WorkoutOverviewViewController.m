@@ -36,6 +36,7 @@
     self.objectives.text = self.workout.objective;
     self.focusAreas.text = [self.workout.focusAreas componentsJoinedByString:@","];
     self.frequency.text = [NSString stringWithFormat:@"%d times a week", [self.workout.frequency intValue]];
+    
     if(!self.fromList){
         [self fillExerciseList];
     }
@@ -44,7 +45,12 @@
 - (void)fillExerciseList{
     APIManager *manager = [APIManager new];
     [manager exerciseListFromWorkout:self.workout currentExercise:1 completionBlock:^(NSArray *exercises){
-        self.workout.exerciseArray = [Exercise exercisesFromDictionaries:exercises shouldSave:YES];
+        if(!self.fromList){
+            self.workout.exerciseArray = [Exercise exercisesFromDictionaries:exercises shouldSave:YES];
+        }
+        else {
+            self.workout.exerciseArray = [Exercise exercisesFromDictionaries:exercises shouldSave:NO];
+        }
         [self.tableView reloadData];
     }];
 }
@@ -54,6 +60,7 @@
         NSIndexPath *currPath = [self.tableView indexPathForCell:sender];
         Exercise *currExercise = self.workout.exerciseArray[currPath.row];
         ExerciseDetailsViewController *next = [segue destinationViewController];
+        next.transitioningDelegate = self;
         next.exercise = currExercise;
     }
     else if([[segue identifier] isEqualToString:@"addingExercise"]){
@@ -66,7 +73,7 @@
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
     Exercise *currentExercise = self.workout.exerciseArray[indexPath.row];
     [currentExercise fetchIfNeeded];
-    ExerciseCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ExerciseCell"];
+    ExerciseCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ExerciseCell" forIndexPath:indexPath];
     if(([currentExercise.numberSets intValue] != 0) || ![self.workout.user.objectId isEqualToString:[GymUser currentUser].objectId]){
         ExerciseCellType2 *cell2 = [tableView dequeueReusableCellWithIdentifier:@"ExerciseCellV2"];
         [cell2 setExercise:currentExercise];
@@ -112,7 +119,7 @@
         [self saveWorkoutAndReturnHome];
     }
     else{
-        //add popup to tell them to fill in both reps and sets for a cell
+//        add popup to tell them to fill in both reps and sets for a cell
     }
 }
 

@@ -36,7 +36,6 @@
     self.searchBar.delegate = self;
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
-    self.tableView.estimatedRowHeight = 92;
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     self.currentPage = 0;
     self.locationManager = [CLLocationManager new];
@@ -107,10 +106,8 @@
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
     //tableview isn't set up correctly
     //TODO: figure out cell issue, cell setter to set all properties
-    FriendsCell *cell = [tableView dequeueReusableCellWithIdentifier:@"FriendsCell"forIndexPath:indexPath];
+    FriendsCell *cell = [tableView dequeueReusableCellWithIdentifier:@"FriendsCell" forIndexPath:indexPath];
     GymUser *cellUser = self.filteredList[indexPath.row];
-    cell.profileImage.file = cellUser.profilePic;
-    [cell.profileImage loadInBackground];
     [cell setUser:cellUser];
     return cell;
 }
