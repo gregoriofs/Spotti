@@ -120,6 +120,7 @@
         [self setUpStackView:nil stackView:YES];
     }];
     self.welcomeLabel.text = [NSString stringWithFormat:@"Welcome %@!", [GymUser currentUser].username];
+//    [GymUser currentUser] curre
 }
 
 - (void)addShadow: (UIButton *)button {
@@ -169,18 +170,17 @@
     else {
         //Commented out code is the code that would be applied once there's actual friends at gym, will currently maintain placeholder code
         // as example of what it would look like
+        //        NSInteger shownFriends = self.friendsAtGym.count > 3 ? 3 : self.friendsAtGym.count;
+        //        for(int i = 0; i < shownFriends; i++){
+        //            UIView *view = [self makeViewforStackView:nil friendView:self.friendsAtGym[i]];
+        //            [self.friendStackView addArrangedSubview:view];
+        //        }
         NSInteger shownFriends = 3;
-//        NSInteger shownFriends = self.friendsAtGym.count > 3 ? 3 : self.friendsAtGym.count;
         NSArray *friends = [GymUser currentUser].friends;
-        
         for(int i = 0; i < shownFriends; i++){
             UIView *view = [self makeViewforStackView:nil friendView:friends[i]];
             [self.friendStackView addArrangedSubview:view];
         }
-//        for(int i = 0; i < shownFriends; i++){
-//            UIView *view = [self makeViewforStackView:nil friendView:self.friendsAtGym[i]];
-//            [self.friendStackView addArrangedSubview:view];
-//        }
     }
 }
 
@@ -219,6 +219,8 @@
         UILabel *name = [[UILabel alloc] initWithFrame:CGRectMake(70, newView.frame.size.height/2, 40, 30)];
         UILabel *gymName = [[UILabel alloc] initWithFrame:CGRectMake(140, newView.frame.size.height/2, 40, 30)];
         PFImageView *profilePic = [[PFImageView alloc] initWithFrame:CGRectMake(5, newView.frame.size.height/2 + 5, 50, 30)];
+        newView.layer.borderWidth = 5;  
+        newView.layer.borderColor = [UIColor blackColor].CGColor;
         [friend fetchInBackgroundWithBlock:^(PFObject * _Nullable object, NSError * _Nullable error) {
             profilePic.file = ((GymUser *)object).profilePic;
             [profilePic loadInBackground];

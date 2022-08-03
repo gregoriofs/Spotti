@@ -108,7 +108,6 @@
 
 - (void)userNotificationCenter:(UNUserNotificationCenter *)center didReceiveNotificationResponse:(UNNotificationResponse *)response withCompletionHandler:(void (^)(void))completionHandler{
         if([response.actionIdentifier isEqualToString:@"takeToWorkout"]){
-            NSLog(@"here");
             [[NSNotificationCenter defaultCenter] postNotificationName:@"openObjectiveWorkout" object:nil];
             completionHandler();
         }
