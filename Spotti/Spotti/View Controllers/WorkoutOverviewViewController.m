@@ -92,7 +92,7 @@
         NSIndexPath *currPath = [NSIndexPath indexPathForRow:i inSection:0];
         ExerciseCell *cell = [self.tableView cellForRowAtIndexPath: currPath];
         if([[cell reuseIdentifier] isEqual:@"ExerciseCell"]){
-            if([cell.repsInput.text isEqualToString:@""] || [cell.setsInput.text isEqualToString:@""]){
+            if([cell.repsInput.text isEqualToString:@""] || [cell.setsInput.text isEqualToString:@""] || [cell.weightInput.text isEqualToString: @""]){
                 return YES;
             }
         }

@@ -613,6 +613,22 @@
             </objects>
             <point key="canvasLocation" x="1582.608695652174" y="1082.8125"/>
         </scene>
+        <!--Add Milestone-->
+        <scene sceneID="yiR-7U-lRh">
+            <objects>
+                <viewController id="5Gx-lX-ajF" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="87h-4f-u4v">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="11g-kv-FpM"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Add Milestone" image="plus" catalog="system" id="esT-7r-4c5"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cKH-CQ-HCp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-317" y="836"/>
+        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="vAK-oB-qOO">
             <objects>
@@ -625,6 +641,7 @@
                     </tabBar>
                     <connections>
                         <segue destination="ws8-Ff-ixJ" kind="relationship" relationship="viewControllers" id="ATY-dV-Fy1"/>
+                        <segue destination="5Gx-lX-ajF" kind="relationship" relationship="viewControllers" id="vO8-bd-OHA"/>
                         <segue destination="nb2-VU-EmP" kind="relationship" relationship="viewControllers" id="20e-i0-iJK"/>
                     </connections>
                 </tabBarController>
@@ -1182,11 +1199,11 @@
             </objects>
             <point key="canvasLocation" x="7621.739130434783" y="-885.26785714285711"/>
         </scene>
-        <!--Item-->
+        <!--Home-->
         <scene sceneID="jT9-mS-kN8">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ws8-Ff-ixJ" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="EpX-hU-WLL"/>
+                    <tabBarItem key="tabBarItem" title="Home" image="house" catalog="system" id="EpX-hU-WLL"/>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="ghd-lr-b9W"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="jEu-jF-Jvs">
@@ -1511,7 +1528,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="X0U-VL-Wnf">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="X0U-VL-Wnf" customClass="PFImageView">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="253"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
@@ -1736,7 +1753,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Joined" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="max-hJ-X55">
-                                        <rect key="frame" x="3" y="45" width="219" height="23"/>
+                                        <rect key="frame" x="3" y="41" width="245" height="31"/>
                                         <color key="backgroundColor" systemColor="systemBlueColor"/>
                                         <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="20"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1747,12 +1764,12 @@
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="BSe-Ed-mkg" secondAttribute="bottom" constant="85" id="2A8-gN-sDK"/>
                                     <constraint firstItem="dge-rQ-QVT" firstAttribute="top" secondItem="dvg-ox-XvW" secondAttribute="top" constant="7" id="7yy-zp-mmZ"/>
-                                    <constraint firstItem="bmB-78-Jsm" firstAttribute="top" secondItem="max-hJ-X55" secondAttribute="bottom" constant="18" id="96k-cX-wgx"/>
-                                    <constraint firstItem="max-hJ-X55" firstAttribute="top" secondItem="dge-rQ-QVT" secondAttribute="bottom" constant="16" id="9qT-4Q-yUO"/>
+                                    <constraint firstItem="bmB-78-Jsm" firstAttribute="top" secondItem="max-hJ-X55" secondAttribute="bottom" constant="14" id="96k-cX-wgx"/>
+                                    <constraint firstItem="max-hJ-X55" firstAttribute="top" secondItem="dge-rQ-QVT" secondAttribute="bottom" constant="12" id="9qT-4Q-yUO"/>
                                     <constraint firstItem="dge-rQ-QVT" firstAttribute="leading" secondItem="dvg-ox-XvW" secondAttribute="leading" constant="3" id="EvW-Iv-9nE"/>
                                     <constraint firstItem="BSe-Ed-mkg" firstAttribute="leading" secondItem="dge-rQ-QVT" secondAttribute="trailing" constant="71" id="KL2-B3-xut"/>
                                     <constraint firstItem="dge-rQ-QVT" firstAttribute="centerY" secondItem="BSe-Ed-mkg" secondAttribute="centerY" id="Nya-Jj-jDY"/>
-                                    <constraint firstItem="dge-rQ-QVT" firstAttribute="trailing" secondItem="max-hJ-X55" secondAttribute="trailing" id="P3m-BU-y4U"/>
+                                    <constraint firstItem="dge-rQ-QVT" firstAttribute="trailing" secondItem="max-hJ-X55" secondAttribute="trailing" constant="-26" id="P3m-BU-y4U"/>
                                     <constraint firstItem="BSe-Ed-mkg" firstAttribute="trailing" secondItem="dvg-ox-XvW" secondAttribute="trailingMargin" id="h22-6H-kWh"/>
                                     <constraint firstAttribute="bottom" secondItem="bmB-78-Jsm" secondAttribute="bottom" constant="21" id="hzR-ot-Yzu"/>
                                     <constraint firstItem="BSe-Ed-mkg" firstAttribute="baseline" secondItem="dge-rQ-QVT" secondAttribute="firstBaseline" id="nNE-G9-X3i"/>
@@ -1936,11 +1953,11 @@
         </designable>
     </designables>
     <inferredMetricsTieBreakers>
-        <segue reference="pwZ-5X-faz"/>
+        <segue reference="9CH-gh-V5S"/>
         <segue reference="JzT-1z-f9I"/>
         <segue reference="h65-Qf-heI"/>
         <segue reference="NA6-SA-lHT"/>
-        <segue reference="gj5-Aa-UbA"/>
+        <segue reference="0VH-oE-Wm9"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="arrowtriangle.right" catalog="system" width="128" height="113"/>
@@ -1954,6 +1971,9 @@
         </namedColor>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemBlueColor">
             <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

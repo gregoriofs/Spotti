@@ -106,8 +106,8 @@
     }];
     [self setUpStackView:1 stackView:NO];
     self.stackView.distribution = UIStackViewDistributionEqualSpacing;
-    self.stackView.spacing = 5.0;
-    self.friendStackView.spacing = 5.0;
+//    self.stackView.spacing = 5.0;
+//    self.friendStackView.spacing = 5.0;
     self.center.delegate = self;
     self.createSessionButton.layer.cornerRadius = 5;
     self.addFriendsButton.layer.cornerRadius = 5;
@@ -155,7 +155,7 @@
             [self.stackView addArrangedSubview:[self makeViewforStackView:nil friendView:nil]];
             [self.stackView addArrangedSubview:[self makeViewforStackView:nil friendView:nil]];
         }
-        else{
+        else {
             UIView *newView = [self makeViewforStackView:self.exercise1[0] friendView:nil];;
             if(indexToInsert == 1){
                 newView = [self makeViewforStackView:self.exercise2[0] friendView:nil];
@@ -175,8 +175,8 @@
         //            UIView *view = [self makeViewforStackView:nil friendView:self.friendsAtGym[i]];
         //            [self.friendStackView addArrangedSubview:view];
         //        }
-        NSInteger shownFriends = 3;
         NSArray *friends = [GymUser currentUser].friends;
+        NSInteger shownFriends = friends.count >= 3 ? 3 : friends.count;
         for(int i = 0; i < shownFriends; i++){
             UIView *view = [self makeViewforStackView:nil friendView:friends[i]];
             [self.friendStackView addArrangedSubview:view];
@@ -190,8 +190,10 @@
         [newView setBackgroundColor:[UIColor colorWithRed:51.0f/255.0f green:102.0f/255.0f blue:153.0f/255.0f alpha:1.0f]];
         [newView.heightAnchor constraintEqualToConstant:self.stackView.frame.size.height/3].active = true;
         [newView.widthAnchor constraintEqualToConstant:20].active = true;
+        newView.layer.borderWidth = 2;
+        newView.layer.borderColor = [UIColor blackColor].CGColor;
         UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(5, 25, 50, 30)];
-        if(exercise != nil){
+        if(![exercise isEqual:@(-1)] && exercise != nil){
             UILabel *reps = [[UILabel alloc] initWithFrame:CGRectMake(190, 25, 50, 30)];
             UILabel *sets = [[UILabel alloc] initWithFrame:CGRectMake(250, 25, 50, 30)];
             label.text = exercise.exerciseName;
@@ -207,6 +209,7 @@
         }
         [label setTextColor:[UIColor whiteColor]];
         [label sizeToFit];
+        
         label.numberOfLines = 0;
         newView.layer.cornerRadius = 5;
         [newView addSubview:label];
@@ -219,7 +222,7 @@
         UILabel *name = [[UILabel alloc] initWithFrame:CGRectMake(70, newView.frame.size.height/2, 40, 30)];
         UILabel *gymName = [[UILabel alloc] initWithFrame:CGRectMake(140, newView.frame.size.height/2, 40, 30)];
         PFImageView *profilePic = [[PFImageView alloc] initWithFrame:CGRectMake(5, newView.frame.size.height/2 + 5, 50, 30)];
-        newView.layer.borderWidth = 5;  
+        newView.layer.borderWidth = 2;  
         newView.layer.borderColor = [UIColor blackColor].CGColor;
         [friend fetchInBackgroundWithBlock:^(PFObject * _Nullable object, NSError * _Nullable error) {
             profilePic.file = ((GymUser *)object).profilePic;
@@ -238,7 +241,7 @@
 }
 
 - (UIColor *)hasImproved:(Exercise *)exercise lessRecent:(Exercise *)ex2{
-    return [exercise.lastWeight intValue] > [ex2.lastWeight intValue] || [exercise.numberReps intValue] > [ex2.numberSets intValue] || [exercise.numberSets intValue] > [ex2.numberSets intValue] ? [UIColor greenColor] : [UIColor redColor];
+    return ![exercise isEqual:@(-1)] && ![ex2 isEqual:@(-1)] && ([exercise.lastWeight intValue] > [ex2.lastWeight intValue] || [exercise.numberReps intValue] > [ex2.numberSets intValue] || [exercise.numberSets intValue] > [ex2.numberSets intValue] )? [UIColor greenColor] : [UIColor redColor];
 }
 
 - (IBAction)changeGraphInfo:(UIGestureRecognizer *)sender {
@@ -261,18 +264,29 @@
         }
     }
 }
+
 - (void)getMostRecentExercise:(NSString *)exerciseName completionBlock:(void(^)(NSArray *exercises))completion{
     PFQuery *query = [PFQuery queryWithClassName:@"Exercise"];
     [query whereKey:@"user" equalTo:[GymUser currentUser]];
     [query whereKey:@"exerciseName" equalTo:exerciseName];
     [query orderByDescending:@"updatedAt"];
     [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
-        NSArray *firstAndSecond = objects != nil ? [objects subarrayWithRange:NSMakeRange(0, 2)] : [[NSArray alloc] initWithObjects:@(-1),@(-1), nil];
-        completion(firstAndSecond);
+        NSArray *firstAndSecond = objects;
+        
+        if(objects.count == 1){
+            completion([NSArray arrayWithObjects:objects[0],@(-1),nil]);
+        }
+        else if (objects.count == 0){
+            completion([NSArray arrayWithObjects:@(-1),@(-1),nil]);
+        }
+        else {
+            completion([firstAndSecond subarrayWithRange:NSMakeRange(0, 2)]);
+        }
+        
     }];
 }
 
-     - (void)scheduleNotification:(NSString *)title contentBody:(NSString *)contentBody identifier:(NSString *)identifier categoryIdentifier:(NSString *)category{
+- (void)scheduleNotification:(NSString *)title contentBody:(NSString *)contentBody identifier:(NSString *)identifier categoryIdentifier:(NSString *)category{
     UNMutableNotificationContent *content = [UNMutableNotificationContent new];
     content.title = title;
     content.body = contentBody;
@@ -311,6 +325,7 @@
             PFQuery *query = [PFQuery queryWithClassName:@"Workout"];
             GymUser *user = [GymUser currentUser];
             [query whereKey:@"user" equalTo:user];
+            [query whereKey:@"completed" equalTo:[NSNumber numberWithBool:NO]];
             [query orderByDescending:@"createdAt"];
             [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
                 if(error != nil){

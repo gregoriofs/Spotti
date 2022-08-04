@@ -29,8 +29,7 @@
     PFQuery *query = [PFQuery queryWithClassName:@"Workout"];
     GymUser *user = [[self.parentViewController restorationIdentifier] isEqualToString:@"homeVC"] ? [GymUser currentUser] : self.user;
     [query whereKey:@"user" equalTo:user];
-    [query setLimit:5];
-    [query orderByDescending:@"createdAt"];
+    [query orderByDescending:@"updatedAt"];
     [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
             if(error != nil){
                 NSLog(@"%@", error.localizedDescription);
@@ -46,7 +45,7 @@
     WorkoutCell *cell = [tableView dequeueReusableCellWithIdentifier:@"WorkoutCell"];
     Workout *workout = self.arrayOfWorkouts[indexPath.row];
     cell.workout = workout;
-    cell.complete.text = workout.completed ? @"Complete" : @"Incomplete";
+    cell.complete.text = [workout.completed boolValue] ? @"Complete" : @"Incomplete";
     NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
     [dateFormat setDateFormat:@"yyyy-MM-dd"];
     NSString *date = [dateFormat stringFromDate:workout.createdAt];

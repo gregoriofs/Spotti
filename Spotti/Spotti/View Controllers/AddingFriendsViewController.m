@@ -144,6 +144,17 @@
     [self.tableView reloadData];
 }
 
+- (NSInteger)friendsInCommon:(GymUser *)user {
+    NSArray *friends = user.friends;
+    NSInteger common = 0;
+    for(GymUser *friend in friends){
+        if([[[GymUser currentUser].friends valueForKey:@"objectId"] containsObject:friend.objectId]){
+            common += 1;
+        }
+    }
+    return common;
+}
+
 - (void)mapSearch{
     MKCoordinateRegion region = MKCoordinateRegionMake(self.lastLocation, MKCoordinateSpanMake(.05, .05));
     MKLocalSearchRequest *request = [MKLocalSearchRequest new];
@@ -155,9 +166,9 @@
     queue.comparator = ^NSComparisonResult(PriorityQueueNode* obj1, PriorityQueueNode* obj2) {
         NSComparisonResult result = NSOrderedSame;
         if ([obj1.priority intValue] < [obj2.priority intValue]) {
-            result = NSOrderedAscending;
-        } else if ([obj1.priority intValue] > [obj2.priority intValue]) {
             result = NSOrderedDescending;
+        } else if ([obj1.priority intValue] > [obj2.priority intValue]) {
+            result = NSOrderedAscending;
         }
         return result;
     };
@@ -166,23 +177,30 @@
                 NSLog(@"%@",error.localizedDescription);
             }
             NSMutableDictionary *prios = [[NSMutableDictionary alloc] init];
-                for(MKMapItem *item in response.mapItems){
-                    float lat = item.placemark.coordinate.latitude;
-                    float longit = item.placemark.coordinate.longitude;
-                    for(GymUser *user in self.allUsers){
-                        CLLocationDistance distance = [[[CLLocation alloc]initWithLatitude:lat longitude:longit] distanceFromLocation:[[CLLocation alloc]initWithLatitude:user.lastLocation.latitude longitude:user.lastLocation.longitude]];
-                        NSString *key = user.username;
-                        if(![[prios allKeys] containsObject:key]){
-                            [prios setObject:[NSNumber numberWithInt:1] forKey:key];
+            for(MKMapItem *item in response.mapItems){
+                float lat = item.placemark.coordinate.latitude;
+                float longit = item.placemark.coordinate.longitude;
+                for(GymUser *user in self.allUsers){
+                    CLLocationDistance distance = [[[CLLocation alloc]initWithLatitude:lat longitude:longit] distanceFromLocation:[[CLLocation alloc]initWithLatitude:user.lastLocation.latitude longitude:user.lastLocation.longitude]];
+                    NSString *key = user.username;
+                    if(![[prios allKeys] containsObject:key]){
+                        NSInteger friendsInCommon = [self friendsInCommon:user];
+                        if([item.name isEqualToString:[GymUser currentUser].gym] && [user.gym isEqualToString:[GymUser currentUser].gym]){
+                            [prios setObject:[NSNumber numberWithInt:friendsInCommon * 1.5] forKey:key];
                         }
-                        if(distance > 1610){
-                            prios[key] = [NSNumber numberWithInt:[prios[key] intValue] + 1];
-                        }
-                        if([item.name isEqualToString:[GymUser currentUser].gym] && ![user.gym isEqualToString:[GymUser currentUser].gym]){
-                            prios[key] = [NSNumber numberWithInt:[prios[key] intValue] + 1];
+                        else {
+                            [prios setObject:[NSNumber numberWithInt:friendsInCommon] forKey:key];
                         }
                     }
+                    if(distance <= 1610){
+                        NSInteger prio = [item.name isEqualToString:[GymUser currentUser].gym] && [user.gym isEqualToString:[GymUser currentUser].gym] ? 3 : 1;
+                        prios[key] = [NSNumber numberWithInt:[prios[key] intValue] + prio];
+                    }
+                    if([item.name isEqualToString:[GymUser currentUser].gym] && [user.gym isEqualToString:[GymUser currentUser].gym]){
+                        prios[key] = [NSNumber numberWithInt:[prios[key] intValue] + 1];
+                    }
                 }
+            }
             for(NSString *key in [prios allKeys]){
                 NSUInteger objIndex = [self.allUsers indexOfObjectPassingTest:^BOOL(GymUser *obj, NSUInteger idx, BOOL * _Nonnull stop) {
                     return [obj.username isEqualToString:key];

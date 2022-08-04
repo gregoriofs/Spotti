@@ -64,6 +64,7 @@
     self.scrollView.bounces = false;
     [self.favoriteExercise sizeToFit];
     [self.gymLocation sizeToFit];
+    [self.joinedAt sizeToFit];
     self.addProfilePictureButton.layer.cornerRadius = 5;
     [self findFavoriteExercise:^(NSString *mostPopular, NSString *mostReps) {
             self.favoriteExercise.text = [NSString stringWithFormat:@"Favorite Exercise: %@", mostPopular];
