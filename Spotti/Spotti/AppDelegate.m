@@ -66,7 +66,7 @@
                     if(!error){
                         for(MKMapItem* item in response.mapItems){
                             if(item.isCurrentLocation){
-                                [curr setAtGym:YES];
+                                [curr setAtGym:[NSNumber numberWithBool:YES]];
                                 [curr saveInBackground];
                             }
                         }

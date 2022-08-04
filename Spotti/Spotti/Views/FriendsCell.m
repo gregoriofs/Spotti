@@ -22,6 +22,7 @@
     _gym.text = user.gym;
     _profileImage.file = user.profilePic;
     [_profileImage loadInBackground];
+    [_gym sizeToFit];
 }
 
 @end

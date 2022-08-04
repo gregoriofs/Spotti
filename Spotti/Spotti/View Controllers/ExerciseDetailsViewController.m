@@ -21,11 +21,8 @@
     self.exerciseName.text = self.exercise.exerciseName;
     self.exerciseDescription.text = [[self.exercise.exerciseDescription stringByReplacingOccurrencesOfString:@"<p>" withString:@""] stringByReplacingOccurrencesOfString:@"</p>" withString:@""];
     [self.exerciseDescription sizeToFit];
-    
     self.exerciseImage.file = self.exercise.image;
     [self.exerciseImage loadInBackground];
-    NSLog(@"image file %@", self.exercise.image.url);
-//    [self.exerciseImage loadInBackground];z
 }
 
 @end

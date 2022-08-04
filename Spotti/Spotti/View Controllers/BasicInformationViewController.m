@@ -44,7 +44,7 @@
     currentUser[@"lastWorkout"] = [NSDate date];
     currentUser[@"streak"] = [NSNumber numberWithInt:0];
     currentUser[@"gym"] = self.gym.text;
-    currentUser[@"atGym"] = NO;
+    currentUser[@"atGym"] = [NSNumber numberWithBool:NO];
     [currentUser saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error){
             if(succeeded){
                 [self performSegueWithIdentifier:@"successfulInfoSubmission" sender:self];
