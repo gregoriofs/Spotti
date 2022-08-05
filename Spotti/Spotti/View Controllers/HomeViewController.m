@@ -106,8 +106,6 @@
     }];
     [self setUpStackView:1 stackView:NO];
     self.stackView.distribution = UIStackViewDistributionEqualSpacing;
-//    self.stackView.spacing = 5.0;
-//    self.friendStackView.spacing = 5.0;
     self.center.delegate = self;
     self.createSessionButton.layer.cornerRadius = 5;
     self.addFriendsButton.layer.cornerRadius = 5;
@@ -168,13 +166,6 @@
         }
     }
     else {
-        //Commented out code is the code that would be applied once there's actual friends at gym, will currently maintain placeholder code
-        // as example of what it would look like
-        //        NSInteger shownFriends = self.friendsAtGym.count > 3 ? 3 : self.friendsAtGym.count;
-        //        for(int i = 0; i < shownFriends; i++){
-        //            UIView *view = [self makeViewforStackView:nil friendView:self.friendsAtGym[i]];
-        //            [self.friendStackView addArrangedSubview:view];
-        //        }
         NSArray *friends = [GymUser currentUser].friends;
         NSInteger shownFriends = friends.count >= 3 ? 3 : friends.count;
         for(int i = 0; i < shownFriends; i++){
