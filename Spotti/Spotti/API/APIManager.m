@@ -46,14 +46,36 @@ static NSString * const baseURLString = @"https://wger.de";
             }];
         [task resume];
     }
-    PFQuery *query = [PFQuery queryWithClassName:@"Exercise"];
-    [query whereKey:@"user" equalTo:[GymUser currentUser]];
-    [query orderByDescending:@"updatedAt"];
-    [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
-        if(!error){
-            completion(objects);
+    else{
+        if(currentOffset == -1){
+            NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@",@"https://wger.de",@"/api/v2/exercise/?limit=100&language=2"]];
+                NSURLRequest *request = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:10.0];
+                NSURLSession *session =  [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration] delegate:nil delegateQueue:[NSOperationQueue mainQueue]];
+                NSURLSessionDataTask *task = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+                    if(error != nil){
+                        NSLog(@"%@", [error localizedDescription]);
+                    }
+                    else
+                    {
+                        NSDictionary *dataDictionary = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
+                        NSArray *results = [Exercise exercisesFromDictionaries:dataDictionary[@"results"] shouldSave:NO];
+                        completion(results);
+                    }
+                }];
+            [task resume];
         }
-    }];
+        else{
+            PFQuery *query = [PFQuery queryWithClassName:@"Exercise"];
+            [query whereKey:@"user" equalTo:[GymUser currentUser]];
+            [query orderByDescending:@"updatedAt"];
+            [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
+                if(!error){
+                    completion(objects);
+                }
+            }];
+        }
+    }
+    
 }
 
 - (void)exerciseListFromWorkout:(Workout*) workout currentExercise:(int) current completionBlock:(void(^)(NSArray *exercise))completion{
@@ -94,8 +116,8 @@ static NSString * const baseURLString = @"https://wger.de";
 }
 
 
--(void)getImage:(id)exerciseNum completionBlock:(void (^)(NSURL * _Nonnull))completion{
-    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@%@",@"https://wger.de",@"/api/v2/exerciseimage/",exerciseNum]];
+-(void)getImage:(NSNumber *)exerciseNum completionBlock:(void (^)(NSURL * _Nonnull))completion{
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@%d",@"https://wger.de",@"/api/v2/exerciseimage/",[exerciseNum intValue]]];
     NSURLRequest *request = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:10.0];
     NSURLSession *session =  [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration] delegate:nil delegateQueue:[NSOperationQueue mainQueue]];
     NSURLSessionDataTask *task = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error){
@@ -106,7 +128,7 @@ static NSString * const baseURLString = @"https://wger.de";
             NSDictionary *dataDictionary = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
             NSURL *image = dataDictionary[@"image"];
             if(image == nil){
-                completion([NSURL URLWithString:@"https://www.dreamstime.com/achievement-exercise-flat-health-body-mind-vector-concept-illustration-office-multitasking-posture-person-sport-fitness-cartoon-image194275223"]);
+                completion([NSURL URLWithString:@"https://shirtigo.co/wp-content/uploads/2015/01/weightliftingaccident.jpg"]);
             }
             completion(image);
         }

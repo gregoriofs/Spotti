@@ -47,7 +47,7 @@
     [self.backgroundImage setImageWithURL:[NSURL URLWithString:@"https://media.istockphoto.com/photos/empty-gym-picture-id1132006407?k=20&m=1132006407&s=612x612&w=0&h=Z7nJu8jntywb9jOhvjlCS7lijbU4_hwHcxoVkxv77sg="]];
     [self settheProfilePic:currentUser];
     self.gymLocation.text = currentUser.gym;
-    self.profilePic.layer.cornerRadius = 256/2;
+    self.profilePic.layer.cornerRadius = 56;
     self.currentStreak.text = [NSString stringWithFormat:@"%d days in a row!", [currentUser.streak intValue]];
     self.name.layer.cornerRadius = 5;
     self.friends.layer.cornerRadius = 5;
@@ -64,6 +64,8 @@
     self.scrollView.bounces = false;
     [self.favoriteExercise sizeToFit];
     [self.gymLocation sizeToFit];
+    [self.joinedAt sizeToFit];
+    self.profilePic.layer.masksToBounds = YES;
     self.addProfilePictureButton.layer.cornerRadius = 5;
     [self findFavoriteExercise:^(NSString *mostPopular, NSString *mostReps) {
             self.favoriteExercise.text = [NSString stringWithFormat:@"Favorite Exercise: %@", mostPopular];

@@ -48,6 +48,10 @@
 		C0672369287612AE00F91288 /* SpottiUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = C0672368287612AE00F91288 /* SpottiUITests.m */; };
 		C067236B287612AE00F91288 /* SpottiUITestsLaunchTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C067236A287612AE00F91288 /* SpottiUITestsLaunchTests.m */; };
 		C067237D28763F8500F91288 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C067237C28763F8500F91288 /* LoginViewController.m */; };
+		C08DE66D289C8BD6009B82C8 /* Milestone.m in Sources */ = {isa = PBXBuildFile; fileRef = C08DE66C289C8BD6009B82C8 /* Milestone.m */; };
+		C08DE670289D8895009B82C8 /* MilestoneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C08DE66F289D8895009B82C8 /* MilestoneViewController.m */; };
+		C08DE673289D8BB2009B82C8 /* MilestoneCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C08DE672289D8BB2009B82C8 /* MilestoneCell.m */; };
+		C08DE676289D9480009B82C8 /* MilestoneCreatorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C08DE675289D9480009B82C8 /* MilestoneCreatorViewController.m */; };
 		C0E57F39289362E600AEDEC6 /* ExerciseDetailSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = C0E57F38289362E600AEDEC6 /* ExerciseDetailSegue.m */; };
 		C0F6FBBF28998E03006B0EA7 /* sour-moha-rb5uiqzCOTo-unsplash.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C0F6FBBE28998E03006B0EA7 /* sour-moha-rb5uiqzCOTo-unsplash.jpg */; };
 /* End PBXBuildFile section */
@@ -146,6 +150,14 @@
 		C067236A287612AE00F91288 /* SpottiUITestsLaunchTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SpottiUITestsLaunchTests.m; sourceTree = "<group>"; };
 		C067237B28763F8500F91288 /* LoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		C067237C28763F8500F91288 /* LoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		C08DE66B289C8BD6009B82C8 /* Milestone.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Milestone.h; sourceTree = "<group>"; };
+		C08DE66C289C8BD6009B82C8 /* Milestone.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Milestone.m; sourceTree = "<group>"; };
+		C08DE66E289D8895009B82C8 /* MilestoneViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MilestoneViewController.h; sourceTree = "<group>"; };
+		C08DE66F289D8895009B82C8 /* MilestoneViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MilestoneViewController.m; sourceTree = "<group>"; };
+		C08DE671289D8BB2009B82C8 /* MilestoneCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MilestoneCell.h; sourceTree = "<group>"; };
+		C08DE672289D8BB2009B82C8 /* MilestoneCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MilestoneCell.m; sourceTree = "<group>"; };
+		C08DE674289D9480009B82C8 /* MilestoneCreatorViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MilestoneCreatorViewController.h; sourceTree = "<group>"; };
+		C08DE675289D9480009B82C8 /* MilestoneCreatorViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MilestoneCreatorViewController.m; sourceTree = "<group>"; };
 		C0E57F37289362E600AEDEC6 /* ExerciseDetailSegue.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExerciseDetailSegue.h; sourceTree = "<group>"; };
 		C0E57F38289362E600AEDEC6 /* ExerciseDetailSegue.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ExerciseDetailSegue.m; sourceTree = "<group>"; };
 		C0F6FBBE28998E03006B0EA7 /* sour-moha-rb5uiqzCOTo-unsplash.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "sour-moha-rb5uiqzCOTo-unsplash.jpg"; path = "../../../../../Downloads/sour-moha-rb5uiqzCOTo-unsplash.jpg"; sourceTree = "<group>"; };
@@ -289,6 +301,10 @@
 				C055F717288A087000E10231 /* ListofWorkoutsViewController.m */,
 				C055F719288F03AE00E10231 /* ExerciseListViewController.h */,
 				C055F71A288F03AE00E10231 /* ExerciseListViewController.m */,
+				C08DE66E289D8895009B82C8 /* MilestoneViewController.h */,
+				C08DE66F289D8895009B82C8 /* MilestoneViewController.m */,
+				C08DE674289D9480009B82C8 /* MilestoneCreatorViewController.h */,
+				C08DE675289D9480009B82C8 /* MilestoneCreatorViewController.m */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -308,6 +324,8 @@
 				C055F71D288F04A700E10231 /* ExerciseListCell.m */,
 				C055F722288F5C0A00E10231 /* ExerciseListCell2.h */,
 				C055F723288F5C0A00E10231 /* ExerciseListCell2.m */,
+				C08DE671289D8BB2009B82C8 /* MilestoneCell.h */,
+				C08DE672289D8BB2009B82C8 /* MilestoneCell.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -334,6 +352,8 @@
 				C055F7112887617500E10231 /* PriorityQueue.m */,
 				C055F7132887624900E10231 /* PriorityQueueNode.h */,
 				C055F7142887624900E10231 /* PriorityQueueNode.m */,
+				C08DE66B289C8BD6009B82C8 /* Milestone.h */,
+				C08DE66C289C8BD6009B82C8 /* Milestone.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -602,19 +622,23 @@
 				C0672344287612AD00F91288 /* AppDelegate.m in Sources */,
 				C0672355287612AE00F91288 /* main.m in Sources */,
 				C055F7122887617500E10231 /* PriorityQueue.m in Sources */,
+				C08DE676289D9480009B82C8 /* MilestoneCreatorViewController.m in Sources */,
 				C0109C0728774925006FD29C /* APIManager.m in Sources */,
 				C062FF5E287E3B6E004F3B7E /* AddingFriendsViewController.m in Sources */,
 				C0109C1628776ACC006FD29C /* FrequencyViewController.m in Sources */,
+				C08DE670289D8895009B82C8 /* MilestoneViewController.m in Sources */,
 				C062FF55287DEF3D004F3B7E /* ExerciseDetailsViewController.m in Sources */,
 				C055F7022881EB7100E10231 /* FriendsCell.m in Sources */,
 				C0109C1328775D21006FD29C /* FocusAreaViewController.m in Sources */,
 				C055F71E288F04A700E10231 /* ExerciseListCell.m in Sources */,
 				C0672347287612AD00F91288 /* SceneDelegate.m in Sources */,
 				C01E97AC28764F4E0037DAE3 /* HomeViewController.m in Sources */,
+				C08DE66D289C8BD6009B82C8 /* Milestone.m in Sources */,
 				C055F724288F5C0A00E10231 /* ExerciseListCell2.m in Sources */,
 				C0109C0D28775642006FD29C /* Exercise.m in Sources */,
 				C055F70528822A4100E10231 /* ExerciseCellType2.m in Sources */,
 				C0109C192878AAFA006FD29C /* WorkoutOverviewViewController.m in Sources */,
+				C08DE673289D8BB2009B82C8 /* MilestoneCell.m in Sources */,
 				C062FF5B287E2509004F3B7E /* GymUser.m in Sources */,
 				C0109C1028775AFA006FD29C /* ObjectivesViewController.m in Sources */,
 				C055F7082885D90A00E10231 /* FriendProfileViewController.m in Sources */,

@@ -20,8 +20,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property (strong, nonatomic) PFUser *user;
 @property (strong, nonatomic) PFFileObject *image;
 @property (strong, nonatomic) NSNumber *lastWeight;
+@property (strong, nonatomic) NSNumber *apiId;
 + (NSArray* )exercisesFromDictionaries: (NSArray* ) dictionary shouldSave:(BOOL)save;
-- (id)initWithDictionary: (NSDictionary *)dict;
+- (id)initWithDictionary: (NSDictionary *)dict image:(NSURL *)url;
 + (void)saveExercise:(Exercise *)exercise completionBlock: (PFBooleanResultBlock  _Nullable)completion;
 
 @end

@@ -92,7 +92,7 @@
         NSIndexPath *currPath = [NSIndexPath indexPathForRow:i inSection:0];
         ExerciseCell *cell = [self.tableView cellForRowAtIndexPath: currPath];
         if([[cell reuseIdentifier] isEqual:@"ExerciseCell"]){
-            if([cell.repsInput.text isEqualToString:@""] || [cell.setsInput.text isEqualToString:@""]){
+            if([cell.repsInput.text isEqualToString:@""] || [cell.setsInput.text isEqualToString:@""] || [cell.weightInput.text isEqualToString: @""]){
                 return YES;
             }
         }
@@ -105,7 +105,17 @@
         NSIndexPath *currPath = [NSIndexPath indexPathForRow:i inSection:0];
         ExerciseCell *cell = [self.tableView cellForRowAtIndexPath: currPath];
         if([[cell reuseIdentifier] isEqual:@"ExerciseCell"]){
-            if(([cell.repsInput.text isEqualToString:@""] && ![cell.setsInput.text isEqualToString:@""]) || (![cell.repsInput.text isEqualToString:@""] && [cell.setsInput.text isEqualToString:@""])){
+            int complete = 0;
+            if(![cell.repsInput.text isEqualToString:@""]){
+                complete += 1;
+            }
+            if(![cell.setsInput.text isEqualToString:@""]){
+                complete += 1;
+            }
+            if(![cell.weightInput.text isEqualToString:@""]){
+                complete += 1;
+            }
+            if(complete != 3 && complete != 0){
                 return YES;
             }
         }
@@ -119,7 +129,11 @@
         [self saveWorkoutAndReturnHome];
     }
     else{
-//        add popup to tell them to fill in both reps and sets for a cell
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Empty Sets/Reps/Exercise" message:@"Please fill out all the metrics for an exercise before saving!" preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *defaultAction = [UIAlertAction actionWithTitle:@"Go Back" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        }];
+        [alert addAction:defaultAction];
+        [self presentViewController:alert animated:YES completion:nil];
     }
 }
 

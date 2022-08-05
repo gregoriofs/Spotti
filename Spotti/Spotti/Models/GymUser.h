@@ -24,7 +24,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (strong, nonatomic) NSNumber *streak;
 @property (strong, nonatomic) NSString *gym;
 @property (strong, nonatomic) PFGeoPoint *lastLocation;
-@property (assign, nonatomic) BOOL atGym;
+@property (assign, nonatomic) NSNumber* atGym;
 @end
 
 NS_ASSUME_NONNULL_END
