@@ -89,8 +89,30 @@ Gym training companion app that develops dynamic routines based on selected goal
     * => Home
     * Profile
 
-Progress Update Demo 7/12:
+Complex Features:
 
+1. Notification System with Screen Navigation
+
+This feature focused on leveraging the notification system to deliver the user to the appropriate page based on the situation. Notifications are already deployed based on different conditions for the required tasks and as an added complexity, will take the user to the appropriate pages to accomplish a certain task. Below is the appropriate demo.
+
+Respective PR: https://github.com/gregoriofs/Spotti/pull/7
+The code to accomplish this lies in the AppDelegate.m file, lines 36-42, 49 - 55, 78 - 118 and Home ViewController.m, lines 295 - 323
+
+Demo:
+
+https://user-images.githubusercontent.com/74148230/182494297-2735f0a2-a61c-456a-a112-cff698e90db1.gif
+
+2. Friend Matching Feature
+
+This feature leveraged Mapkit and a Priority Queue implementation to find the best possible friends for a person based on friends in common, location and their gym memberships. I iterated over found gyms near the current user and I used the queue to sort all other users for each gym based on a given priority derived from the above factors, giving higher weight to users who share the same gym membership and sort based on that.
+
+Respective PR: https://github.com/gregoriofs/Spotti/pull/4
+
+Demo: 
+
+https://user-images.githubusercontent.com/74148230/180073511-3970d8d2-0e01-42e9-a3a6-d9c25b6e2e17.gif
+
+Progress Update Demo 7/12:
 
 ![ezgif com-gif-maker (7)](https://user-images.githubusercontent.com/74148230/178561373-bf8446ec-5702-46c4-9b9e-02e54269b70f.gif)
 
