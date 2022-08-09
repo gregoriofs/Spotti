@@ -12,12 +12,14 @@
 #import "APIManager.h"
 #import "Milestone.h"
 
+
 @interface MilestoneCreatorViewController () <MKDropdownMenuDelegate, MKDropdownMenuDataSource>
 @property (weak, nonatomic) IBOutlet MKDropdownMenu *dropDown;
 @property (weak, nonatomic) IBOutlet UITextField *repGoalInput;
 @property (weak, nonatomic) IBOutlet UITextField *weightGoalInput;
 @property (strong, nonatomic) NSArray *exercises;
 @property (strong, nonatomic) Milestone *currentMilestone;
+
 @end
 
 @implementation MilestoneCreatorViewController
@@ -26,7 +28,7 @@
     [super viewDidLoad];
     self.dropDown.dataSource = self;
     self.dropDown.delegate = self;
-    self.currentMilestone = [Milestone new];
+    self.currentMilestone = [[Milestone alloc] initWithValues];
     [self makeRequest:^(NSArray *result) {
         self.exercises = result;
         [self.dropDown reloadAllComponents];
@@ -64,15 +66,24 @@
     }];
 }
 
+- (NSString *)dropdownMenu:(MKDropdownMenu *)dropdownMenu titleForComponent:(NSInteger)component{
+    return self.currentMilestone.exercise ? self.currentMilestone.exercise.exerciseName : @"None";
+}
 - (void)dropdownMenu:(MKDropdownMenu *)dropdownMenu didSelectRow:(NSInteger)row inComponent:(NSInteger)component{
     self.currentMilestone.exercise = self.exercises[row];
+    [dropdownMenu reloadAllComponents];
 }
 
 - (IBAction)saveMilestone:(id)sender {
     if(![self checkAnyEmpty]){
-        self.currentMilestone.repGoal = NSNumber
+        self.currentMilestone.repGoal = [NSNumber numberWithInt:[self.repGoalInput.text integerValue]];
+        self.currentMilestone.weightGoal = [NSNumber numberWithInt:[self.weightGoalInput.text integerValue]];
+        [self.currentMilestone saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+                    if(succeeded){
+                        [self.delegate dismissMilestoneCreatorVC];
+                    }
+        }];
     }
 }
-
 
 @end

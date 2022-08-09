@@ -15,12 +15,14 @@
 }
 
 - (void)setMilestone:(Milestone *)milestone{
+    [milestone fetch];
     _milestone = milestone;
+    [milestone.exercise fetchIfNeeded];
     _exerciseName.text = milestone.exercise.exerciseName;
-    _currentReps.text = [NSString stringWithFormat:@"%d", [milestone.currentHighestReps intValue]];
-    _currentWeight.text = [NSString stringWithFormat:@"%d", [milestone.currentHighestWeight intValue]];
-    _repgoal.text = [NSString stringWithFormat:@"%d", [milestone.repGoal intValue]];
-    _weightgoal.text = [NSString stringWithFormat:@"%d", [milestone.weightGoal intValue]];
+    _currentReps.text = [NSString stringWithFormat:@"Current: %d", [milestone.currentHighestReps intValue]];
+    _currentWeight.text = [NSString stringWithFormat:@"Current: %d", [milestone.currentHighestWeight intValue]];
+    _repgoal.text = [NSString stringWithFormat:@"Goal: %d", [milestone.repGoal intValue]];
+    _weightgoal.text = [NSString stringWithFormat:@"Goal: %d", [milestone.weightGoal intValue]];
     float weightProgress = (float)[milestone.currentHighestWeight intValue]/[milestone.weightGoal intValue];
     float repProgress = (float)[milestone.currentHighestReps intValue]/[milestone.repGoal intValue];
     [_weightProgressBar setProgress:weightProgress];
@@ -31,8 +33,6 @@
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
 }
 
 @end

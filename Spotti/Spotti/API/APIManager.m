@@ -75,7 +75,6 @@ static NSString * const baseURLString = @"https://wger.de";
             }];
         }
     }
-    
 }
 
 - (void)exerciseListFromWorkout:(Workout*) workout currentExercise:(int) current completionBlock:(void(^)(NSArray *exercise))completion{
@@ -126,11 +125,10 @@ static NSString * const baseURLString = @"https://wger.de";
         }
         else {
             NSDictionary *dataDictionary = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
-            NSURL *image = dataDictionary[@"image"];
-            if(image == nil){
-                completion([NSURL URLWithString:@"https://shirtigo.co/wp-content/uploads/2015/01/weightliftingaccident.jpg"]);
-            }
-            completion(image);
+            NSURL *image = dataDictionary[@"image"] == nil ? [NSURL URLWithString:@"https://shirtigo.co/wp-content/uploads/2015/01/weightliftingaccident.jpg"] : [NSURL URLWithString:dataDictionary[@"image"]];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                completion(image);
+            });
         }
     }];
     [task resume];

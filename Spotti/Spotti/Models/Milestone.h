@@ -8,10 +8,13 @@
 #import <Foundation/Foundation.h>
 #import "Parse/Parse.h"
 #import "Exercise.h"
+#import "GymUser.h"
+#import "Workout.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface Milestone : PFObject <PFSubclassing>
+@property GymUser *user;
 @property Exercise *exercise;
 @property NSNumber *weightGoal;
 @property NSNumber *repGoal;
@@ -19,7 +22,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property NSNumber *currentHighestWeight;
 @property NSString *metric;
 @property NSNumber *inProgress;
-- (void) update:(Exercise *)exercise completionBlock:(void(^)(int maxReps, int maxWeight))completion;
+- (void)update:(Workout *)workout;
+- (id)initWithValues;
 @end
 
 NS_ASSUME_NONNULL_END

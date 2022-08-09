@@ -22,6 +22,7 @@
     [super viewDidLoad];
     self.workouttableView.delegate = self;
     self.workouttableView.dataSource = self;
+    self.workouttableView.layer.cornerRadius = 5;
     [self getWorkouts];
 }
 
@@ -34,7 +35,7 @@
             if(error != nil){
                 NSLog(@"%@", error.localizedDescription);
             }
-            else{
+            else {
                 self.arrayOfWorkouts = objects;
                 [self.workouttableView reloadData];
             }
