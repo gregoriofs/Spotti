@@ -118,7 +118,6 @@
         [self setUpStackView:nil stackView:YES];
     }];
     self.welcomeLabel.text = [NSString stringWithFormat:@"Welcome %@!", [GymUser currentUser].username];
-//    [GymUser currentUser] curre
 }
 
 - (void)addShadow: (UIButton *)button {
@@ -182,7 +181,7 @@
         [newView.heightAnchor constraintEqualToConstant:self.stackView.frame.size.height/3].active = true;
         [newView.widthAnchor constraintEqualToConstant:20].active = true;
         newView.layer.borderWidth = 2;
-        newView.layer.borderColor = [UIColor blackColor].CGColor;
+        newView.layer.borderColor =  [UIColor colorWithRed:5.0/255.0 green:54.0/255.0 blue:110.0/255.0 alpha:1.0].CGColor;
         UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(5, 25, 50, 30)];
         if(![exercise isEqual:@(-1)] && exercise != nil){
             UILabel *reps = [[UILabel alloc] initWithFrame:CGRectMake(190, 25, 50, 30)];
@@ -195,7 +194,7 @@
             [newView addSubview:reps];
             [newView addSubview:sets];
         }
-        else{
+        else {
             label.text = @"Please choose an exercise!";
         }
         [label setTextColor:[UIColor whiteColor]];
@@ -214,7 +213,7 @@
         UILabel *gymName = [[UILabel alloc] initWithFrame:CGRectMake(140, newView.frame.size.height/2, 40, 30)];
         PFImageView *profilePic = [[PFImageView alloc] initWithFrame:CGRectMake(5, newView.frame.size.height/2 + 5, 50, 30)];
         newView.layer.borderWidth = 2;  
-        newView.layer.borderColor = [UIColor blackColor].CGColor;
+        newView.layer.borderColor = [UIColor colorWithRed:5.0/255.0 green:54.0/255.0 blue:110.0/255.0 alpha:1.0].CGColor;
         [friend fetchInBackgroundWithBlock:^(PFObject * _Nullable object, NSError * _Nullable error) {
             profilePic.file = ((GymUser *)object).profilePic;
             [profilePic loadInBackground];
@@ -263,7 +262,6 @@
     [query orderByDescending:@"updatedAt"];
     [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
         NSArray *firstAndSecond = objects;
-        
         if(objects.count == 1){
             completion([NSArray arrayWithObjects:objects[0],@(-1),nil]);
         }
@@ -273,7 +271,6 @@
         else {
             completion([firstAndSecond subarrayWithRange:NSMakeRange(0, 2)]);
         }
-        
     }];
 }
 

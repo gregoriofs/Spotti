@@ -75,7 +75,7 @@
 
 - (void)makeRequest: (void (^)(NSArray *result))completion{
     APIManager *manager = [APIManager new];
-    [manager exerciseList:(self.exerciseList.count + 20) allExercises:NO completionBlock:^(NSArray * _Nonnull exercises) {
+    [manager exerciseList:(self.exerciseList.count) allExercises:NO completionBlock:^(NSArray * _Nonnull exercises) {
         [self.activityIndicator stopAnimating];
         NSMutableArray *tempCopy = [self.exerciseList mutableCopy];
         [tempCopy addObjectsFromArray:exercises];

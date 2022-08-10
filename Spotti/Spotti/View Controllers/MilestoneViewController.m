@@ -10,7 +10,8 @@
 #import "GymUser.h"
 #import "Parse/Parse.h"
 
-@interface MilestoneViewController () <UITableViewDelegate, UITableViewDataSource>
+
+@interface MilestoneViewController () <UITableViewDelegate, UITableViewDataSource, savedMilestone>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) NSArray *milestones;
 @end
@@ -24,7 +25,7 @@
     self.tableView.estimatedRowHeight = 168;
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     [self getMilestoneList];
-    // Do any additional setup after loading the view.
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getMilestoneList) name:@"load" object:nil];
 }
 
 - (void)getMilestoneList{
@@ -48,4 +49,17 @@
     return cell;
 }
 
+-(void)dismissMilestoneCreatorVC{
+    [self dismissViewControllerAnimated:YES completion:nil];
+    [self getMilestoneList];
+}
+
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    if([[segue identifier] isEqualToString:@"creatingMilestone"]){
+        UINavigationController *dest = [segue destinationViewController];
+        MilestoneCreatorViewController* next = (MilestoneCreatorViewController *)dest.topViewController;
+        next.delegate = self;
+    }
+}
 @end

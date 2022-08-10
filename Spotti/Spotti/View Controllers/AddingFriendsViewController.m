@@ -40,6 +40,7 @@
     self.currentPage = 0;
     self.locationManager = [CLLocationManager new];
     self.allUsers = [NSArray new];
+    self.searchBar.autocapitalizationType = UITextAutocapitalizationTypeNone;
     [self queryAllUsers:self.currentPage];
     if([_locationManager locationServicesEnabled]){
         _locationManager.delegate = self;
@@ -109,6 +110,7 @@
     FriendsCell *cell = [tableView dequeueReusableCellWithIdentifier:@"FriendsCell" forIndexPath:indexPath];
     GymUser *cellUser = self.filteredList[indexPath.row];
     [cell setUser:cellUser];
+    [cell.gym sizeToFit];
     return cell;
 }
 

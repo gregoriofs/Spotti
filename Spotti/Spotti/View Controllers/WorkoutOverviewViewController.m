@@ -18,13 +18,13 @@
 #import "GymUser.h"
 #import "ProfileViewController.h"
 #import "ExerciseListViewController.h"
+#import "Milestone.h"
 
 @interface WorkoutOverviewViewController () <UITableViewDelegate,UITableViewDataSource, UITabBarDelegate, choseExercise>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UILabel *objectives;
 @property (weak, nonatomic) IBOutlet UILabel *focusAreas;
 @property (weak, nonatomic) IBOutlet UILabel *frequency;
-
 @end
 
 @implementation WorkoutOverviewViewController
@@ -36,7 +36,6 @@
     self.objectives.text = self.workout.objective;
     self.focusAreas.text = [self.workout.focusAreas componentsJoinedByString:@","];
     self.frequency.text = [NSString stringWithFormat:@"%d times a week", [self.workout.frequency intValue]];
-    
     if(!self.fromList){
         [self fillExerciseList];
     }
@@ -77,9 +76,11 @@
     if(([currentExercise.numberSets intValue] != 0) || ![self.workout.user.objectId isEqualToString:[GymUser currentUser].objectId]){
         ExerciseCellType2 *cell2 = [tableView dequeueReusableCellWithIdentifier:@"ExerciseCellV2"];
         [cell2 setExercise:currentExercise];
+        [cell2.exerciseName sizeToFit];
         return cell2;
     }
     [cell setExercise:currentExercise];
+    [cell.exerciseName sizeToFit];
     return cell;
 }
 
@@ -154,6 +155,19 @@
     }
 }
 
+- (void)checkMilestonesAndUpdate{
+    PFQuery *query = [PFQuery queryWithClassName:@"Milestone"];
+    [query whereKey:@"user" equalTo:[GymUser currentUser]];
+    [query whereKey:@"inProgress" equalTo:[NSNumber numberWithBool:YES]];
+    [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
+            for(Milestone* milestone in objects){
+                [milestone update:self.workout];
+            }
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"load" object:nil];
+    }];
+    
+}
+
 - (void)saveWorkoutAndReturnHome{
     for(int i = 0; i < self.workout.exerciseArray.count;i++){
         ExerciseCell* cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:i inSection:0]];
@@ -172,6 +186,7 @@
             }];
         }
     }
+    [self checkMilestonesAndUpdate];
     [Workout postWorkout:self.workout completionBlock:^(BOOL succeeded, NSError* error){
         if(succeeded){
             SceneDelegate *myDelegate = (SceneDelegate *)self.view.window.windowScene.delegate;
