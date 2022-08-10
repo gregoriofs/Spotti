@@ -209,7 +209,7 @@
         [newView.heightAnchor constraintEqualToConstant:self.friendStackView.frame.size.height/3].active = true;
         [newView.widthAnchor constraintEqualToConstant:20].active = true;
         newView.layer.cornerRadius = 5;
-        UILabel *name = [[UILabel alloc] initWithFrame:CGRectMake(70, newView.frame.size.height/2, 40, 30)];
+        UILabel *name = [[UILabel alloc] initWithFrame:CGRectMake(70, newView.frame.size.height/2, 70, 30)];
         UILabel *gymName = [[UILabel alloc] initWithFrame:CGRectMake(140, newView.frame.size.height/2, 40, 30)];
         PFImageView *profilePic = [[PFImageView alloc] initWithFrame:CGRectMake(5, newView.frame.size.height/2 + 5, 50, 30)];
         newView.layer.borderWidth = 2;  

@@ -19,6 +19,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *weightGoalInput;
 @property (strong, nonatomic) NSArray *exercises;
 @property (strong, nonatomic) Milestone *currentMilestone;
+@property (weak, nonatomic) IBOutlet UIButton *saveButton;
 
 @end
 
@@ -28,6 +29,7 @@
     [super viewDidLoad];
     self.dropDown.dataSource = self;
     self.dropDown.delegate = self;
+    self.saveButton.layer.cornerRadius = 5;
     self.currentMilestone = [[Milestone alloc] initWithValues];
     [self makeRequest:^(NSArray *result) {
         self.exercises = result;

@@ -184,8 +184,8 @@
                                 <rect key="frame" x="61" y="584" width="325" height="209"/>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Friends At Gym" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yKR-X5-0bW">
-                                <rect key="frame" x="61" y="552" width="206" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <rect key="frame" x="61" y="552" width="333" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="32"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -205,7 +205,7 @@
                             <constraint firstItem="PSs-fz-fYl" firstAttribute="leading" secondItem="oPV-LH-DGj" secondAttribute="leading" constant="61" id="FIR-4y-OvC"/>
                             <constraint firstItem="ziQ-wf-e7I" firstAttribute="leading" secondItem="oPV-LH-DGj" secondAttribute="leading" constant="7" id="Gbp-C9-VF0"/>
                             <constraint firstItem="oPV-LH-DGj" firstAttribute="bottom" secondItem="Ph0-ra-odE" secondAttribute="bottom" constant="269" id="I7Q-Ze-Amg"/>
-                            <constraint firstItem="oPV-LH-DGj" firstAttribute="trailing" secondItem="yKR-X5-0bW" secondAttribute="trailing" constant="147" id="IYo-bG-Ocu"/>
+                            <constraint firstItem="oPV-LH-DGj" firstAttribute="trailing" secondItem="yKR-X5-0bW" secondAttribute="trailing" constant="20" id="IYo-bG-Ocu"/>
                             <constraint firstItem="HCT-cr-3YT" firstAttribute="leading" secondItem="oPV-LH-DGj" secondAttribute="leading" constant="8" id="KWJ-LV-mZz"/>
                             <constraint firstItem="oPV-LH-DGj" firstAttribute="trailing" secondItem="dkd-VF-8xF" secondAttribute="trailing" constant="9" id="LDM-6d-Yce"/>
                             <constraint firstItem="3Tm-oR-TfH" firstAttribute="top" secondItem="ziQ-wf-e7I" secondAttribute="bottom" constant="35" id="MAX-SV-P9d"/>
@@ -600,7 +600,7 @@
             </objects>
             <point key="canvasLocation" x="2492.753623188406" y="1082.8125"/>
         </scene>
-        <!--Milestone Creator View Controller-->
+        <!--Create Milestone-->
         <scene sceneID="RwW-vs-opD">
             <objects>
                 <viewController id="VAo-Sg-WdJ" customClass="MilestoneCreatorViewController" sceneMemberID="viewController">
@@ -647,8 +647,10 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TeL-fz-yek">
-                                <rect key="frame" x="146" y="398" width="122" height="47"/>
+                                <rect key="frame" x="133" y="398" width="161" height="47"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.2274509804" green="0.83529411760000005" blue="0.85098039219999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Save Milestone"/>
                                 <connections>
@@ -659,10 +661,11 @@
                         <viewLayoutGuide key="safeArea" id="FKt-sF-Knj"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <navigationItem key="navigationItem" id="f4S-pa-k7w"/>
+                    <navigationItem key="navigationItem" title="Create Milestone" id="f4S-pa-k7w"/>
                     <connections>
                         <outlet property="dropDown" destination="8uQ-SH-TY2" id="ucJ-sW-xHp"/>
                         <outlet property="repGoalInput" destination="SNB-Gv-bSf" id="JGK-HF-Avg"/>
+                        <outlet property="saveButton" destination="TeL-fz-yek" id="bio-fo-fPW"/>
                         <outlet property="weightGoalInput" destination="01p-dz-pxn" id="JGM-dE-Jpa"/>
                     </connections>
                 </viewController>
@@ -1036,7 +1039,7 @@
             </objects>
             <point key="canvasLocation" x="7188.4057971014499" y="199.55357142857142"/>
         </scene>
-        <!--Frequency View Controller-->
+        <!--Create New Session-->
         <scene sceneID="W04-EY-IP1">
             <objects>
                 <viewController id="vhI-Ho-v4Q" customClass="FrequencyViewController" sceneMemberID="viewController">
@@ -1092,11 +1095,18 @@
                                     <action selector="didTapThriceaWeek:" destination="vhI-Ho-v4Q" eventType="touchUpInside" id="f0T-3S-xqg"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Almost Done! Select Exercise Frequency" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gud-gr-Cvm">
+                                <rect key="frame" x="29" y="82" width="357" height="39"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="20"/>
+                                <color key="textColor" systemColor="systemBlueColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="J5K-LX-97J"/>
                         <color key="backgroundColor" red="0.2274509804" green="0.83529411760000005" blue="0.85098039219999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     </view>
-                    <navigationItem key="navigationItem" id="XPO-GA-4EI"/>
+                    <navigationItem key="navigationItem" title="Create New Session" id="XPO-GA-4EI"/>
                     <connections>
                         <segue destination="67U-AK-TYF" kind="presentation" identifier="finishedSession" id="9CH-gh-V5S"/>
                     </connections>
@@ -1232,11 +1242,11 @@
             <objects>
                 <viewController id="QGS-tu-lOD" customClass="ExerciseListViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="9Tk-6U-JI1">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="puj-bs-hON">
-                                <rect key="frame" x="20" y="95" width="374" height="796"/>
+                                <rect key="frame" x="20" y="139" width="374" height="723"/>
                                 <color key="backgroundColor" red="0.2274509804" green="0.83529411760000005" blue="0.85098039219999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <activityIndicatorView key="tableFooterView" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" id="1uz-Bm-8UN">
                                     <rect key="frame" x="0.0" y="209" width="374" height="44"/>
@@ -1329,7 +1339,7 @@
                                 </prototypes>
                             </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select An Exercise To Add to Current Workout" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a0g-6m-Qqh">
-                                <rect key="frame" x="28" y="51" width="358" height="31"/>
+                                <rect key="frame" x="28" y="95" width="358" height="31"/>
                                 <color key="backgroundColor" red="0.2274509804" green="0.83529411760000005" blue="0.85098039219999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="31" id="oeg-jO-j0n"/>
@@ -1742,7 +1752,7 @@
             </objects>
             <point key="canvasLocation" x="11891.304347826088" y="231.69642857142856"/>
         </scene>
-        <!--Adding Friends View Controller-->
+        <!--Add Friends-->
         <scene sceneID="9gE-Fq-QNA">
             <objects>
                 <viewController storyboardIdentifier="friendSearch" useStoryboardIdentifierAsRestorationIdentifier="YES" id="uDp-0o-y4z" customClass="AddingFriendsViewController" sceneMemberID="viewController">
@@ -1836,7 +1846,7 @@
                             <constraint firstItem="2DC-eD-eLc" firstAttribute="trailing" secondItem="SAm-23-b3J" secondAttribute="trailing" id="oNq-Rc-7Of"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="dQx-pa-ZQO"/>
+                    <navigationItem key="navigationItem" title="Add Friends" id="dQx-pa-ZQO"/>
                     <connections>
                         <outlet property="searchBar" destination="3Nb-iw-a0b" id="I2l-Zv-Nlp"/>
                         <outlet property="segmentedControl" destination="2DC-eD-eLc" id="BmC-MO-Ekt"/>
@@ -2134,9 +2144,9 @@
         </designable>
     </designables>
     <inferredMetricsTieBreakers>
-        <segue reference="pwZ-5X-faz"/>
+        <segue reference="9CH-gh-V5S"/>
         <segue reference="67D-DZ-SsI"/>
-        <segue reference="mMe-fp-4EK"/>
+        <segue reference="h65-Qf-heI"/>
         <segue reference="NA6-SA-lHT"/>
         <segue reference="0VH-oE-Wm9"/>
     </inferredMetricsTieBreakers>
