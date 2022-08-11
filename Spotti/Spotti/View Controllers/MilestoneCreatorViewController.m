@@ -35,6 +35,7 @@
         self.exercises = result;
         [self.dropDown reloadAllComponents];
     }];
+    self.dropDown.layer.borderWidth = 1;
 }
 
 - (BOOL)checkAnyEmpty{

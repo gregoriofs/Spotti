@@ -57,6 +57,7 @@
 
 - (IBAction)didTapNext:(UIButton *)sender {
     self.currentWorkout.focusAreas = [self.areas allObjects];
+    NSLog(@"wwf %@",self.currentWorkout.focusAreas);
     [self performSegueWithIdentifier:@"showFrequencySegue" sender:nil];
 }
 
