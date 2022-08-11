@@ -44,7 +44,7 @@
             }
         }
     }
-    if([self.currentHighestReps intValue] >= [self.repGoal intValue] && [self.currentHighestWeight intValue] >= [self.repGoal intValue]){
+    if([self.currentHighestReps intValue] >= [self.repGoal intValue] && [self.currentHighestWeight intValue] >= [self.weightGoal intValue]){
         self.inProgress = [NSNumber numberWithBool:NO];
     }
     [self saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {

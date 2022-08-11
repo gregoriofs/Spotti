@@ -93,7 +93,7 @@ static NSString * const baseURLString = @"https://wger.de";
                 int numExercisesPerArea = totalExercises/(workout.focusAreas.count);
                 NSMutableArray *exercises = [NSMutableArray new];
                 for(int i = 0; i < workout.focusAreas.count; i++){
-                    NSArray *currentExerciseNumbers = self.muscleNumbers[workout.focusAreas[i]];
+                    NSArray *currentExerciseNumbers = self.muscleNumbers[[[NSString stringWithString:workout.focusAreas[i]] stringByReplacingOccurrencesOfString:@" " withString:@""]];
                     NSArray *filteredArray = [results filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(id evaluatedObject, NSDictionary* binding){
                         for(NSNumber* num in evaluatedObject[@"muscles"]){
                             if([currentExerciseNumbers containsObject:num]){

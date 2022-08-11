@@ -52,6 +52,8 @@
 		C08DE670289D8895009B82C8 /* MilestoneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C08DE66F289D8895009B82C8 /* MilestoneViewController.m */; };
 		C08DE673289D8BB2009B82C8 /* MilestoneCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C08DE672289D8BB2009B82C8 /* MilestoneCell.m */; };
 		C08DE676289D9480009B82C8 /* MilestoneCreatorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C08DE675289D9480009B82C8 /* MilestoneCreatorViewController.m */; };
+		C08DE67828A43773009B82C8 /* exercise.png in Resources */ = {isa = PBXBuildFile; fileRef = C08DE67728A43772009B82C8 /* exercise.png */; };
+		C08DE67A28A43892009B82C8 /* plan.png in Resources */ = {isa = PBXBuildFile; fileRef = C08DE67928A43892009B82C8 /* plan.png */; };
 		C0E57F39289362E600AEDEC6 /* ExerciseDetailSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = C0E57F38289362E600AEDEC6 /* ExerciseDetailSegue.m */; };
 		C0F6FBBF28998E03006B0EA7 /* sour-moha-rb5uiqzCOTo-unsplash.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C0F6FBBE28998E03006B0EA7 /* sour-moha-rb5uiqzCOTo-unsplash.jpg */; };
 /* End PBXBuildFile section */
@@ -158,6 +160,8 @@
 		C08DE672289D8BB2009B82C8 /* MilestoneCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MilestoneCell.m; sourceTree = "<group>"; };
 		C08DE674289D9480009B82C8 /* MilestoneCreatorViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MilestoneCreatorViewController.h; sourceTree = "<group>"; };
 		C08DE675289D9480009B82C8 /* MilestoneCreatorViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MilestoneCreatorViewController.m; sourceTree = "<group>"; };
+		C08DE67728A43772009B82C8 /* exercise.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = exercise.png; path = ../../../../../Downloads/exercise.png; sourceTree = "<group>"; };
+		C08DE67928A43892009B82C8 /* plan.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = plan.png; path = ../../../../../Downloads/plan.png; sourceTree = "<group>"; };
 		C0E57F37289362E600AEDEC6 /* ExerciseDetailSegue.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExerciseDetailSegue.h; sourceTree = "<group>"; };
 		C0E57F38289362E600AEDEC6 /* ExerciseDetailSegue.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ExerciseDetailSegue.m; sourceTree = "<group>"; };
 		C0F6FBBE28998E03006B0EA7 /* sour-moha-rb5uiqzCOTo-unsplash.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "sour-moha-rb5uiqzCOTo-unsplash.jpg"; path = "../../../../../Downloads/sour-moha-rb5uiqzCOTo-unsplash.jpg"; sourceTree = "<group>"; };
@@ -245,6 +249,8 @@
 				C0672346287612AD00F91288 /* SceneDelegate.m */,
 				C067234B287612AD00F91288 /* Main.storyboard */,
 				C067234E287612AE00F91288 /* Assets.xcassets */,
+				C08DE67928A43892009B82C8 /* plan.png */,
+				C08DE67728A43772009B82C8 /* exercise.png */,
 				C0F6FBBE28998E03006B0EA7 /* sour-moha-rb5uiqzCOTo-unsplash.jpg */,
 				C0672350287612AE00F91288 /* LaunchScreen.storyboard */,
 				C0672353287612AE00F91288 /* Info.plist */,
@@ -481,6 +487,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				C0672352287612AE00F91288 /* LaunchScreen.storyboard in Resources */,
+				C08DE67828A43773009B82C8 /* exercise.png in Resources */,
+				C08DE67A28A43892009B82C8 /* plan.png in Resources */,
 				C067234F287612AE00F91288 /* Assets.xcassets in Resources */,
 				C067234D287612AD00F91288 /* Main.storyboard in Resources */,
 				C0F6FBBF28998E03006B0EA7 /* sour-moha-rb5uiqzCOTo-unsplash.jpg in Resources */,
