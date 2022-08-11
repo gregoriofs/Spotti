@@ -11,7 +11,6 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    // Initialization code
 }
 
 - (void)setMilestone:(Milestone *)milestone{

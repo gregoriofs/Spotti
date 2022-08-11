@@ -114,18 +114,13 @@
         [self.queue addObject:object];
         return;
     }
-    
     NSUInteger mid = 0;
     NSUInteger min = 0;
     NSUInteger max = self.queue.count - 1;
     BOOL found = NO;
-    
     while (min <= max) {
-        
         mid = (min + max) / 2;
-        
         NSComparisonResult result = self.comparator(object, self.queue[mid]);
-        
         if (result == NSOrderedSame) {
             mid++;
             found = YES;
@@ -140,7 +135,6 @@
             min = mid + 1;
         }
     }
-    
     if (found) {
         // Index found at mid
         [self.queue insertObject:object atIndex:mid];

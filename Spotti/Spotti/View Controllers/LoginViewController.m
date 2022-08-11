@@ -53,7 +53,6 @@
         if (error != nil) {
             NSLog(@"User log in failed: %@", error.localizedDescription);
         } else {
-            // display view controller that needs to shown after successful login
             [self performSegueWithIdentifier:@"successfulLogin" sender:self];
         }
     }];

@@ -5,10 +5,6 @@
 //  Created by Gregorio Floretino Sanchez on 7/8/22.
 //
 
-
-//TODO: Upon finishing a workout, save exercises and their values to parse saveinBackgroundwithBlock
-
-
 #import "WorkoutOverviewViewController.h"
 #import "ExerciseCell.h"
 #import "ExerciseCellType2.h"
@@ -125,7 +121,6 @@
 }
 
 - (IBAction)didTapHome:(id)sender {
-    //TODO: Reminder that workout is not complete and can be finished later
     if(![self checkPairsNotComplete]){
         [self saveWorkoutAndReturnHome];
     }
@@ -139,8 +134,6 @@
 }
 
 - (IBAction)didTapFinishWorkout:(id)sender {
-    //TODO: add popup in the case where reps or sets aren't all filled for an exercise telling them to complete workout before saving
-    //TODO: figure out how to save things continuously for progress and also saving exercises to users so their stats can be accessed later in profile
     if(![self checkEmptyInputs]){
         self.workout.completed = [NSNumber numberWithBool:YES];
         GymUser *currentUser = [GymUser currentUser];

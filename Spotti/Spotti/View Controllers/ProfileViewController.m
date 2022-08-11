@@ -32,7 +32,7 @@
 @end
 
 @implementation ProfileViewController
-//TODO: move workout viewing to its own screen with tableview if scrollview can't be fixed
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.workoutTableView.delegate = self;
@@ -127,12 +127,10 @@
 }
 
 + (PFFileObject *)getPFFileFromImage: (UIImage * _Nullable)image {
-    // check if image is not nil
     if (!image) {
         return nil;
     }
     NSData *imageData = UIImagePNGRepresentation(image);
-    // get image data and check if that is not nil
     if (!imageData) {
         return nil;
     }
@@ -151,7 +149,6 @@
             [self settheProfilePic:[GymUser currentUser]];
         }
     }];
-    // Dismiss UIImagePickerController to go back to your original view controller
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 

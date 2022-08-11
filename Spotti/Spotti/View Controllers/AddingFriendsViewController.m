@@ -62,8 +62,6 @@
 }
 
 -(void)queryAllUsers:(NSInteger)page{
-    //TODO: take care of random username entry
-    //Pop up window indicating that user wasn't found
     PFQuery *query = [GymUser query];
     NSInteger pageLimit = 8;
     [query setLimit:10];
@@ -105,8 +103,6 @@
 }
 
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
-    //tableview isn't set up correctly
-    //TODO: figure out cell issue, cell setter to set all properties
     FriendsCell *cell = [tableView dequeueReusableCellWithIdentifier:@"FriendsCell" forIndexPath:indexPath];
     GymUser *cellUser = self.filteredList[indexPath.row];
     [cell setUser:cellUser];
@@ -163,7 +159,6 @@
     request.naturalLanguageQuery = @"Gyms";
     request.region = region;
     MKLocalSearch *searchGyms = [[MKLocalSearch alloc] initWithRequest:request];
-    //look at the gyms certain users frequent
     PriorityQueue *queue = [PriorityQueue new];
     queue.comparator = ^NSComparisonResult(PriorityQueueNode* obj1, PriorityQueueNode* obj2) {
         NSComparisonResult result = NSOrderedSame;

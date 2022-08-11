@@ -39,10 +39,6 @@
     [self performSegueWithIdentifier:@"finishedSession" sender:nil];
 }
 
-//- (IBAction)didTapFinish:(id)sender {
-//    
-//}
-
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     UINavigationController *nextViewController = [segue destinationViewController];
     WorkoutOverviewViewController *vc = (WorkoutOverviewViewController*)nextViewController.topViewController;

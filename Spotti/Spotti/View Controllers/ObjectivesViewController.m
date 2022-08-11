@@ -79,7 +79,6 @@
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    //Potential error: not selecting the navigation controller, just the focus vc so it won't properly update or something similar
     UINavigationController *navigationController = [segue destinationViewController];
     FocusAreaViewController *newVC = (FocusAreaViewController *)navigationController.topViewController;
     newVC.currentWorkout = self.currentWorkout;

@@ -83,7 +83,6 @@
             if(error != nil){
                 NSLog(@"%@",error.localizedDescription);
             }
-            //Filter by workouts that are more than a day old; need to figure out how to have it continuously checking
             NSArray *incompleteForMoreThanADay = [objects filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(Workout *evaluatedObject, NSDictionary<NSString *,id> * _Nullable bindings) {
                 return [[NSDate date] timeIntervalSinceDate:evaluatedObject.createdAt] > 1;
             }]];
